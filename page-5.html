@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>買取 蔵の宮 (KURANOMIYA)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="bg-[#FFFCF5] text-[#33312D] antialiased">
+
+    <header class="w-full bg-[#FFFCF5] border-t-[3px] border-[#303E5F] sticky top-0 z-50 shadow-sm font-serif-jp">
+        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 lg:h-24 flex items-center justify-between">
+
+            <a href="#" class="flex-shrink-0">
+                <img src="/assets/nav-logo.svg" alt="買取 蔵の宮 KURANOMIYA"
+                    class="h-10 sm:h-12 lg:h-13 w-auto object-contain" />
+            </a>
+
+            <div
+                class="hidden lg:flex items-center lg:gap-[clamp(1rem,1.8vw,2rem)] xl:gap-[clamp(1.5rem,2.5vw,3.5rem)] font-medium text-[clamp(13px,1.1vw,15px)] text-[#33312D]">
+
+                <nav
+                    class="flex items-center lg:gap-[clamp(1rem,1.8vw,2rem)] xl:gap-[clamp(1.5rem,2.5vw,3.5rem)] nav-bar">
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取品目</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">選ばれる理由</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">金相場</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取実績</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">コラム</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">アクセス</a>
+                </nav>
+
+                <a href="tel:0463000000"
+                    class="flex items-center font-bold text-[clamp(15px,1.2vw,18px)] hover:opacity-80 transition-opacity duration-200 whitespace-nowrap">
+                    <svg class="w-5 h-5 mr-1.5 text-[#B57A3F] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
+                    </svg>
+                    0463-00-0000
+                </a>
+
+                <a href="#"
+                    class="bg-[#B57A3F] noto-sans text-white flex items-center justify-center space-x-2 px-5 py-3 rounded-[3px] font-medium shadow-sm hover:bg-[#a06830] transition-colors duration-300 whitespace-nowrap">
+                    <span>LINEで相談する</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+
+            </div>
+
+            <div class="flex lg:hidden items-center">
+                <button id="menu-btn" type="button" class="p-2 text-[#33312D] focus:outline-none"
+                    aria-label="Toggle Menu">
+                    <svg class="w-8 h-8 stroke-current" fill="none" stroke-width="1.2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </header>
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[100] bg-[#303E5F] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+
+        <div class="flex justify-end p-5">
+            <button id="close-menu-btn" type="button" class="text-white hover:opacity-80 focus:outline-none"
+                aria-label="Close Menu">
+                <svg class="w-9 h-9" fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <nav class="flex flex-col items-center text-center px-6 pb-16 font-serif-jp tracking-wider">
+
+            <div
+                class="flex flex-col space-y-[clamp(1.25rem,4vh,1.75rem)] text-white text-[clamp(1rem,4.5vw,1.15rem)] mb-[clamp(1.75rem,5vh,2.5rem)]">
+                <a href="#" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+                <a href="#" class="hover:text-[#B57A3F] transition-colors">アクセス</a>
+            </div>
+
+            <div class="flex flex-col w-full mb-[clamp(1.75rem,5vh,2.5rem)]">
+                <span
+                    class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">About</span>
+                <div
+                    class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">ご挨拶</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">選ばれる理由</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">店舗のご案内</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">コラム</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col w-full mb-[clamp(1.75rem,5vh,2.5rem)]">
+                <span
+                    class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">Service</span>
+                <div
+                    class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">買取品目一覧</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">買取実績</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">金相場</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">よくあるご質問</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col w-full">
+                <span
+                    class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">Contact</span>
+                <div
+                    class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
+                    <a href="#"
+                        class="flex items-center justify-center space-x-1.5 hover:text-[#B57A3F] transition-colors">
+                        <span>LINEで相談する</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
+                    <a href="tel:0463000000" class="hover:text-[#B57A3F] transition-colors">お電話で相談する</a>
+                    <a href="#" class="hover:text-[#B57A3F] transition-colors">お問い合わせフォーム</a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+    <div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
+        <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
+            <nav class="flex items-center space-x-2 flex-wrap">
+                <a href="#" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+                <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+                <span class="text-[#33312D] font-medium">金相場</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section  -->
+
+    <section
+        class="relative bg-[#FFFCF5] pt-10 pb-20 sm:pb-28 lg:py-24 font-serif-jp overflow-hidden min-h-[360px] flex items-center">
+
+        <div
+            class="absolute hidden md:block right-[-10%] sm:right-[-5%] lg:right-10 top-[100%] -translate-y-1/2 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0">
+            <img src="/assets/product-page-right-bg.png" alt="" class="w-full h-auto object-contain" />
+        </div>
+
+        <div
+            class="absolute bottom-[-1%] sm:bottom-[-4%] left-[-0%] font-['EB_Garamond'] text-[clamp(3rem,13vw,6rem)] uppercase tracking-[0.05em] text-[#F1ECE0] leading-none font-medium select-none pointer-events-none whitespace-nowrap z-0">
+            Gold Price
+        </div>
+
+        <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12">
+
+                <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
+                    <div class="w-24 h-auto mb-3 sm:mb-4">
+                        <img src="/assets/roof-ornament.svg" alt=""
+                            class="w-full h-auto object-contain mx-auto md:mx-0" />
+                    </div>
+                    <h1 class="text-[#33312D] text-[clamp(2rem,5vw,2.75rem)] font-bold tracking-wide leading-none">
+                        金相場
+                    </h1>
+                </div>
+
+                <div
+                    class="lg:col-span-9 text-[#615C56] font-medium noto-sans !font-medium text-[clamp(0.88rem,2.8vw,1.05rem)] leading-[2] tracking-wider space-y-2 max-w-[620px] mx-auto lg:mx-0 text-left pl-0 lg:pl-4">
+                    <p>本日の金・プラチナ・銀の1gあたりの買取相場価格を掲載しております。</p>
+                    <p>毎日更新しておりますので、売却の際はご参考ください。</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Table Section  -->
+
+    <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
+
+        <div class="absolute right-0 top-0 w-[45%] md:w-[25%] max-w-[320px]  pointer-events-none z-0">
+            <img src="/assets/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+        </div>
+        <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
+            <img src="/assets/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
+        </div>
+
+        <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full mb-12 md:mb-16">
+            <p class="text-center noto-sans text-[#615C56] font-sans text-[12px] md:text-[16px] tracking-wide mb-6">
+                ※ 表示価格は店頭買取の参考価格です。純度・状態により実際の査定額は変動します。
+            </p>
+
+            <div
+                class="bg-white/80 max-w-[500px] mx-auto p-2.5 text-center text-[12px] px-5 tracking-wide font-sans text-[#33312D] shadow-xs border border-[#E3DCCE]/40">
+                <div class="flex items-center justify-center space-x-2">
+                    <div><span class="text-[#B57A3F] noto-sans text-[16px] font-medium mr-1.5">最終更新</span><span
+                            class="text-[#615C56] noto-sans font-medium text-[16px]">2026年6月12日&nbsp;&nbsp; 9:00
+                            AM</span></div>
+                    <span class="text-gray">|</span>
+                    <div><span class="text-[#B57A3F] noto-sans text-[16px] font-medium mr-1.5">情報元</span><span
+                            class="text-[#615C56] noto-sans text-[16px]">業界標準価格</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-16 md:space-y-24">
+
+            <div class="w-full">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-auto mx-auto mb-2">
+                        <img src="/assets/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
+                    </div>
+                    <span
+                        class="font-['EB_Garamond'] text-[#B57A3F] text-[15px] uppercase block mb-1 tracking-widest font-semibold">Gold</span>
+                    <h2 class="text-[#33312D] text-[1.5rem] font-bold tracking-wide">本日の「金」買取相場</h2>
+                    <span class="text-[#615C56] text-[18px] font-sans block mt-1">（1gあたり）</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-0  mx-auto font-sans text-[14px]">
+                    <div class="divide-y divide-[#E3DCCE]">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K24
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">25,070円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K23
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">24,109円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K22
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">23,048円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K21.6
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">22,492円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K20
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">20,571円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K18
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">18,929円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K17
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">16,680円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K14
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">14,658円</div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K12
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">11,372円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K10
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">10,159円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K9
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">9,123円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K8
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">6,773円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K7
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">6,318円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K5
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">3,285円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K18WG
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">18,904円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">K14WG
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">14,327円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-auto mx-auto mb-2">
+                        <img src="/assets/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
+                    </div>
+                    <span
+                        class="font-['EB_Garamond'] text-[#303E5F] text-[15px] uppercase block mb-1 tracking-widest font-semibold">Platinum</span>
+                    <h2 class="text-[#33312D] text-[1.5rem] font-bold tracking-wide">本日の「プラチナ」買取相場</h2>
+                    <span class="text-[#615C56] text-[18px] font-sans block mt-1">（1gあたり）</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-0  mx-auto font-sans text-[14px]">
+                    <div class="divide-y divide-[#E3DCCE]">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#303E5F] text-white py-3 text-center font-bold tracking-wider">Pt1000
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">10,575円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#303E5F] text-white py-3 text-center font-bold tracking-wider">Pt950
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">10,037円</div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#303E5F] text-white py-3 text-center font-bold tracking-wider">Pt900
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">9,800円</div>
+                        </div>
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#303E5F] text-white py-3 text-center font-bold tracking-wider">Pt850
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">9,207円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full">
+                <div class="text-center mb-6">
+                    <div class="w-20 h-auto mx-auto mb-2">
+                        <img src="/assets/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
+                    </div>
+                    <span
+                        class="font-['EB_Garamond'] text-[#615C56] text-[15px] uppercase block mb-1 tracking-widest font-semibold">Silver</span>
+                    <h2 class="text-[#33312D] text-[1.5rem] font-bold tracking-wide">本日の「銀」買取相場</h2>
+                    <span class="text-[#615C56] text-[18px] font-sans block mt-1">（1gあたり）</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-0 mx-auto font-sans text-[14px]">
+                    <div class="divide-y divide-[#E3DCCE]">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">SV1000
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">410円</div>
+                        </div>
+                    </div>
+                    <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
+                        <div class="flex items-stretch bg-white">
+                            <div class="w-1/3 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">SV925
+                            </div>
+                            <div class="w-2/3 py-3 px-6 text-center font-semibold text-[#33312D]">379円</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section
+        class="relative bg-[#303E5F] text-white py-16 lg:py-24 font-serif-jp overflow-hidden min-h-[500px] flex items-center">
+        <div
+            class="hidden lg:block absolute left-[6rem] bottom-0 w-[22%] max-w-[260px] h-auto z-10 pointer-events-none">
+            <img src="/assets/staff.png" alt="査定員" class="w-full h-auto object-contain vertical-alignment-bottom" />
+        </div>
+
+        <!-- 2. Right Side Product Cluster Display Graphic -->
+        <div class="hidden lg:block absolute right-4 bottom-4 w-[28%] max-w-[360px] h-auto z-10 pointer-events-none">
+            <img src="/assets/cta-jewellery.png" alt="買取品目イメージ" class="w-full h-auto object-contain" />
+        </div>
+
+        <!-- MAIN CENTRALIZED CONTENT WRAPPER CONTAINER -->
+        <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-20 w-full">
+            <div class="max-w-[700px] mx-auto text-center flex flex-col items-center">
+                <h2 class="text-white text-[clamp(1.5rem,4.5vw,2.25rem)] noto-serif font-semibold tracking-wide mb-4">
+                    まずはお気軽にご相談ください
+                </h2>
+
+                <div class="w-16 h-[1px] bg-[#B57A3F] mb-8"></div>
+                <div
+                    class="text-white/90 text-[clamp(0.85rem,2.5vw,1.05rem)] leading-[2] tracking-wider noto-sans !font-normal mb-10 max-w-[540px]">
+                    <p>「査定だけ」「ちょっと聞いてみたいだけ」も大歓迎です</p>
+                    <p>11年の経験をもつ店主が、心を込めてお応えいたします</p>
+                </div>
+
+                <div
+                    class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-12 sm:mb-0 w-full sm:w-auto">
+
+                    <a href="tel:0463000000"
+                        class="flex items-center justify-center font-bold text-[clamp(1.35rem,3.5vw,1.75rem)] hover:opacity-80 transition-opacity tracking-wider whitespace-nowrap">
+                        <svg class="w-6 h-6 mr-2 text-[#B57A3F] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
+                        </svg>
+                        0463-00-0000
+                    </a>
+
+                    <a href="#"
+                        class="bg-[#B57A3F] text-white flex items-center justify-center space-x-2 px-8 py-4 shadow-md hover:bg-[#a06830] transition-colors w-full sm:w-[280px] rounded-[2px] font-medium whitespace-nowrap">
+                        <span
+                            class="text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">LINEで査定相談する</span>
+                        <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                    </a>
+
+                </div>
+
+                <div
+                    class="flex lg:hidden flex-row items-end justify-center w-full max-w-[420px] mx-auto mt-4 -mb-16 overflow-hidden">
+                    <div class="w-[40%] flex-shrink-0 translate-x-3 z-0">
+                        <img src="/assets/staff.png" alt="査定員" class="w-full h-auto object-contain" />
+                    </div>
+                    <div class="w-[65%] flex-shrink-0 -translate-x-3 z-1">
+                        <img src="/assets/cta-jewellery.png" alt="買取品目イメージ" class="w-full h-auto object-contain" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER SECTION -->
+    <footer class="relative bg-[#1D2B4B] text-white pt-16 pb-8 font-serif-jp overflow-hidden">
+        <div class="absolute right-6 top-6 sm:right-12 sm:top-10 z-20">
+            <button id="scroll-top-btn" type="button"
+                class="w-14 h-auto block hover:opacity-80 active:scale-95 transition-all duration-200 focus:outline-none group"
+                aria-label="Scroll to Top">
+                <img src="/assets/scroll-top-emblem.svg" alt="Top"
+                    class="w-full h-auto object-contain transform group-hover:-translate-y-1 transition-transform duration-300" />
+            </button>
+        </div>
+
+        <div class="max-w-[1240px] mx-auto px-6 sm:px-8 lg:px-10 z-10 relative">
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10 mb-8">
+
+                <!-- LEFT PANEL: LOGO & METADATA -->
+                <div class="lg:col-span-6 space-y-6">
+                    <!-- Logo & Tagline Group -->
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+                        <a href="#" class="flex-shrink-0">
+                            <img src="/assets/footer-logo.svg" alt="買取 蔵の宮"
+                                class="h-10 sm:h-12 w-auto object-contain" />
+                        </a>
+                        <div class="hidden sm:block w-[1px] h-6 bg-white/20"></div>
+                        <p class="text-[clamp(14px,1.5vw,22px)] tracking-wider">
+                            <span class="text-[#B57A3F]">観る</span>ことに、<span class="text-[#B57A3F]">真剣</span>です。
+                        </p>
+                    </div>
+
+                    <!-- Contact Metrics Details -->
+                    <div
+                        class="space-y-4 font-sans text-[13px] sm:text-[14px] text-white/80 tracking-wide !font-normal">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                            <a href="tel:0463000000"
+                                class="text-white font-['EB_Garamond'] text-[20px] sm:text-[22px] font-bold tracking-wider hover:text-[#B57A3F] transition-colors flex items-center">
+                                <svg class="w-4 h-4 mr-1.5 text-[#B57A3F] flex-shrink-0" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
+                                </svg>
+                                0463-00-0000
+                            </a>
+                            <p>営業時間 <span class="text-white">10:00-19:00</span> <span
+                                    class="mx-1 text-white/30">|</span> 定休日 <span class="text-white">水曜日</span></p>
+                        </div>
+
+                        <p class="noto-sans text-[14px]">
+                            〒254-0043 神奈川県平塚市紅谷12-24 リーフ8 1階（湘南スターモール商店街内）
+                        </p>
+                        <p class="text-[16px]">
+                            <span class="text-[#B7C2DA]">古物商許可番号 </span>xxxxxxxxxxxx
+                        </p>
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: LINK MENUS -->
+                <div class="lg:col-span-6 grid grid-cols-2 sm:grid-cols-3 gap-8 lg:pl-8 lg:border-l lg:border-white/10">
+
+                    <!-- ABOUT MENU -->
+                    <div class="space-y-4">
+                        <h4
+                            class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">
+                            About
+                        </h4>
+                        <ul class="noto-sans space-y-3 text-[13px] sm:text-[16px] text-white/80">
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">ご挨拶</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">選ばれる理由</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">店舗のご案内</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">コラム</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- SERVICE MENU -->
+                    <div class="space-y-4">
+                        <h4
+                            class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">
+                            Service</h4>
+                        <ul class="noto-sans space-y-3 text-[13px] font-medium sm:text-[16px] text-white/80">
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">買取品目一覧</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">買取実績</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">金相場</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">よくあるご質問</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CONTACT MENU -->
+                    <div class="space-y-4 col-span-2 sm:col-span-1">
+                        <h4
+                            class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">
+                            Contact</h4>
+                        <ul class="noto-sans space-y-3 text-[13px] font-medium sm:text-[16px] text-white/80">
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">LINEで相談する</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F]  transition-colors block">お電話で相談する</a></li>
+                            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">お問い合わせフォーム</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT SUB-FOOTER LINE -->
+            <div class="text-[14px] text-[#B7C2DA] tracking-wider noto-sans text-center sm:text-left">
+                © 買取 蔵の宮 All Rights Reserved.
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

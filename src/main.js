@@ -224,3 +224,99 @@ if (scrollTopBtn) {
     });
   });
 }
+
+// RELATED ACHIEVEMENTS CAROUSEL SLIDER ENGINE INITIALIZATION
+const relTrack = document.getElementById("related-track");
+const relPrevBtn = document.getElementById("related-prev");
+const relNextBtn = document.getElementById("related-next");
+const relDotsContainer = document.getElementById("related-dots");
+
+if (relTrack && relPrevBtn && relNextBtn) {
+  const originalRelItems = Array.from(
+    relTrack.querySelectorAll(".related-card")
+  );
+  const originalRelCount = originalRelItems.length;
+
+  // Mount isolated infinite view clones with responsive desktop hidden destruction hooks
+  originalRelItems.forEach((card) => {
+    const cloneBefore = card.cloneNode(true);
+    const cloneAfter = card.cloneNode(true);
+    cloneBefore.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+    cloneAfter.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+    relTrack.insertBefore(cloneBefore, relTrack.firstChild);
+    relTrack.appendChild(cloneAfter);
+  });
+
+  let relCardWidth = originalRelItems[0].offsetWidth + 16;
+  let relCurrentIndex = originalRelCount;
+
+  const initRelPosition = () => {
+    if (window.innerWidth < 1024) {
+      relCardWidth = originalRelItems[0].offsetWidth + 16;
+      relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+    } else {
+      relTrack.scrollLeft = 0;
+    }
+  };
+
+  setTimeout(initRelPosition, 50);
+
+  const updateRelDots = (realIndex) => {
+    if (!relDotsContainer) return;
+    const dots = relDotsContainer.children;
+    Array.from(dots).forEach((dot, i) => {
+      if (i === realIndex) {
+        dot.classList.remove("bg-[#B57A3F]/30");
+        dot.classList.add("bg-[#B57A3F]");
+      } else {
+        dot.classList.remove("bg-[#B57A3F]");
+        dot.classList.add("bg-[#B57A3F]/30");
+      }
+    });
+  };
+
+  const slideRelTo = (index) => {
+    if (window.innerWidth >= 1024) return;
+    relTrack.scrollTo({
+      left: index * relCardWidth,
+      behavior: "smooth",
+    });
+    relCurrentIndex = index;
+  };
+
+  relNextBtn.addEventListener("click", () => slideRelTo(relCurrentIndex + 1));
+  relPrevBtn.addEventListener("click", () => slideRelTo(relCurrentIndex - 1));
+
+  let relScrollTimeout;
+  relTrack.addEventListener("scroll", () => {
+    if (window.innerWidth >= 1024) return;
+
+    clearTimeout(relScrollTimeout);
+    relScrollTimeout = setTimeout(() => {
+      const currentScroll = relTrack.scrollLeft;
+      const approxIndex = Math.round(currentScroll / relCardWidth);
+
+      if (approxIndex >= originalRelCount * 2) {
+        relTrack.style.scrollBehavior = "auto";
+        relCurrentIndex = approxIndex - originalRelCount;
+        relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+        relTrack.style.scrollBehavior = "smooth";
+      } else if (approxIndex < originalRelCount) {
+        relTrack.style.scrollBehavior = "auto";
+        relCurrentIndex = approxIndex + originalRelCount;
+        relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+        relTrack.style.scrollBehavior = "smooth";
+      } else {
+        relCurrentIndex = approxIndex;
+      }
+
+      const relativeIndex =
+        (relCurrentIndex - originalRelCount) % originalRelCount;
+      updateRelDots(
+        relativeIndex >= 0 ? relativeIndex : relativeIndex + originalRelCount
+      );
+    }, 150);
+  });
+
+  window.addEventListener("resize", initRelPosition);
+}
