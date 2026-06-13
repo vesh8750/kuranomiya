@@ -5,6 +5,7 @@ defined('ABSPATH') || exit;
 require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
 require_once get_template_directory() . '/inc/post-types.php';
+require_once get_template_directory() . '/inc/metal-rates.php';
 
 // Theme setup
 function kuranomiya_theme_setup(): void {
