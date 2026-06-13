@@ -265,6 +265,22 @@ function kuranomiya_register_owner_options(): void {
                 'instructions' => 'LINE公式アカウントの友だち追加URL（例：https://lin.ee/xxxx）',
             ],
             [
+                'key'           => 'field_google_maps_url',
+                'label'         => 'Google Map URL',
+                'name'          => 'google_maps_url',
+                'type'          => 'url',
+                'instructions'  => '「Google Mapをみる」ボタンのリンク先',
+                'default_value' => 'https://www.google.com/maps/search/?api=1&query=神奈川県平塚市紅谷12-24+リーフ8',
+            ],
+            [
+                'key'           => 'field_google_maps_embed_url',
+                'label'         => 'Google Map 埋め込みURL',
+                'name'          => 'google_maps_embed_url',
+                'type'          => 'url',
+                'instructions'  => '地図iframeのsrc（Google Mapsの「地図を埋め込む」から取得）',
+                'default_value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.437452296155!2d139.3475283!3d35.3283333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601851950d87a55d%3A0x2bb9e324707647d!2z56We5aWI5bed55yM5bmz5aGa5biC57SF6LC3MTItMjQ!5e0!3m2!1sja!2sjp!4v1717148000000!5m2!1sja!2sjp',
+            ],
+            [
                 'key'           => 'field_column_hero_desc_1',
                 'label'         => 'コラム ヒーロー説明文1',
                 'name'          => 'column_hero_desc_1',

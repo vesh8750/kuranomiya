@@ -47,7 +47,7 @@
             </dl>
 
             <div class="text-center lg:text-center">
-                <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+                <a href="<?php echo esc_url(kuranomiya_get_google_maps_url()); ?>" target="_blank" rel="noopener noreferrer"
                     class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-1 px-8 py-4 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[260px] sm:w-[300px]">
                     <span class="text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">Google
                         Mapをみる</span>
@@ -62,7 +62,7 @@
 
         <div class="w-full h-[350px] sm:h-[450px] lg:h-full min-h-[400px] lg:min-h-none relative z-10 bg-gray-200">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3255.437452296155!2d139.3475283!3d35.3283333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601851950d87a55d%3A0x2bb9e324707647d!2z56We5aWI5bed55yM5bmz5aGa5biC57SF6LC3MTItMjQ!5e0!3m2!1sja!2sjp!4v1717148000000!5m2!1sja!2sjp"
+                src="<?php echo esc_url(kuranomiya_get_google_maps_embed_url()); ?>"
                 class="w-full h-full border-none grayscale-[20%] contrast-[110%] select-none pointer-events-auto"
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 title="買取 蔵の宮 アクセスマップ">

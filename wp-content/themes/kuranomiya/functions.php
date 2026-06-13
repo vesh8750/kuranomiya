@@ -4,6 +4,7 @@ defined('ABSPATH') || exit;
 // Load includes
 require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
+require_once get_template_directory() . '/inc/site-settings.php';
 require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/metal-rates.php';
 require_once get_template_directory() . '/inc/pagination.php';
@@ -39,31 +40,6 @@ function kuranomiya_disable_gutenberg(): void {
     add_filter('use_block_editor_for_post_type', '__return_false');
 }
 add_action('after_setup_theme', 'kuranomiya_disable_gutenberg');
-
-function kuranomiya_get_line_url(): string {
-    if (!function_exists('get_field')) {
-        return '#';
-    }
-
-    $url = get_field('line_url', 'option');
-
-    return (is_string($url) && $url !== '') ? $url : '#';
-}
-
-function kuranomiya_get_page_url(string $slug, string $fragment = ''): string {
-    if ($slug === '') {
-        $url = home_url('/');
-    } else {
-        $page = get_page_by_path($slug);
-        $url  = ($page instanceof WP_Post) ? get_permalink($page) : home_url('/');
-    }
-
-    if ($fragment !== '') {
-        $url .= '#' . ltrim($fragment, '#');
-    }
-
-    return $url;
-}
 
 function kuranomiya_increment_view_count(): void {
     if (is_singular('column')) {
