@@ -132,7 +132,7 @@
         </nav>
     </div>
     <div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
-        <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
+        <div class="max-w-[1400px] noto-sans mx-auto px-5 sm:px-6 lg:px-8">
             <nav class="flex items-center space-x-2 flex-wrap">
                 <a href="#" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
                 <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
@@ -189,7 +189,7 @@
                 <h2 class="text-[#33312D] text-[clamp(1.75rem,4vw,2.25rem)] font-semibold tracking-wide">
                     <span
                         class="text-[#B57A3F] font-['EB_Garamond'] text-[clamp(48px,8vw,90px)] font-medium mr-0 select-none">3</span><span
-                        class="text-[clamp(18px,2.5vw,30px)]">つの</span>お問い合わせ方法
+                        class="text-[clamp(26px,2.5vw,30px)]">つの</span><br class="block md:hidden">お問い合わせ方法
                 </h2>
             </div>
 
@@ -199,15 +199,13 @@
                     <div>
                         <div class="flex items-end gap-4 mb-6 -mx-6">
                             <div
-                                class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
-                                <svg class="w-6 h-6 stroke-current" fill="none" stroke-width="1.2" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                                </svg>
+                                class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center flex-shrink-0">
+                                <img src="assets/mail-icon-blue.svg" alt="Mail Icon" class="w-6 h-6 object-contain" />
                             </div>
-                            <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#303E5F] mb-1 sm:mb-2">
-                                <span class="text-[11px] uppercase tracking-widest font-semibold">Contact</span>
-                                <span class="text-[clamp(1.75rem,3vw,2.25rem)] font-medium leading-none">01</span>
+                            <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#303E5F] mb-0 sm:mb-0">
+                                <span
+                                    class="text-[clamp(17px,1.5vw,17px)] uppercase tracking-widest font-normal">Contact</span>
+                                <span class="text-[clamp(2rem,4vw,3.3rem)] font-normal leading-none">01</span>
                             </div>
                         </div>
 
@@ -228,15 +226,13 @@
                     <div>
                         <div class="flex items-end gap-4 mb-6 -mx-6">
                             <div
-                                class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
-                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                    <path
-                                        d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
-                                </svg>
+                                class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-18 flex items-center justify-center flex-shrink-0">
+                                <img src="assets/telephone-blue.svg" alt="Mail Icon" class="w-6 h-6 object-contain" />
                             </div>
                             <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#303E5F] mb-1 sm:mb-2">
-                                <span class="text-[11px] uppercase tracking-widest font-semibold">Contact</span>
-                                <span class="text-[clamp(1.75rem,3vw,2.25rem)] font-medium leading-none">02</span>
+                                <span
+                                    class="text-[clamp(17px,1.5vw,17px)] uppercase tracking-widest font-normal">Contact</span>
+                                <span class="text-[clamp(2rem,4vw,3.3rem)] font-normal leading-none">02</span>
                             </div>
                         </div>
 
@@ -268,13 +264,15 @@
                             <div
                                 class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
                                 <div
-                                    class="border-[2px] border-white px-1 py-0.5 text-[10px] font-sans font-extrabold tracking-tighter leading-none rounded-[4px] uppercase select-none scale-90">
-                                    Line
+                                    class="bg-[#303E5F] w-14 h-14 sm:w-16 sm:h-18 flex items-center justify-center flex-shrink-0">
+                                    <img src="assets/line-icon-blue.svg" alt="Mail Icon"
+                                        class="w-6 h-6 object-contain" />
                                 </div>
                             </div>
                             <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#303E5F] mb-1 sm:mb-2">
-                                <span class="text-[11px] uppercase tracking-widest font-semibold">Contact</span>
-                                <span class="text-[clamp(1.75rem,3vw,2.25rem)] font-medium leading-none">03</span>
+                                <span
+                                    class="text-[clamp(17px,1.5vw,17px)] uppercase tracking-widest font-normal">Contact</span>
+                                <span class="text-[clamp(2rem,4vw,3.3rem)] font-normal leading-none">03</span>
                             </div>
                         </div>
 
@@ -311,11 +309,10 @@
     <section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
 
         <div class="absolute right-0 top-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-            <img src="/assets/traditional-grid-pattern.png" alt=""
-                class="w-full h-auto object-contain transform rotate-180" />
+            <img src="/assets/form-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
         </div>
-        <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-            <img src="/assets/traditional-grid-pattern.png" alt="" class="w-full h-auto object-contain" />
+        <div class="absolute left-0 bottom-[7%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
+            <img src="/assets/form-pattern-below.png" alt="" class="w-full h-auto object-contain" />
         </div>
 
         <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
@@ -352,7 +349,7 @@
 
                 <div class="space-y-2">
                     <label for="form-name" class="block font-bold tracking-wide">
-                        お名前 <span class="text-[#EC2B2B] text-[12px] font-normal ml-1">（必須）</span>
+                        お名前 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                     </label>
                     <input type="text" id="form-name" name="name" required
                         class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
@@ -360,7 +357,7 @@
 
                 <div class="space-y-2">
                     <label for="form-email" class="block font-bold tracking-wide">
-                        メールアドレス <span class="text-[#EC2B2B] text-[12px] font-normal ml-1">（必須）</span>
+                        メールアドレス <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                     </label>
                     <input type="email" id="form-email" name="email" required
                         class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
@@ -368,7 +365,7 @@
 
                 <div class="space-y-2">
                     <label for="form-tel" class="block font-bold tracking-wide">
-                        お電話番号 <span class="text-[#EC2B2B] text-[12px] font-normal ml-1">（必須）</span>
+                        お電話番号 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                     </label>
                     <input type="tel" id="form-tel" name="tel" required
                         class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
@@ -376,7 +373,7 @@
 
                 <div class="space-y-2">
                     <label for="form-category" class="block font-bold tracking-wide">
-                        ご相談の品目 <span class="text-[#615C56]/60 text-[12px] font-normal ml-1">（任意 / 複数選択不可）</span>
+                        ご相談の品目 <span class="text-[#B57A3F] noto-sans text-[12px] font-normal ml-1">（任意 / 複数選択不可）</span>
                     </label>
                     <div class="relative w-full bg-[#F1ECE0]">
                         <select id="form-category" name="category"
@@ -398,7 +395,7 @@
 
                 <div class="space-y-2">
                     <label for="form-message" class="block font-bold tracking-wide">
-                        お問い合わせ内容 <span class="text-[#EC2B2B] text-[12px] font-normal ml-1">（必須）</span>
+                        お問い合わせ内容 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                     </label>
                     <textarea id="form-message" name="message" required rows="6"
                         class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none resize-y rounded-none"></textarea>
@@ -433,7 +430,7 @@
 
                 <div class="text-center pt-6">
                     <button type="submit"
-                        class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-2 px-12 py-4 font-serif-jp font-semibold shadow-md hover:bg-[#a06830] transition-colors w-[240px] rounded-none cursor-pointer">
+                        class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-2 px-12 py-4 font-serif-jp font-semibold shadow-md hover:bg-[#a06830] transition-colors w-[200px] rounded-none cursor-pointer">
                         <span class="tracking-widest">送信する</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
