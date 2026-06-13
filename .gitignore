@@ -1,0 +1,30 @@
+# WordPress core
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/index.php
+/xmlrpc.php
+/license.txt
+/readme.html
+
+# Uploads & generated
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/cache/
+/wp-content/backup-db/
+/wp-content/advanced-cache.php
+/wp-content/wp-cache-config.php
+
+# Config with secrets
+wp-config.php
+
+# Plugins & themes (track only our theme)
+/wp-content/plugins/
+/wp-content/themes/
+!/wp-content/themes/kuranomiya/
+
+# System
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
