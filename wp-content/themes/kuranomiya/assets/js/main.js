@@ -1,16 +1,18 @@
-import '../css/main.css';
-import '../css/custom.css';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import "../css/main.css";
+import "../css/custom.css";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const prefersReducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
 
 if (!prefersReducedMotion) {
   gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 }
 
-const SCROLL_START = 'top 85%';
+const SCROLL_START = "top 85%";
 
 export function fadeInUp(selector) {
   if (prefersReducedMotion) return;
@@ -19,7 +21,7 @@ export function fadeInUp(selector) {
     y: 40,
     opacity: 0,
     duration: 0.7,
-    ease: 'power2.out',
+    ease: "power2.out",
     scrollTrigger: {
       trigger: selector,
       start: SCROLL_START,
@@ -37,10 +39,10 @@ export function fadeInStagger(selector) {
     y: 40,
     opacity: 0,
     duration: 0.7,
-    ease: 'power2.out',
+    ease: "power2.out",
     stagger: {
       each: 0.15,
-      axis: 'x',
+      axis: "x",
     },
     scrollTrigger: {
       trigger: container,
@@ -59,10 +61,10 @@ export function fadeInStaggerList(selector) {
     y: 40,
     opacity: 0,
     duration: 0.7,
-    ease: 'power2.out',
+    ease: "power2.out",
     stagger: {
       each: 0.15,
-      axis: 'y',
+      axis: "y",
     },
     scrollTrigger: {
       trigger: container,
@@ -75,9 +77,9 @@ export function revealFromLeft(selector) {
   if (prefersReducedMotion) return;
 
   gsap.from(selector, {
-    clipPath: 'inset(0 100% 0 0)',
+    clipPath: "inset(0 100% 0 0)",
     duration: 1,
-    ease: 'power3.out',
+    ease: "power3.out",
     scrollTrigger: {
       trigger: selector,
       start: SCROLL_START,
@@ -88,46 +90,22 @@ export function revealFromLeft(selector) {
 export function heroEntrance() {
   if (prefersReducedMotion) return;
 
-  const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+  const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-  tl.from('.hero-image', { opacity: 0, duration: 0.8 })
-    .from('.hero-title', { y: 30, opacity: 0, duration: 0.6 }, '+=0.2')
-    .from('.hero-subtitle', { y: 30, opacity: 0, duration: 0.5 }, '+=0.2')
-    .from('.hero-cta', { y: 30, opacity: 0, duration: 0.5 }, '+=0.2');
-}
-
-function initHeader() {
-  const header = document.querySelector('header') ?? document.querySelector('.site-header');
-  if (!header) return;
-
-  let lastScrollY = window.scrollY;
-
-  window.addEventListener(
-    'scroll',
-    () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY <= 100) {
-        header.classList.remove('header--hidden');
-      } else if (currentScrollY > lastScrollY) {
-        header.classList.add('header--hidden');
-      } else if (currentScrollY < lastScrollY) {
-        header.classList.remove('header--hidden');
-      }
-
-      lastScrollY = currentScrollY;
-    },
-    { passive: true },
-  );
+  tl.from(".hero-image", { opacity: 0, duration: 0.8 })
+    .from(".hero-title", { y: 30, opacity: 0, duration: 0.6 }, "+=0.2")
+    .from(".hero-subtitle", { y: 30, opacity: 0, duration: 0.5 }, "+=0.2")
+    .from(".hero-cta", { y: 30, opacity: 0, duration: 0.5 }, "+=0.2");
 }
 
 function initSmoothAnchor() {
-  const header = document.querySelector('header') ?? document.querySelector('.site-header');
+  const header =
+    document.querySelector("header") ?? document.querySelector(".site-header");
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || href === '#') return;
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
 
       const target = document.querySelector(href);
       if (!target) return;
@@ -135,62 +113,63 @@ function initSmoothAnchor() {
       e.preventDefault();
 
       const headerHeight = header ? header.getBoundingClientRect().height : 0;
-      const targetOffset = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+      const targetOffset =
+        target.getBoundingClientRect().top + window.scrollY - headerHeight;
 
       gsap.to(window, {
         scrollTo: targetOffset,
         duration: 0.8,
-        ease: 'power2.inOut',
+        ease: "power2.inOut",
       });
     });
   });
 }
 
 function closeFAQItem(item) {
-  const answer = item.querySelector('.faq-answer');
+  const answer = item.querySelector(".faq-answer");
   if (!answer) return;
 
-  item.classList.remove('is-open');
+  item.classList.remove("is-open");
 
   gsap.set(answer, { height: answer.offsetHeight });
   gsap.to(answer, {
     height: 0,
     opacity: 0,
     duration: 0.25,
-    ease: 'power2.in',
+    ease: "power2.in",
   });
 }
 
 function openFAQItem(item) {
-  const answer = item.querySelector('.faq-answer');
+  const answer = item.querySelector(".faq-answer");
   if (!answer) return;
 
-  item.classList.add('is-open');
+  item.classList.add("is-open");
 
   gsap.to(answer, {
-    height: 'auto',
+    height: "auto",
     opacity: 1,
     duration: 0.3,
-    ease: 'power2.out',
+    ease: "power2.out",
   });
 }
 
 function initFAQ() {
-  document.querySelectorAll('.faq-list').forEach((list) => {
-    list.querySelectorAll('.faq-item').forEach((item) => {
-      const answer = item.querySelector('.faq-answer');
-      const question = item.querySelector('.faq-question');
+  document.querySelectorAll(".faq-list").forEach((list) => {
+    list.querySelectorAll(".faq-item").forEach((item) => {
+      const answer = item.querySelector(".faq-answer");
+      const question = item.querySelector(".faq-question");
       if (!answer || !question) return;
 
-      gsap.set(answer, { height: 0, overflow: 'hidden', opacity: 0 });
+      gsap.set(answer, { height: 0, overflow: "hidden", opacity: 0 });
 
-      question.addEventListener('click', () => {
-        if (item.classList.contains('is-open')) {
+      question.addEventListener("click", () => {
+        if (item.classList.contains("is-open")) {
           closeFAQItem(item);
           return;
         }
 
-        const openItem = list.querySelector('.faq-item.is-open');
+        const openItem = list.querySelector(".faq-item.is-open");
         if (openItem) {
           closeFAQItem(openItem);
         }
@@ -204,18 +183,320 @@ function initFAQ() {
 function initAnimations() {
   if (prefersReducedMotion) return;
 
-  initHeader();
   initSmoothAnchor();
   initFAQ();
 
-  if (document.querySelector('.hero-image')) {
+  if (document.querySelector(".hero-image")) {
     heroEntrance();
   }
 
-  document.querySelectorAll('[data-animate="fade-up"]').forEach((el) => fadeInUp(el));
-  document.querySelectorAll('[data-animate="stagger"]').forEach((el) => fadeInStagger(el));
-  document.querySelectorAll('[data-animate="stagger-list"]').forEach((el) => fadeInStaggerList(el));
-  document.querySelectorAll('[data-animate="reveal-left"]').forEach((el) => revealFromLeft(el));
+  document
+    .querySelectorAll('[data-animate="fade-up"]')
+    .forEach((el) => fadeInUp(el));
+  document
+    .querySelectorAll('[data-animate="stagger"]')
+    .forEach((el) => fadeInStagger(el));
+  document
+    .querySelectorAll('[data-animate="stagger-list"]')
+    .forEach((el) => fadeInStaggerList(el));
+  document
+    .querySelectorAll('[data-animate="reveal-left"]')
+    .forEach((el) => revealFromLeft(el));
 }
 
-document.addEventListener('DOMContentLoaded', initAnimations);
+function initMobileMenu() {
+  const menuBtn = document.getElementById("menu-btn");
+  const closeMenuBtn = document.getElementById("close-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  const openMenu = () => {
+    mobileMenu.classList.remove("translate-x-full");
+    mobileMenu.classList.add("translate-x-0");
+    document.body.classList.add("overflow-hidden");
+  };
+
+  const closeMenu = () => {
+    mobileMenu.classList.remove("translate-x-0");
+    mobileMenu.classList.add("translate-x-full");
+    document.body.classList.remove("overflow-hidden");
+  };
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener("click", openMenu);
+  }
+
+  if (closeMenuBtn) {
+    closeMenuBtn.addEventListener("click", closeMenu);
+  }
+
+  window.addEventListener("resize", () => {
+    if (
+      window.innerWidth >= 1024 &&
+      !mobileMenu.classList.contains("translate-x-full")
+    ) {
+      closeMenu();
+    }
+  });
+}
+
+function initCarousels() {
+  function createInfiniteCarousel({
+    trackId,
+    prevBtnId,
+    nextBtnId,
+    dotsId,
+    cardSelector,
+    dotActiveClass,
+    dotInactiveClass,
+  }) {
+    const track = document.getElementById(trackId);
+    const prevBtn = document.getElementById(prevBtnId);
+    const nextBtn = document.getElementById(nextBtnId);
+    const dotsContainer = document.getElementById(dotsId);
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const originals = Array.from(track.querySelectorAll(cardSelector));
+    const count = originals.length;
+
+    originals.forEach((card) => {
+      const before = card.cloneNode(true);
+      const after = card.cloneNode(true);
+
+      before.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+      after.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+
+      track.insertBefore(before, track.firstChild);
+      track.appendChild(after);
+    });
+
+    let cardWidth = originals[0].offsetWidth + 16;
+    let currentIndex = count;
+
+    const init = () => {
+      if (window.innerWidth < 1024) {
+        cardWidth = originals[0].offsetWidth + 16;
+        track.scrollLeft = currentIndex * cardWidth;
+      } else {
+        track.scrollLeft = 0;
+      }
+    };
+
+    setTimeout(init, 50);
+
+    const updateDots = (realIndex) => {
+      if (!dotsContainer) return;
+      Array.from(dotsContainer.children).forEach((dot, i) => {
+        dot.classList.toggle(dotActiveClass, i === realIndex);
+        dot.classList.toggle(dotInactiveClass, i !== realIndex);
+      });
+    };
+
+    const slideTo = (index) => {
+      if (window.innerWidth >= 1024) return;
+      track.scrollTo({
+        left: index * cardWidth,
+        behavior: "smooth",
+      });
+      currentIndex = index;
+    };
+
+    nextBtn.addEventListener("click", () => slideTo(currentIndex + 1));
+    prevBtn.addEventListener("click", () => slideTo(currentIndex - 1));
+
+    let scrollTimeout;
+
+    track.addEventListener("scroll", () => {
+      if (window.innerWidth >= 1024) return;
+
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        const approxIndex = Math.round(track.scrollLeft / cardWidth);
+
+        if (approxIndex >= count * 2) {
+          track.style.scrollBehavior = "auto";
+          currentIndex = approxIndex - count;
+          track.scrollLeft = currentIndex * cardWidth;
+          track.style.scrollBehavior = "smooth";
+        } else if (approxIndex < count) {
+          track.style.scrollBehavior = "auto";
+          currentIndex = approxIndex + count;
+          track.scrollLeft = currentIndex * cardWidth;
+          track.style.scrollBehavior = "smooth";
+        } else {
+          currentIndex = approxIndex;
+        }
+
+        const realIndex = (currentIndex - count + count) % count;
+
+        updateDots(realIndex);
+      }, 150);
+    });
+
+    window.addEventListener("resize", init);
+  }
+
+  // -------------------------
+  // ALL CAROUSELS
+  // -------------------------
+
+  createInfiniteCarousel({
+    trackId: "story-track",
+    prevBtnId: "story-prev",
+    nextBtnId: "story-next",
+    dotsId: "story-dots",
+    cardSelector: ".story-card",
+    dotActiveClass: "bg-white",
+    dotInactiveClass: "bg-white/40",
+  });
+
+  createInfiniteCarousel({
+    trackId: "items-track",
+    prevBtnId: "items-prev",
+    nextBtnId: "items-next",
+    dotsId: "items-dots",
+    cardSelector: ".item-card",
+    dotActiveClass: "bg-[#B57A3F]",
+    dotInactiveClass: "bg-[#B57A3F]/30",
+  });
+
+  createInfiniteCarousel({
+    trackId: "achievements-track",
+    prevBtnId: "achievements-prev",
+    nextBtnId: "achievements-next",
+    dotsId: "achievements-dots",
+    cardSelector: ".achievement-card",
+    dotActiveClass: "bg-[#B57A3F]",
+    dotInactiveClass: "bg-[#B57A3F]/30",
+  });
+
+  createInfiniteCarousel({
+    trackId: "column-track",
+    prevBtnId: "column-prev",
+    nextBtnId: "column-next",
+    dotsId: "column-dots",
+    cardSelector: ".column-card",
+    dotActiveClass: "bg-white",
+    dotInactiveClass: "bg-white/40",
+  });
+}
+
+function initScrollTop() {
+  const scrollTopBtn = document.getElementById("scroll-top-btn");
+
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+}
+
+function initRelatedCarousel() {
+  const relTrack = document.getElementById("related-track");
+  const relPrevBtn = document.getElementById("related-prev");
+  const relNextBtn = document.getElementById("related-next");
+  const relDotsContainer = document.getElementById("related-dots");
+
+  if (relTrack && relPrevBtn && relNextBtn) {
+    const originalRelItems = Array.from(
+      relTrack.querySelectorAll(".related-card"),
+    );
+    const originalRelCount = originalRelItems.length;
+
+    // Mount isolated infinite view clones with responsive desktop hidden destruction hooks
+    originalRelItems.forEach((card) => {
+      const cloneBefore = card.cloneNode(true);
+      const cloneAfter = card.cloneNode(true);
+      cloneBefore.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+      cloneAfter.classList.add("clone", "mr-4", "lg:mr-0", "lg:hidden");
+      relTrack.insertBefore(cloneBefore, relTrack.firstChild);
+      relTrack.appendChild(cloneAfter);
+    });
+
+    let relCardWidth = originalRelItems[0].offsetWidth + 16;
+    let relCurrentIndex = originalRelCount;
+
+    const initRelPosition = () => {
+      if (window.innerWidth < 1024) {
+        relCardWidth = originalRelItems[0].offsetWidth + 16;
+        relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+      } else {
+        relTrack.scrollLeft = 0;
+      }
+    };
+
+    setTimeout(initRelPosition, 50);
+
+    const updateRelDots = (realIndex) => {
+      if (!relDotsContainer) return;
+      const dots = relDotsContainer.children;
+      Array.from(dots).forEach((dot, i) => {
+        if (i === realIndex) {
+          dot.classList.remove("bg-[#B57A3F]/30");
+          dot.classList.add("bg-[#B57A3F]");
+        } else {
+          dot.classList.remove("bg-[#B57A3F]");
+          dot.classList.add("bg-[#B57A3F]/30");
+        }
+      });
+    };
+
+    const slideRelTo = (index) => {
+      if (window.innerWidth >= 1024) return;
+      relTrack.scrollTo({
+        left: index * relCardWidth,
+        behavior: "smooth",
+      });
+      relCurrentIndex = index;
+    };
+
+    relNextBtn.addEventListener("click", () => slideRelTo(relCurrentIndex + 1));
+    relPrevBtn.addEventListener("click", () => slideRelTo(relCurrentIndex - 1));
+
+    let relScrollTimeout;
+    relTrack.addEventListener("scroll", () => {
+      if (window.innerWidth >= 1024) return;
+
+      clearTimeout(relScrollTimeout);
+      relScrollTimeout = setTimeout(() => {
+        const currentScroll = relTrack.scrollLeft;
+        const approxIndex = Math.round(currentScroll / relCardWidth);
+
+        if (approxIndex >= originalRelCount * 2) {
+          relTrack.style.scrollBehavior = "auto";
+          relCurrentIndex = approxIndex - originalRelCount;
+          relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+          relTrack.style.scrollBehavior = "smooth";
+        } else if (approxIndex < originalRelCount) {
+          relTrack.style.scrollBehavior = "auto";
+          relCurrentIndex = approxIndex + originalRelCount;
+          relTrack.scrollLeft = relCurrentIndex * relCardWidth;
+          relTrack.style.scrollBehavior = "smooth";
+        } else {
+          relCurrentIndex = approxIndex;
+        }
+
+        const relativeIndex =
+          (relCurrentIndex - originalRelCount) % originalRelCount;
+        updateRelDots(
+          relativeIndex >= 0 ? relativeIndex : relativeIndex + originalRelCount,
+        );
+      }, 150);
+    });
+
+    window.addEventListener("resize", initRelPosition);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", initAnimations);
+
+document.addEventListener("DOMContentLoaded", () => {
+  initMobileMenu();
+  initCarousels();
+  initScrollTop();
+  initRelatedCarousel();
+});
