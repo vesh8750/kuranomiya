@@ -108,8 +108,8 @@ if ($item_purchase_related_ids) {
 
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
 
-    <div class="absolute right-0 top-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+    <div class="absolute right-0 top-0 w-[45%] md:w-[35%] pointer-events-none z-0">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
@@ -123,7 +123,7 @@ if ($item_purchase_related_ids) {
             </div>
             <span
                 class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2 tracking-[0.1em]">Items</span>
-            <h2 class="text-[#33312D] text-[clamp(1.75rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-[#33312D] text-[clamp(1.75rem,4vw,2.45rem)] font-bold tracking-wide">
                 取扱品目
             </h2>
         </div>
@@ -245,7 +245,7 @@ if ($item_purchase_related_ids) {
             </div>
             <span
                 class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2 tracking-[0.1em]">Flow</span>
-            <h2 class="text-white text-[clamp(2rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-white text-[clamp(2rem,4vw,2.45rem)] font-bold tracking-wide">
                 買取の流れ
             </h2>
         </div>

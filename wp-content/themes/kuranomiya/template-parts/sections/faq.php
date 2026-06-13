@@ -1,32 +1,34 @@
 <section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden" id="faq">
 
-    <div class="absolute left-[-5%] top-0 w-[45%] md:w-[35%] pointer-events-none z-0">
+    <div class="absolute left-[-5%] top-0 w-[50%] md:w-[40%] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/faq-grid.png" alt="" class="w-full h-auto object-contain" />
     </div>
 
     <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
+
 
         <div class="text-center mb-12 md:mb-10" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
             <span class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2 tracking-[0.1em]">Faq</span>
-            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.45rem)] font-bold tracking-wide">
                 よくあるご質問
             </h2>
+            <div class="absolute right-[-8%] md:right-[-16%] top-0 w-[30%] aspect-square pointer-events-none z-0 hidden sm:block">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/faq-pattern-top.png" alt="" class="w-full h-auto object-contain transform" />
+            </div>
         </div>
 
         <div
-            class="text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-12 sm:mb-16 space-y-2"
+            class="text-center relative text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-12 sm:mb-16 space-y-2"
             data-animate="fade-up">
             <p>ご来店前のご不安を、少しでも解消できればと思います。</p>
             <p>掲載内容以外のご質問に関しましては、お電話またはLINEでお気軽にお問い合わせください。</p>
         </div>
 
         <div class="relative space-y-5 mx-auto" data-animate="stagger-list">
-            <div class="absolute right-[-8%] top-[-46%] w-[25%] aspect-square pointer-events-none z-0 hidden sm:block">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/faq-pattern-top.png" alt="" class="w-full h-auto object-contain transform" />
-            </div>
+
 
             <?php if (have_rows('faq_items', 'option')) : ?>
                 <?php while (have_rows('faq_items', 'option')) : the_row(); ?>
