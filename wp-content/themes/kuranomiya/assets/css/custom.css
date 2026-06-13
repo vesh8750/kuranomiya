@@ -34,6 +34,7 @@ body {
 
 
 .hero-banner,
+.greeting-hero,
 .kura-card,
 .miya-card {
   background-image: var(--bg-mobile);
@@ -41,6 +42,7 @@ body {
 
 @media (min-width: 48rem) {
   .hero-banner,
+  .greeting-hero,
   .kura-card,
   .miya-card {
     background-image: var(--bg-desktop);

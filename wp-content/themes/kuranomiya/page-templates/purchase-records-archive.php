@@ -9,20 +9,10 @@ get_header();
 ?>
 
 
-<div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
-    <div class="max-w-[1400px] noto-sans mx-auto px-5 sm:px-6 lg:px-8">
-        <nav class="flex items-center space-x-2 flex-wrap">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
-            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
-            <span class="text-[#33312D] font-medium">買取実績</span>
-        </nav>
-    </div>
-</div>
-
 <!-- Hero Section  -->
 
 <section
-    class="relative bg-[#FFFCF5] pt-10 pb-20 sm:pb-28 lg:py-24 font-serif-jp overflow-hidden min-h-[360px] flex items-center">
+    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-hidden min-h-[360px] flex flex-col">
 
     <div
         class="absolute hidden md:block right-[-10%] sm:right-[-5%] lg:right-10 top-1/2 -translate-y-1/2 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0">
@@ -34,7 +24,15 @@ get_header();
         Achievements
     </div>
 
-    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
+    <div class="hidden md:block relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-4 sm:pt-6 z-10 font-sans text-[12px] tracking-wider text-[#615C56]">
+        <nav class="flex items-center space-x-2 flex-wrap noto-sans">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+            <span class="text-[#33312D] font-medium">買取実績</span>
+        </nav>
+    </div>
+
+    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">

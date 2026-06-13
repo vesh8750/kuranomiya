@@ -1,26 +1,17 @@
 <?php
 /**
  * Template Name: Column Archive
+ * Template: Page 3
  */
 
 get_header();
 ?>
 
 
-<div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
-    <div class="max-w-[1400px] noto-sans mx-auto px-5 sm:px-6 lg:px-8">
-        <nav class="flex items-center space-x-2 flex-wrap">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
-            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
-            <span class="text-[#33312D] font-medium">コラム</span>
-        </nav>
-    </div>
-</div>
-
 <!-- Hero Section  -->
 
 <section
-    class="relative bg-[#FFFCF5] pt-10 pb-20 sm:pb-28 lg:py-24 font-serif-jp overflow-hidden min-h-[360px] flex items-center">
+    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-hidden min-h-[360px] flex flex-col">
 
     <div
         class="absolute hidden md:block right-[-10%] sm:right-[-5%] lg:right-10 top-1/2 -translate-y-1/2 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0">
@@ -32,7 +23,15 @@ get_header();
         column
     </div>
 
-    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
+    <div class="hidden md:block relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-4 sm:pt-6 z-10 font-sans text-[12px] tracking-wider text-[#615C56]">
+        <nav class="flex items-center space-x-2 flex-wrap noto-sans">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+            <span class="text-[#33312D] font-medium">コラム</span>
+        </nav>
+    </div>
+
+    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-8">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
@@ -60,11 +59,11 @@ get_header();
 <section class="relative bg-[#F1ECE0] py-24 pt-28 lg:pt-36  font-serif-jp overflow-hidden">
 
     <div class="absolute right-0 top-[3%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-        <img src="/assets/diamond-top-pattern.png" alt=""
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-top-pattern.png" alt=""
             class="w-full h-auto object-contain transform rotate-180" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
-        <img src="/assets/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
@@ -111,7 +110,7 @@ get_header();
 
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="/assets/column-img-1.png" alt="「観る」という言葉に込めた、私たちの姿勢について"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-1.png" alt="「観る」という言葉に込めた、私たちの姿勢について"
                         class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
@@ -133,7 +132,7 @@ get_header();
 
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="/assets/column-img-2.png" alt="金の価値はどう決まる？相場の見方を分かりやすく解説"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-2.png" alt="金の価値はどう決まる？相場の見方を分かりやすく解説"
                         class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
@@ -156,7 +155,7 @@ get_header();
 
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="/assets/column-img-3.png" alt="整理を始める前にお品物との向き合い方の話"
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-3.png" alt="整理を始める前にお品物との向き合い方の話"
                         class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
@@ -179,7 +178,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
@@ -199,7 +198,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
@@ -219,7 +218,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
@@ -239,7 +238,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
@@ -259,7 +258,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
@@ -279,7 +278,7 @@ get_header();
             <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
                 <div
                     class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="/assets/placeholder-img.png" alt="" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
                     <div
                         class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
                         カテゴリ名</div>
