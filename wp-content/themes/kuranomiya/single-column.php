@@ -103,7 +103,7 @@ while (have_posts()) :
     </div>
     <div class="absolute right-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] opacity-20 pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/traditional-grid-pattern.png" alt=""
-            class="w-full h-auto object-contain transform rotate-180" />
+            class="w-full h-auto object-contain transform" />
     </div>
 
     <div class="relative max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-8">

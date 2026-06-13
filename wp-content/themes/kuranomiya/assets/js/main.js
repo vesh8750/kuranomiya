@@ -1,5 +1,6 @@
 import "../css/main.css";
 import "../css/custom.css";
+import { initMobileNav } from "./mobile-nav.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
@@ -358,66 +359,6 @@ function initAnimations() {
   window.addEventListener("load", finalizeScrollAnimations, { once: true });
 }
 
-function initMobileMenu() {
-  const menuBtn = document.getElementById("menu-btn");
-  const closeMenuBtn = document.getElementById("close-menu-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  if (!mobileMenu) return;
-
-  const closeMenu = (instant = false) => {
-    if (instant) {
-      mobileMenu.classList.add("menu-transition-none");
-    }
-
-    mobileMenu.classList.remove("is-open");
-    document.body.classList.remove("overflow-hidden");
-
-    if (instant) {
-      void mobileMenu.offsetWidth;
-      mobileMenu.classList.remove("menu-transition-none");
-    }
-  };
-
-  const openMenu = () => {
-    mobileMenu.classList.remove("menu-transition-none");
-    mobileMenu.classList.add("is-open");
-    document.body.classList.add("overflow-hidden");
-  };
-
-  closeMenu(true);
-
-  if (menuBtn) {
-    menuBtn.addEventListener("click", openMenu);
-  }
-
-  if (closeMenuBtn) {
-    closeMenuBtn.addEventListener("click", () => closeMenu(false));
-  }
-
-  mobileMenu.querySelectorAll("a[href]").forEach((link) => {
-    link.addEventListener("click", () => {
-      closeMenu(true);
-    });
-  });
-
-  window.addEventListener("pagehide", () => {
-    closeMenu(true);
-  });
-
-  window.addEventListener("pageshow", (event) => {
-    if (event.persisted) {
-      closeMenu(true);
-    }
-  });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth >= 1024 && mobileMenu.classList.contains("is-open")) {
-      closeMenu(true);
-    }
-  });
-}
-
 function initCarousels() {
   function createInfiniteCarousel({
     trackId,
@@ -705,7 +646,7 @@ function initProductGallery() {
 document.addEventListener("DOMContentLoaded", initAnimations);
 
 document.addEventListener("DOMContentLoaded", () => {
-  initMobileMenu();
+  initMobileNav();
   initCarousels();
   initScrollTop();
   initRelatedCarousel();

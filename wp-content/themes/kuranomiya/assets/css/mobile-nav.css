@@ -1,0 +1,49 @@
+/* Mobile navigation — non-critical styles (animations, hamburger morph) */
+
+.mobile-nav-toggle__bar {
+  transform-origin: center;
+}
+
+.mobile-nav-toggle[aria-expanded="true"] .mobile-nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-nav-toggle[aria-expanded="true"] .mobile-nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-nav-toggle[aria-expanded="true"] .mobile-nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav__link {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+html.mobile-nav-active .mobile-nav__link {
+  will-change: transform, opacity;
+}
+
+body.mobile-nav-scroll-lock {
+  overflow: hidden;
+  touch-action: none;
+}
+
+@media (min-width: 1024px) {
+  #mobile-nav {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-nav-toggle__bar {
+    transition: none !important;
+  }
+
+  .mobile-nav__link {
+    opacity: 1;
+    transform: none;
+  }
+}

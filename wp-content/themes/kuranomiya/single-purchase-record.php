@@ -98,7 +98,7 @@ while (have_posts()) :
 
 <section class="relative bg-[#F1ECE0] py-16 md:py-24 font-serif-jp overflow-hidden">
 
-    <div class="absolute right-0 top-[35%] w-[45%] md:w-[25%] max-w-[320px] rotate-180 pointer-events-none z-0">
+    <div class="absolute right-0 top-[35%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-90" />
     </div>
 

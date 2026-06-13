@@ -156,7 +156,7 @@ $filter_inactive_class     = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] te
 
     <div class="absolute right-0 top-[3%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-top-pattern.png" alt=""
-            class="w-full h-auto object-contain transform rotate-180" />
+            class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />

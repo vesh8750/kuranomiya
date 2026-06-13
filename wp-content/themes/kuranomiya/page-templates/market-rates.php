@@ -93,7 +93,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
 
     <div class="absolute right-0 top-0 w-[45%] md:w-[25%] max-w-[320px]  pointer-events-none z-0">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />

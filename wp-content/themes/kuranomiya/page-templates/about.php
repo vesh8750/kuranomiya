@@ -70,7 +70,7 @@ get_header();
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden" id="greeting">
 
     <div class="absolute right-0 top-0 w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
@@ -99,7 +99,7 @@ get_header();
 
             <div class="lg:col-span-7 space-y-6 text-left">
 
-                <div class="space-y-3 mb-10">
+                <div class="space-y-3 my-6 md:my-10">
                     <h3
                         class="text-[#33312D] text-[clamp(1.35rem,3vw,1.75rem)] font-bold tracking-wide flex items-baseline">
                         店主 ●●
@@ -112,7 +112,7 @@ get_header();
                 </p>
 
                 <div
-                    class="text-[#615C56] font-medium noto-sans !font-medium text-[14px] sm:text-[15px] leading-[1.9] tracking-wider space-y-3">
+                    class="text-[#615C56] my-6 md:my-10 font-medium noto-sans !font-medium text-[14px] sm:text-[15px] leading-[1.9] tracking-wider space-y-3">
                     <p>
                         こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
                     </p>
@@ -300,9 +300,9 @@ $placeholder  = get_template_directory_uri() . '/assets/img/camera.svg';
     <div class="absolute left-0 top-0 w-[45%] md:w-[45%] max-w-[500px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/gallery-top-pattern.png" alt="" class="w-full h-auto object-contain" />
     </div>
-    <div class="absolute right-0 top-[20%] w-[45%] rotate-180 md:w-[25%] max-w-[320px] pointer-events-none z-0">
+    <div class="absolute right-0 top-[12%] w-[45%] md:w-[30%] max-w-[350px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/gallery-mid-pattern.png" alt=""
-            class="w-full h-auto object-contain transform rotate-90" />
+            class="w-full h-auto object-contain transform" />
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">

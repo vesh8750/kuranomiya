@@ -32,19 +32,6 @@ body {
   scrollbar-width: none;
 }
 
-#mobile-menu {
-  transition: transform 300ms ease-in-out;
-}
-
-#mobile-menu.is-open {
-  transform: translate3d(0, 0, 0) !important;
-}
-
-#mobile-menu.menu-transition-none {
-  transition: none !important;
-}
-
-
 .hero-banner,
 .greeting-hero,
 .kura-card,
