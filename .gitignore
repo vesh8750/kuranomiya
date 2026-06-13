@@ -23,8 +23,9 @@ wp-config.php
 
 # Plugins & themes (track only our theme)
 /wp-content/plugins/
-/wp-content/themes/
+/wp-content/themes/*
 !/wp-content/themes/kuranomiya/
+!/wp-content/themes/kuranomiya/**
 
 # System
 .DS_Store

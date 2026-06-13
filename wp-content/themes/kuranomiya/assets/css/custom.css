@@ -1,0 +1,17 @@
+/* Custom CSS - for styles that cannot be done in Tailwind */
+
+header,
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  transform: translateY(0);
+  transition: transform 0.35s ease;
+}
+
+header.header--hidden,
+.site-header.header--hidden {
+  transform: translateY(-100%);
+}
