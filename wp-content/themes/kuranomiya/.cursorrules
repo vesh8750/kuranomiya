@@ -1,0 +1,177 @@
+# Kuranomiya Theme — Cursor Rules
+
+## Project context
+
+WordPress custom theme for a Japanese buy-back (買取) store. Audience: women in their 60s.
+Brand concept: 観る (a considered gaze) — restrained, honest, quietly confident. No SWELL.
+
+---
+
+## PHP conventions
+
+- Every function must be prefixed `kuranomiya_` — no exceptions.
+- Text domain: `kuranomiya`.
+- PHP 8 typed signatures: `function foo(string $x): ?array`.
+- `defined('ABSPATH') || exit;` at top of every file in `inc/`.
+- Always use `wp_remote_get()` — never `curl_*`.
+- Always use `wp_options` for simple storage: `get_option()` / `update_option()` / `delete_option()`.
+- JSON-encode option values: `wp_json_encode($data)` / `json_decode($raw, true)`.
+- Nonce every admin form: `wp_nonce_field()` + `check_admin_referer()`.
+- Sanitise every `$_POST` value with `sanitize_text_field()` before saving.
+- Escape every echo in templates: `esc_html()`, `esc_attr()`, `esc_url()`.
+- Never call `wp_redirect()` without `exit` on the next line.
+
+---
+
+## JavaScript conventions
+
+- ES module syntax throughout. No CommonJS (`require`).
+- All GSAP logic lives in `assets/js/main.js`. Never instantiate tweens inline in PHP templates.
+- Every animation function must guard with `if (prefersReducedMotion) return` at the top.
+- GSAP plugins are registered once in `main.js`; do not re-register in other files.
+- Import only from `main.js` exports — do not import GSAP directly in other JS files.
+
+---
+
+## Tailwind v4 patterns
+
+- `@import "tailwindcss"` in `main.css` is the only directive. No config file.
+- Brand colours and spacing live as CSS custom properties, not Tailwind config extensions.
+- Do not use arbitrary values for brand colours (`text-[#B57A3F]` is wrong).
+  Define the variable first, then `var(--color-amber)`.
+- Never use `!important` overrides — refactor utility order instead.
+
+---
+
+## File structure rules
+
+- PHP templates in theme root: `front-page.php`, `page.php`, `single.php`, `archive.php`, etc.
+- Reusable PHP partials in `template-parts/`.
+  - Page sections: `template-parts/sections/`
+  - UI components: `template-parts/components/`
+- Include partials with `get_template_part()`, never `include`/`require`.
+- CSS-only rules go in `assets/css/custom.css`. Tailwind utilities go in templates.
+- Never add a second Vite entry point without updating `enqueue.php`.
+
+---
+
+## Animation patterns
+
+- Use `data-animate` attributes in HTML; wire them in `main.js` inside `initAnimations()`.
+
+  ```
+  data-animate="fade-up"        → fadeInUp(el)
+  data-animate="stagger"        → fadeInStagger(el)   (children, x-axis stagger)
+  data-animate="stagger-list"   → fadeInStaggerList(el) (children, y-axis stagger)
+  data-animate="reveal-left"    → revealFromLeft(el)
+  ```
+
+- Hero elements use fixed class names: `.hero-image`, `.hero-title`, `.hero-subtitle`, `.hero-cta`.
+  `heroEntrance()` is called automatically when `.hero-image` is present on the page.
+
+- FAQ accordion: mark up as `.faq-list > .faq-item > .faq-question + .faq-answer`.
+  `initFAQ()` handles the rest — do not add click handlers manually.
+
+- Header auto-hide: add class `header` or `site-header` to the `<header>` element.
+  JS adds/removes `.header--hidden`; CSS in `custom.css` does the slide transition.
+
+- All animations use `start: 'top 85%'` as the ScrollTrigger trigger point.
+- Ease conventions: entrances `power2.out`, exits `power2.in`, hero timeline `power2.out`.
+
+---
+
+## WordPress patterns
+
+- Gutenberg is disabled. Never re-enable it. Never suggest WP block patterns here.
+- `show_in_rest: false` on all CPTs. The REST API is intentionally not used.
+- Vite manifest must be read at runtime — never hardcode hashed filenames from `dist/`.
+- Use WP-Cron for scheduled tasks. Register on `after_switch_theme`, clear on `switch_theme`.
+- Use `current_time('Y-m-d H:i')` (not `date()`) for WP-aware timestamps.
+- Use `wp_schedule_event()` for recurring tasks; `wp_next_scheduled()` to check before scheduling.
+- Admin pages go under `add_management_page()` (Tools menu) unless a top-level menu is needed.
+
+---
+
+## Brand tone — for any copy written
+
+- **Do:** warm, measured, considerate, trustworthy, quietly expert, respectful of the customer's story.
+- **Don't:** superlatives ("最高", "最安", "業界一"), pressure ("今すぐ", "期間限定"),
+  dismissiveness ("簡単", "お気軽に"), or hollow reassurance ("安心してください").
+- The customer is likely parting with something meaningful. Write accordingly.
+- Required disclaimer on all precious metal price displays:
+  「表示価格は店頭での参考買取価格です。実際の査定額は品位や状態により異なります。」
+
+---
+
+## Colour tokens (reference — get exact values from Figma Dev Mode)
+
+```
+--color-amber:        #B57A3F  /* CTA / accent — use sparingly (~5% visual weight) */
+--color-iron-navy:    #1F2A44  /* dark section backgrounds, footer */
+--color-natural-beige:#FAF6EE  /* primary page background */
+--color-deep-beige:   #F4EFE4  /* cards, forms, table headers */
+--color-ink-black:    #33312D  /* body text */
+--color-soft-ink:     #615C56  /* secondary / caption text */
+--color-border:       #DED7C7  /* dividers, borders */
+```
+
+**Never use `#ffffff` or `#000000`.** Use Natural Beige and Ink Black instead.
+
+---
+
+## Typography tokens (reference — get exact values from Figma Dev Mode)
+
+```
+Headings:   Noto Serif JP (Mincho/serif)
+Body & UI:  Noto Sans JP (Gothic/sans-serif)
+Max families: 3 total (do not add a third family without discussion)
+
+Line heights:
+  Body:     1.8–2.0
+  Headings: 1.4–1.5
+
+Recommended desktop sizes:
+  H1:             48–56px
+  Section heading: 32–40px
+  Subheading:     20–24px
+  Body:           16–17px (minimum 16px including mobile)
+  Secondary:      13–14px
+  English labels: 10–11px, letter-spacing: 0.15em
+
+Hover: opacity 0.7 on buttons, links, and images (designer spec).
+```
+
+---
+
+## Layout & spacing (reference — get exact values from Figma Dev Mode)
+
+```
+Max content width: 1140–1200px
+Grid:              12-column
+Gutter:            24px
+Container padding: mobile 24–40px / desktop 80–120px
+
+Section gap:       120–160px
+Content group gap: 64–80px
+Small group gap:   32–48px
+Card padding:      24–32px
+
+Breakpoints:
+  Mobile:   ≤768px
+  Tablet:   769–1024px
+  Desktop:  ≥1025px
+
+Touch targets: minimum 44px, recommended 48px
+Button padding: vertical 14–16px / horizontal 28–32px
+```
+
+---
+
+## Accessibility requirements
+
+- WCAG AA contrast minimum (4.5:1); target AAA (7:1) where possible.
+- Never convey information by colour alone.
+- All images must have `alt` attributes.
+- Form errors: colour + icon + message (not colour alone).
+- External links: `target="_blank" rel="noopener"`.
+- `prefers-reduced-motion` must be respected everywhere.
