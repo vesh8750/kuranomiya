@@ -518,6 +518,37 @@ function initRelatedCarousel() {
   }
 }
 
+function initProductGallery() {
+  const mainImage = document.getElementById("product-gallery-main");
+  const thumbs = document.querySelectorAll(".product-gallery-thumb");
+
+  if (!mainImage || !thumbs.length) return;
+
+  const setActiveThumb = (activeThumb) => {
+    thumbs.forEach((thumb) => {
+      thumb.classList.remove("is-active", "border-[#B57A3F]");
+      thumb.classList.add("border-[#E3DCCE]/60");
+    });
+
+    activeThumb.classList.add("is-active", "border-[#B57A3F]");
+    activeThumb.classList.remove("border-[#E3DCCE]/60");
+  };
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener("click", () => {
+      const fullSrc = thumb.dataset.fullSrc;
+      const fullAlt = thumb.dataset.fullAlt;
+
+      if (!fullSrc) return;
+
+      mainImage.src = fullSrc;
+      mainImage.alt = fullAlt || mainImage.alt;
+
+      setActiveThumb(thumb);
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", initAnimations);
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -525,4 +556,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousels();
   initScrollTop();
   initRelatedCarousel();
+  initProductGallery();
 });

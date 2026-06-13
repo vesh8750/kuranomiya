@@ -61,6 +61,13 @@ function kuranomiya_register_purchase_record_category_taxonomy(): void {
 }
 add_action('init', 'kuranomiya_register_purchase_record_category_taxonomy');
 
+function kuranomiya_register_purchase_record_query_vars(array $vars): array {
+    $vars[] = 'pr_category';
+
+    return $vars;
+}
+add_filter('query_vars', 'kuranomiya_register_purchase_record_query_vars');
+
 function kuranomiya_register_column_category_taxonomy(): void {
     register_taxonomy('column-category', ['column'], [
         'labels' => [
