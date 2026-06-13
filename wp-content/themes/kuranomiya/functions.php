@@ -40,6 +40,31 @@ function kuranomiya_disable_gutenberg(): void {
 }
 add_action('after_setup_theme', 'kuranomiya_disable_gutenberg');
 
+function kuranomiya_get_line_url(): string {
+    if (!function_exists('get_field')) {
+        return '#';
+    }
+
+    $url = get_field('line_url', 'option');
+
+    return (is_string($url) && $url !== '') ? $url : '#';
+}
+
+function kuranomiya_get_page_url(string $slug, string $fragment = ''): string {
+    if ($slug === '') {
+        $url = home_url('/');
+    } else {
+        $page = get_page_by_path($slug);
+        $url  = ($page instanceof WP_Post) ? get_permalink($page) : home_url('/');
+    }
+
+    if ($fragment !== '') {
+        $url .= '#' . ltrim($fragment, '#');
+    }
+
+    return $url;
+}
+
 function kuranomiya_increment_view_count(): void {
     if (is_singular('column')) {
         $post_id = get_the_ID();

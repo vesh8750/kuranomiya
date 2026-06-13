@@ -258,6 +258,13 @@ function kuranomiya_register_owner_options(): void {
                 'default_value' => '買取 蔵の宮は、湘南スターモール商店街の一角にある、24㎡の小さな店舗です。',
             ],
             [
+                'key'          => 'field_line_url',
+                'label'        => 'LINE友だち追加URL',
+                'name'         => 'line_url',
+                'type'         => 'url',
+                'instructions' => 'LINE公式アカウントの友だち追加URL（例：https://lin.ee/xxxx）',
+            ],
+            [
                 'key'           => 'field_column_hero_desc_1',
                 'label'         => 'コラム ヒーロー説明文1',
                 'name'          => 'column_hero_desc_1',

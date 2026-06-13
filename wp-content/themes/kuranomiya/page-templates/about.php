@@ -67,7 +67,7 @@ get_header();
 
 <!-- Greeting Section  -->
 
-<section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
+<section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden" id="greeting">
 
     <div class="absolute right-0 top-0 w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/card-top-pattern.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
@@ -295,7 +295,7 @@ $gallery_desc = get_field('gallery_description', 'option');
 $placeholder  = get_template_directory_uri() . '/assets/img/camera.svg';
 ?>
 
-<section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
+<section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden" id="shop-gallery">
 
     <div class="absolute left-0 top-0 w-[45%] md:w-[45%] max-w-[500px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/gallery-top-pattern.png" alt="" class="w-full h-auto object-contain" />

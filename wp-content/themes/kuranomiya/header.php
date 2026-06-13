@@ -21,12 +21,12 @@
                 class="hidden lg:flex items-center lg:gap-[clamp(1rem,1.8vw,2rem)] xl:gap-[clamp(1.5rem,2.5vw,3.5rem)] font-medium text-[clamp(13px,1.1vw,15px)] text-[#33312D]">
 
                 <nav class="flex items-center lg:gap-[clamp(1rem,1.8vw,2rem)] xl:gap-[clamp(1.5rem,2.5vw,3.5rem)] nav-bar">
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取品目</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">選ばれる理由</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">金相場</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取実績</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">コラム</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">アクセス</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('item-buy')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取品目</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('', 'reasons')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">選ばれる理由</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('market-rates')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">金相場</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('purchase-records')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">買取実績</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('column')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">コラム</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'access')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">アクセス</a>
                 </nav>
 
                 <a href="tel:0463000000"
@@ -38,7 +38,7 @@
                     0463-00-0000
                 </a>
 
-                <a href="#"
+                <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
                     class="bg-[#B57A3F] noto-sans text-white flex items-center justify-center space-x-2 px-5 py-3 rounded-[3px] font-medium shadow-sm hover:bg-[#a06830] transition-colors duration-300 whitespace-nowrap">
                     <span>LINEで相談する</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -75,18 +75,18 @@
 
             <div
                 class="flex flex-col space-y-[clamp(1.25rem,4vh,1.75rem)] text-white text-[clamp(1rem,4.5vw,1.15rem)] mb-[clamp(1.75rem,5vh,2.5rem)]">
-                <a href="#" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
-                <a href="#" class="hover:text-[#B57A3F] transition-colors">アクセス</a>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+                <a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'access')); ?>" class="hover:text-[#B57A3F] transition-colors">アクセス</a>
             </div>
 
             <div class="flex flex-col w-full mb-[clamp(1.75rem,5vh,2.5rem)]">
                 <span
                     class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">About</span>
                 <div class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">ご挨拶</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">選ばれる理由</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">店舗のご案内</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">コラム</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'greeting')); ?>" class="hover:text-[#B57A3F] transition-colors">ご挨拶</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('', 'reasons')); ?>" class="hover:text-[#B57A3F] transition-colors">選ばれる理由</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'shop-gallery')); ?>" class="hover:text-[#B57A3F] transition-colors">店舗のご案内</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('column')); ?>" class="hover:text-[#B57A3F] transition-colors">コラム</a>
                 </div>
             </div>
 
@@ -94,10 +94,10 @@
                 <span
                     class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">Service</span>
                 <div class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">買取品目一覧</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">買取実績</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">金相場</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">よくあるご質問</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('item-buy')); ?>" class="hover:text-[#B57A3F] transition-colors">買取品目一覧</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('purchase-records')); ?>" class="hover:text-[#B57A3F] transition-colors">買取実績</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('market-rates')); ?>" class="hover:text-[#B57A3F] transition-colors">金相場</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('', 'faq')); ?>" class="hover:text-[#B57A3F] transition-colors">よくあるご質問</a>
                 </div>
             </div>
 
@@ -105,15 +105,15 @@
                 <span
                     class="text-[#B57A3F] uppercase text-[clamp(0.8rem,3.5vw,0.9rem)] font-semibold tracking-widest mb-[clamp(1rem,3vh,1.25rem)]">Contact</span>
                 <div class="flex flex-col space-y-[clamp(1rem,3.5vh,1.5rem)] text-white text-[clamp(0.95rem,4vw,1.1rem)]">
-                    <a href="#" class="flex items-center justify-center space-x-1.5 hover:text-[#B57A3F] transition-colors">
+                    <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center space-x-1.5 hover:text-[#B57A3F] transition-colors">
                         <span>LINEで相談する</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
                     </a>
-                    <a href="tel:0463000000" class="hover:text-[#B57A3F] transition-colors">お電話で相談する</a>
-                    <a href="#" class="hover:text-[#B57A3F] transition-colors">お問い合わせフォーム</a>
+                    <a href="tel:0463716678" class="hover:text-[#B57A3F] transition-colors">お電話で相談する</a>
+                    <a href="<?php echo esc_url(kuranomiya_get_page_url('contact')); ?>" class="hover:text-[#B57A3F] transition-colors">お問い合わせフォーム</a>
                 </div>
             </div>
 

@@ -160,7 +160,7 @@ get_header();
                 </div>
 
                 <div class="pb-2">
-                    <a href="#"
+                    <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
                         class="bg-[#B57A3F] text-white flex items-center justify-center space-x-2 px-6 py-3.5 shadow-xs hover:bg-[#a06830] transition-colors w-full rounded-none font-medium whitespace-nowrap">
                         <span
                             class="text-[14px] sm:text-[15px] font-semibold tracking-wider font-sans">LINEで査定相談する</span>

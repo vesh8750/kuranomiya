@@ -1,6 +1,6 @@
 <!-- Map Information  -->
 
-<section class="w-full bg-[#F1ECE0] font-serif-jp overflow-hidden">
+<section class="w-full bg-[#F1ECE0] font-serif-jp overflow-hidden" id="access">
     <div class="grid grid-cols-1 lg:grid-cols-2 items-stretch min-h-[550px] md:min-h-[650px]">
 
         <div

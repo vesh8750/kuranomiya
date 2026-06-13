@@ -42,7 +42,7 @@ get_header();
 
             <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
 
-                <a href="#"
+                <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
                     class="bg-[#B57A3F] text-white flex items-center noto-sans justify-center space-x-1 px-4 py-4 sm:py-4.5 rounded-sm font-semibold tracking-wide shadow-md hover:bg-[#a06830] transition-colors duration-300 w-[250px] md:w-[250px] text-center">
                     <span class="text-[clamp(0.95rem,1.2vw,1.05rem)]">LINEで査定相談する</span>
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -153,7 +153,7 @@ get_header();
 
 <!-- Reasons Section  -->
 
-<section class="bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
+<section class="bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden" id="reasons">
     <div class="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
 
         <div class="text-center mb-16 md:mb-15">

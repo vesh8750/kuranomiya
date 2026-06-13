@@ -1,4 +1,4 @@
-<section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
+<section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden" id="faq">
 
     <div class="absolute left-[-5%] top-0 w-[45%] md:w-[35%] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/faq-grid.png" alt="" class="w-full h-auto object-contain" />

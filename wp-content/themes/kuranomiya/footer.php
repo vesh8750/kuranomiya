@@ -37,7 +37,7 @@
             0463-00-0000
           </a>
 
-          <a href="#"
+          <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
             class="bg-[#B57A3F] text-white flex items-center justify-center space-x-2 px-8 py-4 shadow-md hover:bg-[#a06830] transition-colors w-full sm:w-[280px] rounded-[2px] font-medium whitespace-nowrap">
             <span class="text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">LINEで査定相談する</span>
             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -82,7 +82,7 @@
       <div class="lg:col-span-6 space-y-6">
         <!-- Logo & Tagline Group -->
         <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-          <a href="#" class="flex-shrink-0">
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="flex-shrink-0">
             <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/footer-logo.svg" alt="買取 蔵の宮" class="h-10 sm:h-12 w-auto object-contain" />
           </a>
           <div class="hidden sm:block w-[1px] h-6 bg-white/20"></div>
@@ -123,10 +123,10 @@
           <h4 class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">About
           </h4>
           <ul class="noto-sans space-y-3 text-[13px] sm:text-[16px] text-white/80">
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">ご挨拶</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">選ばれる理由</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">店舗のご案内</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">コラム</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'greeting')); ?>" class="hover:text-[#B57A3F] transition-colors block">ご挨拶</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('', 'reasons')); ?>" class="hover:text-[#B57A3F] transition-colors block">選ばれる理由</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'shop-gallery')); ?>" class="hover:text-[#B57A3F] transition-colors block">店舗のご案内</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('column')); ?>" class="hover:text-[#B57A3F] transition-colors block">コラム</a></li>
           </ul>
         </div>
 
@@ -135,10 +135,10 @@
           <h4 class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">
             Service</h4>
           <ul class="noto-sans space-y-3 text-[13px] font-medium sm:text-[16px] text-white/80">
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">買取品目一覧</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">買取実績</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">金相場</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">よくあるご質問</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('item-buy')); ?>" class="hover:text-[#B57A3F] transition-colors block">買取品目一覧</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('purchase-records')); ?>" class="hover:text-[#B57A3F] transition-colors block">買取実績</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('market-rates')); ?>" class="hover:text-[#B57A3F] transition-colors block">金相場</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('', 'faq')); ?>" class="hover:text-[#B57A3F] transition-colors block">よくあるご質問</a></li>
           </ul>
         </div>
 
@@ -147,9 +147,9 @@
           <h4 class="font-sans text-[#B57A3F] text-[12px] sm:text-[13px] uppercase tracking-[0.15em] font-bold">
             Contact</h4>
           <ul class="noto-sans space-y-3 text-[13px] font-medium sm:text-[16px] text-white/80">
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">LINEで相談する</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">お電話で相談する</a></li>
-            <li><a href="#" class="hover:text-[#B57A3F] transition-colors block">お問い合わせフォーム</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer" class="hover:text-[#B57A3F] transition-colors block">LINEで相談する</a></li>
+            <li><a href="tel:0463716678" class="hover:text-[#B57A3F] transition-colors block">お電話で相談する</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_page_url('contact')); ?>" class="hover:text-[#B57A3F] transition-colors block">お問い合わせフォーム</a></li>
           </ul>
         </div>
 
