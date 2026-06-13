@@ -100,11 +100,11 @@ $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] 
 <!-- Hero Section  -->
 
 <section
-    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-hidden min-h-[360px] flex flex-col">
+    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-x-clip min-h-[360px] flex flex-col">
 
     <div
-        class="absolute hidden md:block right-[-10%] sm:right-[-5%] lg:right-10 top-1/2 -translate-y-1/2 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/product-page-right-bg.png" alt="" class="w-full h-auto object-contain" />
+        class="absolute hidden md:flex right-[-10%] sm:right-[-5%] lg:right-10 inset-y-0 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0 items-end">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/product-page-right-bg.png" alt="" class="w-full h-auto max-h-full object-contain" />
     </div>
 
     <div
@@ -149,7 +149,7 @@ $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] 
 
     <div class="absolute right-0 top-[3%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-top-pattern.png" alt=""
-            class="w-full h-auto object-contain transform rotate-180" />
+            class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-[0%] w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
