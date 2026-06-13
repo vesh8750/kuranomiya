@@ -14,6 +14,14 @@ if (!prefersReducedMotion) {
 }
 
 const SCROLL_START = "top 85%";
+const EASE_REVEAL = "power3.out";
+
+const REVEAL_FADE_UP = {
+  y: 32,
+  opacity: 0,
+  duration: 1.25,
+  ease: EASE_REVEAL,
+};
 
 function getStaggerTargets(container) {
   return [...container.children].filter(
@@ -72,14 +80,14 @@ export function fadeInUp(selector) {
   if (prefersReducedMotion) return;
 
   gsap.utils.toArray(selector).forEach((element) => {
-    gsap.set(element, { y: 24, opacity: 0 });
+    gsap.set(element, { y: REVEAL_FADE_UP.y, opacity: 0 });
 
     const timeline = gsap.timeline({ paused: true });
     timeline.to(element, {
       y: 0,
       opacity: 1,
-      duration: 0.8,
-      ease: "power2.out",
+      duration: REVEAL_FADE_UP.duration,
+      ease: REVEAL_FADE_UP.ease,
     });
 
     bindScrollReveal(element, timeline);
@@ -101,9 +109,9 @@ export function fadeInStagger(selector) {
   timeline.to(targets, {
     x: 0,
     opacity: 1,
-    duration: 0.75,
-    ease: "power2.out",
-    stagger: 0.12,
+    duration: 0.95,
+    ease: EASE_REVEAL,
+    stagger: 0.14,
   });
 
   bindScrollReveal(container, timeline);
@@ -118,14 +126,14 @@ export function fadeInStaggerList(selector) {
   const targets = getStaggerTargets(container);
   if (!targets.length) return;
 
-  gsap.set(targets, { y: 24, opacity: 0 });
+  gsap.set(targets, { y: REVEAL_FADE_UP.y, opacity: 0 });
 
   const timeline = gsap.timeline({ paused: true });
   timeline.to(targets, {
     y: 0,
     opacity: 1,
-    duration: 0.75,
-    ease: "power2.out",
+    duration: 1.05,
+    ease: EASE_REVEAL,
     stagger: 0.15,
   });
 
@@ -147,9 +155,9 @@ export function fadeInStaggerSoft(selector) {
   timeline.to(targets, {
     y: 0,
     opacity: 1,
-    duration: 1.05,
-    ease: "power2.out",
-    stagger: 0.18,
+    duration: 1.25,
+    ease: EASE_REVEAL,
+    stagger: 0.2,
   });
 
   bindScrollReveal(container, timeline);
@@ -164,8 +172,8 @@ export function revealFromLeft(selector) {
     const timeline = gsap.timeline({ paused: true });
     timeline.to(element, {
       clipPath: "inset(0 0% 0 0)",
-      duration: 1.1,
-      ease: "power2.out",
+      duration: 1.3,
+      ease: EASE_REVEAL,
     });
 
     bindScrollReveal(element, timeline);
@@ -187,8 +195,8 @@ export function imageReveal(selector) {
     const timeline = gsap.timeline({ paused: true });
     timeline.to(element, {
       clipPath: "inset(0% 0 0 0)",
-      duration: 1.15,
-      ease: "power2.out",
+      duration: 1.3,
+      ease: EASE_REVEAL,
     });
 
     if (image) {
@@ -196,8 +204,8 @@ export function imageReveal(selector) {
         image,
         {
           scale: 1,
-          duration: 1.25,
-          ease: "power2.out",
+          duration: 1.4,
+          ease: EASE_REVEAL,
         },
         0,
       );
@@ -205,6 +213,58 @@ export function imageReveal(selector) {
 
     bindScrollReveal(element, timeline);
   });
+}
+
+export function compositionReveal(selector) {
+  if (prefersReducedMotion) return;
+
+  const container = gsap.utils.toArray(selector)[0];
+  if (!container) return;
+
+  const imageBlock = container.querySelector("[data-composition='image']");
+  const contentBlock = container.querySelector("[data-composition='content']");
+
+  if (!imageBlock || !contentBlock) return;
+
+  const image = imageBlock.querySelector("img");
+
+  gsap.set(imageBlock, { clipPath: "inset(100% 0 0 0)" });
+  if (image) {
+    gsap.set(image, { scale: 1.05, transformOrigin: "center center" });
+  }
+  gsap.set(contentBlock, { y: REVEAL_FADE_UP.y, opacity: 0 });
+
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(imageBlock, {
+    clipPath: "inset(0% 0 0 0)",
+    duration: 1.45,
+    ease: EASE_REVEAL,
+  });
+
+  if (image) {
+    timeline.to(
+      image,
+      {
+        scale: 1,
+        duration: 1.55,
+        ease: EASE_REVEAL,
+      },
+      0,
+    );
+  }
+
+  timeline.to(
+    contentBlock,
+    {
+      y: 0,
+      opacity: 1,
+      duration: REVEAL_FADE_UP.duration,
+      ease: REVEAL_FADE_UP.ease,
+    },
+    "-=0.85",
+  );
+
+  bindScrollReveal(container, timeline);
 }
 
 export function heroEntrance() {
@@ -354,6 +414,9 @@ function initAnimations() {
   document
     .querySelectorAll('[data-animate="image-reveal"]')
     .forEach((el) => imageReveal(el));
+  document
+    .querySelectorAll('[data-animate="composition-reveal"]')
+    .forEach((el) => compositionReveal(el));
 
   finalizeScrollAnimations();
   window.addEventListener("load", finalizeScrollAnimations, { once: true });

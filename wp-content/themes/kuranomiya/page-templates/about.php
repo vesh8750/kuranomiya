@@ -22,17 +22,16 @@ get_header();
         class="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FFFCF5]/95 via-[#FFFCF5]/85 to-transparent md:from-[#FFFCF5]/85 md:via-[#FFFCF5]/40 md:to-transparent pointer-events-none">
     </div>
 
-    <div class="hidden md:block relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-4 sm:pt-6 z-10 font-sans text-[12px] tracking-wider text-[#615C56]">
-        <nav class="flex items-center space-x-2 flex-wrap noto-sans text-sm">
+    <div class="relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-4 sm:pt-6 pb-56 md:pb-20 z-10 flex-1 flex flex-col">
+        <nav class="hidden md:flex items-center space-x-2 flex-wrap noto-sans text-sm text-[#615C56] tracking-wider">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
             <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
             <a href="<?php echo esc_url(home_url('/purchase-records')); ?>" class="hover:text-[#B57A3F] transition-colors">買取品目</a>
             <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
             <span class="font-medium">店主・店舗紹介</span>
         </nav>
-    </div>
 
-    <div class="relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-8 pb-56 md:py-20 z-10 flex-1 flex items-stretch md:items-center">
+        <div class="flex-1 flex items-stretch md:items-center pt-8 md:pt-12 lg:pt-16">
         <div class="max-w-[640px] text-center md:text-left flex flex-col items-center md:items-center">
 
             <div class="w-24 h-auto mb-4">
@@ -61,6 +60,7 @@ get_header();
             </div>
 
         </div>
+        </div>
     </div>
 </section>
 
@@ -78,7 +78,7 @@ get_header();
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
-        <div class="text-center mb-12 md:mb-16">
+        <div class="text-center mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -89,15 +89,15 @@ get_header();
             </h2>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-start gap-8 lg:gap-8  mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-start gap-8 lg:gap-8  mx-auto" data-animate="composition-reveal">
 
-            <div class="lg:col-span-5 w-full max-w-[450px] mx-auto lg:mx-0 shadow-xs bg-white p-0">
-                <div class="relative w-full aspect-[4/5] overflow-hidden">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero-man.png" alt="店主" class="w-full h-full object-cover" />
+            <div class="lg:col-span-5 w-full shadow-xs bg-white p-0">
+                <div class="relative w-full aspect-[4/5] max-h-[480px] overflow-hidden" data-composition="image">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/client.png" alt="店主" class="w-full h-full object-cover" />
                 </div>
             </div>
 
-            <div class="lg:col-span-7 space-y-6 text-left">
+            <div class="lg:col-span-7 space-y-6 text-left" data-composition="content">
 
                 <div class="space-y-3 my-6 md:my-10">
                     <h3
@@ -137,7 +137,7 @@ get_header();
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center mb-8 md:mb-10">
+        <div class="text-center mb-8 md:mb-10" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -153,7 +153,7 @@ get_header();
             <p>そこには品物の状態だけでなく、その背景にある時間や物語までしっかり観る、という想いを込めています。</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 max-w-[1140px] mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 max-w-[1140px] mx-auto" data-animate="stagger-soft">
 
             <div class="bg-[#FFFCF5] p-6 pt-0 shadow-md rounded-none overflow-hidden flex flex-col justify-between">
                 <div>
@@ -161,7 +161,7 @@ get_header();
                         <div
                             class="bg-[#B57A3F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
 
-                            <img src="assets/point-1.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/point-1.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
 
                         </div>
                         <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#B57A3F]">
@@ -192,7 +192,7 @@ get_header();
                         <div
                             class="bg-[#B57A3F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
 
-                            <img src="assets/point-2.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/point-2.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
 
                         </div>
                         <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#B57A3F]">
@@ -224,7 +224,7 @@ get_header();
                         <div
                             class="bg-[#B57A3F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
 
-                            <img src="assets/point-3.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/point-3.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
 
                         </div>
                         <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#B57A3F]">
@@ -255,7 +255,7 @@ get_header();
                         <div
                             class="bg-[#B57A3F] w-14 h-14 sm:w-16 sm:h-16 flex items-center justify-center text-white flex-shrink-0">
 
-                            <img src="assets/point-4.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/point-4.svg" alt="Mail Icon" class="w-7 h-7 object-contain">
 
                         </div>
                         <div class="flex items-baseline gap-1.5 font-['EB_Garamond'] text-[#B57A3F]">
@@ -307,7 +307,7 @@ $placeholder  = get_template_directory_uri() . '/assets/img/camera.svg';
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
-        <div class="text-center mb-8 md:mb-10">
+        <div class="text-center mb-8 md:mb-10" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -323,7 +323,7 @@ $placeholder  = get_template_directory_uri() . '/assets/img/camera.svg';
             <p><?php echo esc_html($gallery_desc); ?></p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-[1100px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-[1100px] mx-auto" data-animate="fade-up">
 
             <div
                 class="md:col-span-2 bg-[#DED7C7] border border-[#DED7C7] flex items-center justify-center shadow-xs relative overflow-hidden group">

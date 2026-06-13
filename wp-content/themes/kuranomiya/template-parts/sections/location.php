@@ -4,7 +4,8 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 items-stretch min-h-[550px] md:min-h-[650px]">
 
         <div
-            class="flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-24 py-16 md:py-20 max-w-[750px] lg:max-w-none mx-auto w-full">
+            class="flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-24 py-16 md:py-20 max-w-[750px] lg:max-w-none mx-auto w-full"
+            data-animate="fade-up">
             <div class="mb-10 sm:mb-12 text-center lg:text-center">
                 <span
                     class="font-['EB_Garamond'] text-[#B57A3F] text-[18px] uppercase block mb-1 tracking-[0.15em]">Information</span>
