@@ -5,6 +5,102 @@
  */
 
 get_header();
+
+$hero_desc_1 = get_field('column_hero_desc_1', 'option');
+$hero_desc_2 = get_field('column_hero_desc_2', 'option');
+
+$orderby = isset($_GET['orderby']) ? sanitize_text_field(wp_unslash($_GET['orderby'])) : 'date';
+$paged   = max(1, (int) get_query_var('column_pg'));
+
+$category = get_query_var('col_category');
+if (!is_string($category) || $category === '') {
+    $category = isset($_GET['col_category'])
+        ? sanitize_text_field(wp_unslash($_GET['col_category']))
+        : '';
+}
+if ($category === '' && isset($_GET['category'])) {
+    $category = sanitize_text_field(wp_unslash($_GET['category']));
+}
+
+$terms = get_terms(['taxonomy' => 'column-category', 'hide_empty' => false]);
+if (is_wp_error($terms)) {
+    $terms = [];
+}
+
+$selected_term = null;
+if ($category !== '') {
+    $selected_term = get_term_by('slug', $category, 'column-category');
+    if (!$selected_term) {
+        foreach ($terms as $term_candidate) {
+            if (
+                $term_candidate->slug === $category
+                || rawurldecode($term_candidate->slug) === $category
+                || $term_candidate->slug === rawurldecode($category)
+            ) {
+                $selected_term = $term_candidate;
+                break;
+            }
+        }
+    }
+    if ($selected_term instanceof WP_Term) {
+        $category = $selected_term->slug;
+    }
+}
+
+$page_url = get_permalink(get_queried_object_id()) ?: home_url('/');
+
+$archive_query_args = [
+    'col_category' => $category ?: null,
+    'orderby'      => $orderby !== 'date' ? $orderby : null,
+];
+
+$archive_url_args = static fn(?int $page = null): string => kuranomiya_build_page_template_url(
+    $page_url,
+    $archive_query_args,
+    $page ?? 1,
+    'column_pg'
+);
+
+$args = [
+    'post_type'      => 'column',
+    'posts_per_page' => 9,
+    'paged'          => $paged,
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+];
+
+if ($category) {
+    $args['tax_query'] = [[
+        'taxonomy' => 'column-category',
+        'field'    => 'slug',
+        'terms'    => $category,
+    ]];
+}
+
+if ($orderby === 'popular') {
+    $args['orderby']  = 'meta_value_num';
+    $args['meta_key'] = '_column_view_count';
+}
+
+$query = new WP_Query($args);
+
+$sort_date_url    = kuranomiya_build_page_template_url($page_url, [
+    'orderby'      => 'date',
+    'col_category' => $category ?: null,
+]);
+$sort_popular_url = kuranomiya_build_page_template_url($page_url, [
+    'orderby'      => 'popular',
+    'col_category' => $category ?: null,
+]);
+$all_category_url = kuranomiya_build_page_template_url($page_url, [
+    'orderby' => $orderby !== 'date' ? $orderby : null,
+]);
+
+$sort_date_active_class    = 'px-5 py-2 bg-[#303E5F] noto-sans rounded-[24px] text-white text-[14px] font-medium transition-colors hover:bg-[#232e47]';
+$sort_popular_active_class = $sort_date_active_class;
+$sort_inactive_class       = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#33312D] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]';
+$filter_active_class       = 'px-6 py-2 bg-[#B57A3F] noto-sans rounded-[24px] text-white text-[14px] font-medium transition-colors hover:bg-[#a06830]';
+$filter_inactive_class     = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]';
 ?>
 
 
@@ -46,8 +142,8 @@ get_header();
 
             <div
                 class="lg:col-span-9 text-[#615C56] font-medium noto-sans !font-medium text-[clamp(0.7rem,2.8vw,1.05rem)] leading-[2] tracking-wider space-y-2 max-w-[620px] mx-auto lg:mx-0 text-left pl-0 lg:pl-4">
-                <p>買取・査定・お品物の知識を店主の視点でお届けします。</p>
-                <p>大切なお品物の売却や遺品整理などの際は、こちらもご覧ください。</p>
+                <p><?php echo esc_html($hero_desc_1); ?></p>
+                <p><?php echo esc_html($hero_desc_2); ?></p>
             </div>
 
         </div>
@@ -74,10 +170,10 @@ get_header();
                 <span class="text-[#33312D] text-[13px] sm:text-[14px] font-bold tracking-wider block mb-0">新着 /
                     人気</span>
                 <div class="flex flex-wrap gap-2.5 !mt-0">
-                    <button type="button"
-                        class="px-5 py-2 bg-[#303E5F] noto-sans rounded-[24px] text-white text-[14px] font-medium transition-colors hover:bg-[#232e47]">新着記事</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#33312D] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">人気の記事</button>
+                    <a href="<?php echo esc_url($sort_date_url); ?>"
+                        class="<?php echo esc_attr($orderby === 'date' ? $sort_date_active_class : $sort_inactive_class); ?>">新着記事</a>
+                    <a href="<?php echo esc_url($sort_popular_url); ?>"
+                        class="<?php echo esc_attr($orderby === 'popular' ? $sort_popular_active_class : $sort_inactive_class); ?>">人気の記事</a>
                 </div>
             </div>
 
@@ -85,22 +181,19 @@ get_header();
                 <span
                     class="text-[#33312D] text-[13px] sm:text-[14px] font-bold tracking-wider block mb-0">カテゴリ選択</span>
                 <div class="flex flex-wrap gap-2.5 !mt-0">
-                    <button type="button"
-                        class="px-6 py-2 bg-[#B57A3F] noto-sans rounded-[24px] text-white text-[14px] font-medium transition-colors hover:bg-[#a06830]">すべて</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">貴金属</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">時計</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">宝飾品</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">ブランド品</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">終活</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">遺品整理</button>
-                    <button type="button"
-                        class="px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]">その他</button>
+                    <a href="<?php echo esc_url($all_category_url); ?>"
+                        class="<?php echo esc_attr($selected_term === null ? $filter_active_class : $filter_inactive_class); ?>">すべて</a>
+                    <?php foreach ($terms as $term) : ?>
+                        <?php
+                        $term_url    = kuranomiya_build_page_template_url($page_url, [
+                            'col_category' => $term->slug,
+                            'orderby'      => $orderby !== 'date' ? $orderby : null,
+                        ]);
+                        $term_active = $selected_term instanceof WP_Term && (int) $selected_term->term_id === (int) $term->term_id;
+                        ?>
+                        <a href="<?php echo esc_url($term_url); ?>"
+                            class="<?php echo esc_attr($term_active ? $filter_active_class : $filter_inactive_class); ?>"><?php echo esc_html($term->name); ?></a>
+                    <?php endforeach; ?>
                 </div>
             </div>
 
@@ -108,208 +201,56 @@ get_header();
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto mb-14">
 
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-1.png" alt="「観る」という言葉に込めた、私たちの姿勢について"
-                        class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        その他</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        「観る」という言葉に込めた、私たちの姿勢について
-                    </h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">2026.05.01</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-2.png" alt="金の価値はどう決まる？相場の見方を分かりやすく解説"
-                        class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        貴金属</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3
-                        class="text-[#33312D] noto-serif text-[1.15rem] font-semibold tracking-wide leading-snug mb-4 ">
-                        金の価値はどう決まる？相場の見方を分かりやすく解説
-                    </h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">2026.04.28</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-3.png" alt="整理を始める前にお品物との向き合い方の話"
-                        class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        遺品整理</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        整理を始める前にお品物との向き合い方の話
-                    </h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">2026.04.20</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
-
-            <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
-                <div
-                    class="relative w-full aspect-[5/3] overflow-hidden bg-[#E3DCCE]/40 flex items-center justify-center">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/placeholder-img.png" alt="" class="w-full h-full object-cover" />
-                    <div
-                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
-                        カテゴリ名</div>
-                </div>
-                <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                    <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
-                        タイトルが入ります</h3>
-                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
-                    <p
-                        class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                    <span
-                        class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block">0000.00.00</span>
-                </div>
-            </div>
+            <?php if ($query->have_posts()) : ?>
+                <?php
+                while ($query->have_posts()) :
+                    $query->the_post();
+                    $thumb = get_the_post_thumbnail_url(get_the_ID(), 'kuranomiya-card')
+                        ?: get_template_directory_uri() . '/assets/img/placeholder-img.png';
+                    $post_terms = get_the_terms(get_the_ID(), 'column-category');
+                    $cat_name   = ($post_terms && !is_wp_error($post_terms)) ? esc_html($post_terms[0]->name) : '';
+                    $date       = get_the_date('Y.m.d');
+                    $excerpt    = get_the_excerpt();
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink()); ?>" class="block">
+                        <div class="bg-[#FFFCF5] shadow-xs flex flex-col h-full">
+                            <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                                    class="w-full h-full object-cover" />
+                                <?php if ($cat_name) : ?>
+                                    <div
+                                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-1.5 text-[14px] tracking-wider font-medium">
+                                        <?php echo $cat_name; ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                                <h3 class="text-[#33312D] text-[1.15rem] font-bold tracking-wide leading-snug mb-4 ">
+                                    <?php the_title(); ?>
+                                </h3>
+                                <div class="w-full h-[1px] bg-[#EAE2D5] mb-4"></div>
+                                <p
+                                    class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-5">
+                                    <?php echo esc_html($excerpt); ?>
+                                </p>
+                                <span
+                                    class="text-[#B57A3F] font-sans text-[13px] font-medium tracking-wider block"><?php echo esc_html($date); ?></span>
+                            </div>
+                        </div>
+                    </a>
+                <?php endwhile; ?>
+                <?php wp_reset_postdata(); ?>
+            <?php else : ?>
+                <p class="text-center text-[#615C56] noto-sans">該当するコラムがありません。</p>
+            <?php endif; ?>
 
         </div>
 
-        <div
-            class="flex items-center justify-end space-x-1.5 sm:space-x-2 font-sans font-medium text-[14px] md:text-[15px]">
-            <span
-                class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[#B57A3F] text-white cursor-pointer transition-colors shadow-xs">1</span>
-            <a href="#"
-                class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white text-[#B57A3F] border border-[#DED7C7] hover:bg-[#F6F2E9] transition-colors shadow-xs">2</a>
-            <a href="#"
-                class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white text-[#B57A3F] border border-[#DED7C7] hover:bg-[#F6F2E9] transition-colors shadow-xs">3</a>
-            <a href="#"
-                class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white text-[#B57A3F] border border-[#DED7C7] hover:bg-[#F6F2E9] transition-colors shadow-xs">4</a>
-            <a href="#"
-                class="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white text-[#B57A3F] border border-[#DED7C7] hover:bg-[#F6F2E9] transition-colors shadow-xs">5</a>
-        </div>
+        <?php kuranomiya_render_archive_pagination(
+            $paged,
+            (int) $query->max_num_pages,
+            static fn(int $page): string => $archive_url_args($page)
+        ); ?>
 
     </div>
 </section>

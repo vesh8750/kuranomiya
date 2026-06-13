@@ -6,6 +6,7 @@ require_once get_template_directory() . '/inc/enqueue.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
 require_once get_template_directory() . '/inc/post-types.php';
 require_once get_template_directory() . '/inc/metal-rates.php';
+require_once get_template_directory() . '/inc/pagination.php';
 
 // Theme setup
 function kuranomiya_theme_setup(): void {
@@ -38,3 +39,12 @@ function kuranomiya_disable_gutenberg(): void {
     add_filter('use_block_editor_for_post_type', '__return_false');
 }
 add_action('after_setup_theme', 'kuranomiya_disable_gutenberg');
+
+function kuranomiya_increment_view_count(): void {
+    if (is_singular('column')) {
+        $post_id = get_the_ID();
+        $count   = (int) get_post_meta($post_id, '_column_view_count', true);
+        update_post_meta($post_id, '_column_view_count', $count + 1);
+    }
+}
+add_action('wp_head', 'kuranomiya_increment_view_count');

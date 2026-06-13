@@ -137,3 +137,118 @@ function kuranomiya_register_purchase_record_acf_fields(): void {
     ]);
 }
 add_action('acf/init', 'kuranomiya_register_purchase_record_acf_fields');
+
+function kuranomiya_register_column_acf_fields(): void {
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group([
+        'key'    => 'group_column',
+        'title'  => 'コラム 詳細',
+        'fields' => [
+            [
+                'key'          => 'field_column_lead_text',
+                'label'        => 'リード文',
+                'name'         => 'column_lead_text',
+                'type'         => 'textarea',
+                'rows'         => 3,
+                'instructions' => '本文の前に表示される導入文',
+            ],
+            [
+                'key'           => 'field_column_mid_image',
+                'label'         => '中間画像',
+                'name'          => 'column_mid_image',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'instructions'  => '本文中に表示される画像（任意）',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'post_type',
+                    'operator' => '==',
+                    'value'    => 'column',
+                ],
+            ],
+        ],
+    ]);
+}
+add_action('acf/init', 'kuranomiya_register_column_acf_fields');
+
+function kuranomiya_register_owner_options(): void {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => '店舗・オーナー設定',
+            'menu_title' => '店舗設定',
+            'menu_slug'  => 'owner-settings',
+            'capability' => 'edit_posts',
+            'redirect'   => false,
+        ]);
+    }
+
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group([
+        'key'    => 'group_owner_settings',
+        'title'  => '店舗・オーナー情報',
+        'fields' => [
+            [
+                'key'   => 'field_owner_name',
+                'label' => 'オーナー名',
+                'name'  => 'owner_name',
+                'type'  => 'text',
+            ],
+            [
+                'key'           => 'field_owner_photo',
+                'label'         => 'オーナー写真',
+                'name'          => 'owner_photo',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'thumbnail',
+            ],
+            [
+                'key'          => 'field_owner_title',
+                'label'        => '肩書き',
+                'name'         => 'owner_title',
+                'type'         => 'text',
+                'instructions' => '例：業界歴11年以上の査定員',
+            ],
+            [
+                'key'   => 'field_owner_bio',
+                'label' => 'オーナー紹介文',
+                'name'  => 'owner_bio',
+                'type'  => 'textarea',
+                'rows'  => 4,
+            ],
+            [
+                'key'           => 'field_column_hero_desc_1',
+                'label'         => 'コラム ヒーロー説明文1',
+                'name'          => 'column_hero_desc_1',
+                'type'          => 'text',
+                'default_value' => '買取・査定・お品物の知識を店主の視点でお届けします。',
+            ],
+            [
+                'key'           => 'field_column_hero_desc_2',
+                'label'         => 'コラム ヒーロー説明文2',
+                'name'          => 'column_hero_desc_2',
+                'type'          => 'text',
+                'default_value' => '大切なお品物の売却や遺品整理などの際は、こちらもご覧ください。',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'owner-settings',
+                ],
+            ],
+        ],
+    ]);
+}
+add_action('acf/init', 'kuranomiya_register_owner_options');

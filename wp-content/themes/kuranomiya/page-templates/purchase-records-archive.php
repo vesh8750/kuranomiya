@@ -93,8 +93,6 @@ $sort_query_args = static function (string $sort_value) use ($category): string 
     return '?' . http_build_query($params);
 };
 
-$pagination_link_class  = 'w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-white text-[#B57A3F] border border-[#DED7C7] hover:bg-[#F6F2E9] transition-colors shadow-xs';
-$pagination_active_class = 'w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center bg-[#B57A3F] text-white cursor-pointer transition-colors shadow-xs';
 $filter_active_class    = 'px-6 py-2 bg-[#B57A3F] rounded-[24px] text-white text-[14px] font-medium transition-colors hover:bg-[#a06830]';
 $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] text-[14px] font-medium border border-[#E3DCCE] transition-colors hover:bg-[#F6F2E9]';
 ?>
@@ -257,19 +255,11 @@ $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] 
 
         </div>
 
-        <?php if ($query->max_num_pages > 1) : ?>
-            <div
-                class="flex items-center justify-end space-x-1.5 sm:space-x-2 font-sans font-medium text-[14px] md:text-[15px]">
-                <?php for ($i = 1; $i <= $query->max_num_pages; $i++) : ?>
-                    <?php if ($i === $paged) : ?>
-                        <span class="<?php echo esc_attr($pagination_active_class); ?>"><?php echo esc_html((string) $i); ?></span>
-                    <?php else : ?>
-                        <a href="<?php echo esc_url($archive_url_args($category ?: null, null, $i)); ?>"
-                            class="<?php echo esc_attr($pagination_link_class); ?>"><?php echo esc_html((string) $i); ?></a>
-                    <?php endif; ?>
-                <?php endfor; ?>
-            </div>
-        <?php endif; ?>
+        <?php kuranomiya_render_archive_pagination(
+            $paged,
+            (int) $query->max_num_pages,
+            static fn(int $page): string => $archive_url_args($category ?: null, null, $page)
+        ); ?>
 
     </div>
 </section>

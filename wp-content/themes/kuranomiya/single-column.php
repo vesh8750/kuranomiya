@@ -6,14 +6,52 @@
  */
 
 get_header();
+
+$hero_desc_1 = get_field('column_hero_desc_1', 'option');
+$hero_desc_2 = get_field('column_hero_desc_2', 'option');
+$owner_name  = get_field('owner_name', 'option');
+$owner_photo = get_field('owner_photo', 'option');
+$owner_title = get_field('owner_title', 'option');
+$owner_bio   = get_field('owner_bio', 'option');
+
+$column_page = get_page_by_path('column');
+$column_url  = $column_page ? get_permalink($column_page) : '';
+
+while (have_posts()) :
+    the_post();
+
+    $lead      = get_field('column_lead_text');
+    $mid_image = get_field('column_mid_image');
+    $featured  = get_the_post_thumbnail_url(null, 'full');
+
+    $terms    = get_the_terms(get_the_ID(), 'column-category');
+    $term_ids = ($terms && !is_wp_error($terms)) ? wp_list_pluck($terms, 'term_id') : [];
+
+    $related = new WP_Query([
+        'post_type'      => 'column',
+        'posts_per_page' => 3,
+        'post__not_in'   => [get_the_ID()],
+        'orderby'        => 'rand',
+        'tax_query'      => $term_ids ? [[
+            'taxonomy' => 'column-category',
+            'field'    => 'term_id',
+            'terms'    => $term_ids,
+        ]] : [],
+    ]);
 ?>
 
 <div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
     <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
         <nav class="flex items-center space-x-2 flex-wrap">
-            <a href="#" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
             <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
-            <span class="text-[#33312D] font-medium">コラム</span>
+            <?php if ($column_url) : ?>
+                <a href="<?php echo esc_url($column_url); ?>" class="hover:text-[#B57A3F] transition-colors">コラム</a>
+            <?php else : ?>
+                <span class="text-[#33312D] font-medium">コラム</span>
+            <?php endif; ?>
+            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+            <span class="text-[#33312D] font-medium"><?php the_title(); ?></span>
         </nav>
     </div>
 </div>
@@ -48,8 +86,8 @@ get_header();
 
             <div
                 class="lg:col-span-9 text-[#615C56] font-medium noto-sans !font-medium text-[clamp(0.88rem,2.8vw,1.05rem)] leading-[2] tracking-wider space-y-2 max-w-[620px] mx-auto lg:mx-0 text-left pl-0 lg:pl-4">
-                <p>買取・査定・お品物の知識を店主の視点でお届けします。</p>
-                <p>大切なお品物の売却や遺品整理などの際は、こちらもご覧ください。</p>
+                <p><?php echo esc_html($hero_desc_1); ?></p>
+                <p><?php echo esc_html($hero_desc_2); ?></p>
             </div>
 
         </div>
@@ -71,8 +109,7 @@ get_header();
     <div class="relative max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-8">
 
         <h1 class="text-[#33312D] text-[clamp(1.35rem,3.5vw,2rem)] font-bold tracking-wide leading-[1.6] text-left">
-            こちらにタイトルが入ります。こちらにタイトルが入ります。<br class="hidden md:block" />
-            こちらにタイトルが入ります。こちらにタイトルが入ります。
+            <?php the_title(); ?>
         </h1>
 
         <div
@@ -81,11 +118,17 @@ get_header();
             <div class="flex items-center space-x-3.5">
                 <div
                     class="w-10 h-10 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-white/10 border border-white/20 flex-shrink-0">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-man-2.png" alt="店主" class="w-full h-full object-cover" />
+                    <?php if ($owner_photo && !empty($owner_photo['url'])) : ?>
+                        <img src="<?php echo esc_url($owner_photo['url']); ?>" alt="<?php echo esc_attr($owner_photo['alt'] ?? '店主'); ?>" class="w-full h-full object-contain" />
+                    <?php else : ?>
+                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-man-2.png" alt="店主" class="w-full h-full object-contain" />
+                    <?php endif; ?>
                 </div>
                 <div class="font-sans text-[13px] sm:text-[14px] tracking-wide">
                     <span class="text-[#B57A3F] font-medium mr-1.5">店主</span>
-                    <span class="text-white font-semibold">●●</span>
+                    <?php if ($owner_name) : ?>
+                        <span class="text-white font-semibold"><?php echo esc_html($owner_name); ?></span>
+                    <?php endif; ?>
                 </div>
             </div>
 
@@ -93,12 +136,12 @@ get_header();
                 class="flex items-center space-x-4 sm:space-x-6 font-sans text-[12px] sm:text-[13px] text-white/80 !font-normal tracking-wide">
                 <div class="flex items-center">
                     <span class="text-[#B57A3F] font-medium mr-1.5">公開日</span>
-                    <span class="noto-sans text-white">2026.04.18</span>
+                    <span class="noto-sans text-white"><?php echo esc_html(get_the_date('Y.m.d')); ?></span>
                 </div>
                 <div class="w-[1px] h-3 bg-white/20"></div>
                 <div class="flex items-center">
                     <span class="text-[#B57A3F] font-medium mr-1.5">更新日</span>
-                    <span class="noto-sans text-white">2026.06.01</span>
+                    <span class="noto-sans text-white"><?php echo esc_html(get_the_modified_date('Y.m.d')); ?></span>
                 </div>
             </div>
 
@@ -106,9 +149,11 @@ get_header();
 
         <div
             class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/camera-big-man.png" alt="コラムメインイメージ"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
-                style="object-fit: cover; max-width: 100%;" />
+            <?php if ($featured) : ?>
+                <img src="<?php echo esc_url($featured); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
+                    style="object-fit: cover; max-width: 100%;" />
+            <?php endif; ?>
         </div>
 
     </div>
@@ -126,78 +171,57 @@ get_header();
 
         <div
             class="text-[#33312D] text-[clamp(15px,2vw,17px)] leading-[1.85] tracking-wider font-sans !font-normal">
-            <p>こちらにリード文が入ります。こちらにリード文が入ります。こちらにリード文が入ります。</p>
-            <p>こちらにリード文が入ります。こちらにリード文が入ります。こちらにリード文が入ります。</p>
-        </div>
-
-        <div class="space-y-6 pt-4">
-            <div class="flex items-center space-x-3 pb-3 border-b border-[#B57A3F]">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-logo.svg" alt="" class="w-5 h-5 object-contain flex-shrink-0" />
-                <h3
-                    class="text-[#33312D] text-[clamp(1.15rem,3vw,1.45rem)] font-bold tracking-wide flex items-center">
-                    h3 <span class="mx-3 font-sans font-light text-[#B57A3F]/50 text-[0.9em] select-none">|</span>
-                    小見出しタイトルが入ります
-                </h3>
-            </div>
-
-            <div
-                class="text-[#615C56] font-medium noto-sans !font-normal text-[14px] sm:text-[15px] leading-[1.95] tracking-wider space-y-4">
-                <p>こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。</p>
-                <p>こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。</p>
-                <p>こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。</p>
-                <p>こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。こちらに段落1のテキストが入ります。</p>
-            </div>
-        </div>
-
-        <div class="space-y-6 pt-4">
-            <div class="flex items-center space-x-3 pb-3 border-b border-[#B57A3F]">
-                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-logo.svg" alt="" class="w-5 h-5 object-contain flex-shrink-0" />
-                <h3
-                    class="text-[#33312D] text-[clamp(1.15rem,3vw,1.45rem)] font-bold tracking-wide flex items-center">
-                    h3 <span class="mx-3 font-sans font-light text-[#B57A3F]/50 text-[0.9em] select-none">|</span>
-                    小見出しタイトルが入ります
-                </h3>
-            </div>
-
-            <div
-                class="text-[#615C56] font-medium noto-sans !font-normal text-[14px] sm:text-[15px] leading-[1.95] tracking-wider space-y-4">
-                <p>こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。</p>
-                <p>こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。</p>
-                <p>こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。</p>
-                <p>こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。こちらに段落2のテキストが入ります。</p>
-            </div>
+            <?php if ($lead) : ?>
+                <?php echo wpautop(esc_html($lead)); ?>
+            <?php endif; ?>
         </div>
 
         <div
+            class="text-[#615C56] font-medium noto-sans !font-normal text-[14px] sm:text-[15px] leading-[1.95] tracking-wider space-y-4 pt-4">
+            <?php the_content(); ?>
+        </div>
+
+        <?php if ($mid_image) : ?>
+        <div
             class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group">
-            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/camera-big-man.png" alt="コラムメインイメージ"
+            <img src="<?php echo esc_url($mid_image['url']); ?>"
+                alt="<?php echo esc_attr($mid_image['alt']); ?>"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
                 style="object-fit: cover; max-width: 100%;" />
         </div>
+        <?php endif; ?>
 
         <div class="bg-[#F1ECE0] p-6 sm:p-8 shadow-xs border-t border-[#303E5F]/20 space-y-5 mt-12">
             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <div class="flex items-center space-x-3.5">
                     <div
                         class="w-12 h-12 rounded-full overflow-hidden bg-white/10 border border-[#E3DCCE] flex-shrink-0">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-man.png" alt="店主" class="w-full h-full object-cover" />
+                        <?php if ($owner_photo && !empty($owner_photo['url'])) : ?>
+                            <img src="<?php echo esc_url($owner_photo['url']); ?>" alt="<?php echo esc_attr($owner_photo['alt'] ?? '店主'); ?>" class="w-full h-full object-contain" />
+                        <?php else : ?>
+                            <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/small-man.png" alt="店主" class="w-full h-full object-cover" />
+                        <?php endif; ?>
                     </div>
+                    <?php if ($owner_name) : ?>
                     <h4 class="font-sans text-[15px] tracking-wide text-[#B57A3F] font-bold">
-                        <span class="text-[#B57A3F] font-medium mr-1.5">店主</span>●●
+                        <span class="text-[#B57A3F] font-medium mr-1.5">店主</span><?php echo esc_html($owner_name); ?>
                     </h4>
+                    <?php endif; ?>
                 </div>
+                <?php if ($owner_title) : ?>
                 <div class="hidden sm:block w-[1px] h-3 bg-[#33312D]/20"></div>
                 <span class="text-[#615C56] text-[13px] sm:text-[14px] font-sans font-bold tracking-wider">
-                    業界歴11年以上の査定員
+                    <?php echo esc_html($owner_title); ?>
                 </span>
+                <?php endif; ?>
             </div>
 
+            <?php if ($owner_bio) : ?>
             <div
                 class="text-[#615C56] text-[14px] sm:text-[14.5px] leading-[1.85] tracking-wider font-sans !font-normal space-y-3 pl-0 sm:pl-0">
-                <p>こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                <p>こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
-                <p>こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。</p>
+                <?php echo wpautop(esc_html($owner_bio)); ?>
             </div>
+            <?php endif; ?>
         </div>
 
     </div>
@@ -243,73 +267,51 @@ get_header();
             <div id="related-track"
                 class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0">
 
-                <div
-                    class="related-card w-[85vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col mr-4 lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ornament-card-alternate.png" alt="商品名が入ります"
-                            class="w-full h-full object-cover" />
+                <?php
+                $related_index = 0;
+                while ($related->have_posts()) :
+                    $related->the_post();
+                    $related_index++;
+                    $rel_terms    = get_the_terms(get_the_ID(), 'column-category');
+                    $rel_category = ($rel_terms && !is_wp_error($rel_terms)) ? $rel_terms[0] : null;
+                    $rel_thumb    = get_the_post_thumbnail_url(get_the_ID(), 'kuranomiya-card')
+                        ?: get_template_directory_uri() . '/assets/img/placeholder-img.png';
+                    $card_margin  = $related_index < $related->post_count ? ' mr-4 lg:mr-0' : '';
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink()); ?>" class="block">
                         <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
-                            カテゴリ名
+                            class="related-card w-[85vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col<?php echo esc_attr($card_margin); ?>">
+                            <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
+                                <img src="<?php echo esc_url($rel_thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
+                                    class="w-full h-full object-cover" />
+                                <?php if ($rel_category) : ?>
+                                    <div
+                                        class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
+                                        <?php echo esc_html($rel_category->name); ?>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                                <h3
+                                    class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug mb-4 min-h-[1.5em]">
+                                    <?php the_title(); ?>
+                                </h3>
+                                <span
+                                    class="text-[#B57A3F] font-sans text-[14px] font-medium tracking-wider block"><?php echo esc_html(get_the_date('Y.m.d')); ?></span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3
-                            class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug mb-4 min-h-[1.5em]">
-                            タイトルが入ります
-                        </h3>
-                        <span
-                            class="text-[#B57A3F] font-sans text-[14px] font-medium tracking-wider block">0000.00.00</span>
-                    </div>
-                </div>
-
-                <div
-                    class="related-card w-[85vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col mr-4 lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ornament-card-alternate.png" alt="金属アクセサリー 一式"
-                            class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
-                            カテゴリ名
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3
-                            class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug mb-4 min-h-[1.5em]">
-                            タイトルが入ります
-                        </h3>
-                        <span
-                            class="text-[#B57A3F] font-sans text-[14px] font-medium tracking-wider block">0000.00.00</span>
-                    </div>
-                </div>
-
-                <div
-                    class="related-card w-[85vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ornament-card-alternate.png" alt="金歯・銀歯"
-                            class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
-                            カテゴリ名
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3
-                            class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug mb-4 min-h-[1.5em]">
-                            タイトルが入ります
-                        </h3>
-                        <span
-                            class="text-[#B57A3F] font-sans text-[14px] font-medium tracking-wider block">0000.00.00</span>
-                    </div>
-                </div>
+                    </a>
+                <?php endwhile; ?>
 
             </div>
 
+            <?php if ($related->post_count > 0) : ?>
             <div id="related-dots" class="flex items-center justify-center gap-3 mt-6 lg:hidden">
-                <span class="w-2.5 h-2.5 bg-[#B57A3F] rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-[#B57A3F]/30 rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-[#B57A3F]/30 rounded-full transition-all duration-300"></span>
+                <?php for ($i = 0; $i < $related->post_count; $i++) : ?>
+                    <span class="w-2.5 h-2.5 <?php echo $i === 0 ? 'bg-[#B57A3F]' : 'bg-[#B57A3F]/30'; ?> rounded-full transition-all duration-300"></span>
+                <?php endfor; ?>
             </div>
+            <?php endif; ?>
 
         </div>
 
@@ -317,5 +319,8 @@ get_header();
 </section>
 
 <?php
+    wp_reset_postdata();
+endwhile;
+
 get_footer();
 ?>

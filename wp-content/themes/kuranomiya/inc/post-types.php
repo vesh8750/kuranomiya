@@ -85,3 +85,11 @@ function kuranomiya_register_column_category_taxonomy(): void {
     ]);
 }
 add_action('init', 'kuranomiya_register_column_category_taxonomy');
+
+function kuranomiya_register_column_query_vars(array $vars): array {
+    $vars[] = 'column_pg';
+    $vars[] = 'col_category';
+
+    return $vars;
+}
+add_filter('query_vars', 'kuranomiya_register_column_query_vars');
