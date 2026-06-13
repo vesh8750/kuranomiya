@@ -1,8 +1,26 @@
 <?php
 defined('ABSPATH') || exit;
 
-define('KURANOMIYA_METALS_API_KEY', 'YOUR_API_KEY_HERE');
+if (! defined('KURANOMIYA_METALS_API_KEY')) {
+    define('KURANOMIYA_METALS_API_KEY', '');
+}
 define('KURANOMIYA_METALS_API_URL', 'https://api.metals.dev/v1/latest');
+
+function kuranomiya_get_metals_api_key(): string {
+    $stored = get_option('kuranomiya_metals_api_key', '');
+    if (is_string($stored) && trim($stored) !== '') {
+        return trim($stored);
+    }
+
+    if (defined('KURANOMIYA_METALS_API_KEY')) {
+        $constant = KURANOMIYA_METALS_API_KEY;
+        if ($constant !== '' && $constant !== 'YOUR_API_KEY_HERE') {
+            return $constant;
+        }
+    }
+
+    return '';
+}
 
 // ---------------------------------------------------------------------------
 // 1. Karat / Purity multipliers
@@ -46,9 +64,17 @@ function kuranomiya_get_karat_multipliers(): array {
 // ---------------------------------------------------------------------------
 
 function kuranomiya_fetch_metal_rates(): void {
+    $api_key = kuranomiya_get_metals_api_key();
+    if ($api_key === '') {
+        kuranomiya_record_metal_rates_error(
+            'metals.dev API key is not configured. Set it under Tools → 貴金属相場.'
+        );
+        return;
+    }
+
     $url = add_query_arg(
         [
-            'api_key'  => KURANOMIYA_METALS_API_KEY,
+            'api_key'  => $api_key,
             'currency' => 'JPY',
             'unit'     => 'g',
         ],
@@ -78,7 +104,7 @@ function kuranomiya_fetch_metal_rates(): void {
                 $msg = 'metals.dev monthly quota exceeded. Falling back to stored rates.';
                 break;
             case 1101:
-                $msg = 'metals.dev API key is invalid. Check KURANOMIYA_METALS_API_KEY constant.';
+                $msg = 'metals.dev API key is invalid. Check the API key in Tools → 貴金属相場.';
                 break;
             case 1201:
             case 1202:
@@ -124,6 +150,8 @@ function kuranomiya_fetch_metal_rates(): void {
         'updated_at' => current_time('Y-m-d H:i'),
     ];
 
+    kuranomiya_archive_metal_rates_before_update();
+
     update_option('kuranomiya_metal_rates', wp_json_encode($rates));
     delete_option('kuranomiya_metal_rates_error');
 }
@@ -168,6 +196,83 @@ function kuranomiya_get_metal_rates(): ?array {
     }
     $decoded = json_decode($raw, true);
     return is_array($decoded) ? $decoded : null;
+}
+
+function kuranomiya_get_previous_metal_rates(): ?array {
+    $raw = get_option('kuranomiya_metal_rates_previous');
+    if (! $raw) {
+        return null;
+    }
+    $decoded = json_decode($raw, true);
+    return is_array($decoded) ? $decoded : null;
+}
+
+function kuranomiya_archive_metal_rates_before_update(): void {
+    $existing = kuranomiya_get_metal_rates();
+    if (! $existing || ! isset($existing['gold'])) {
+        return;
+    }
+
+    $archived = [
+        'updated_at' => $existing['updated_at'] ?? '',
+    ];
+
+    foreach (['gold', 'platinum', 'silver'] as $metal) {
+        $spot = kuranomiya_get_metal_spot_price_from_rates($existing, $metal);
+        if ($spot !== null) {
+            $archived[$metal] = $spot;
+        }
+    }
+
+    update_option('kuranomiya_metal_rates_previous', wp_json_encode($archived));
+}
+
+function kuranomiya_get_metal_spot_price_from_rates(array $rates, string $metal): ?int {
+    if (! isset($rates[$metal])) {
+        return null;
+    }
+
+    $override = get_option('kuranomiya_metal_override_' . $metal);
+    $base     = ($override !== false && $override !== '') ? (float) $override : (float) $rates[$metal];
+
+    return (int) round($base);
+}
+
+function kuranomiya_get_metal_spot_price(string $metal): ?int {
+    $rates = kuranomiya_get_metal_rates();
+    if (! $rates) {
+        return null;
+    }
+
+    return kuranomiya_get_metal_spot_price_from_rates($rates, $metal);
+}
+
+function kuranomiya_get_metal_day_change(string $metal): ?int {
+    $current  = kuranomiya_get_metal_spot_price($metal);
+    $previous = kuranomiya_get_previous_metal_rates();
+
+    if ($current === null || ! $previous || ! isset($previous[$metal])) {
+        return null;
+    }
+
+    return $current - (int) $previous[$metal];
+}
+
+function kuranomiya_format_metal_day_change(string $metal): string {
+    $change = kuranomiya_get_metal_day_change($metal);
+    if ($change === null) {
+        return '';
+    }
+
+    if ($change > 0) {
+        return '(前日比 +' . number_format($change) . '円)';
+    }
+
+    if ($change < 0) {
+        return '(前日比 ' . number_format($change) . '円)';
+    }
+
+    return '(前日比 ±0円)';
 }
 
 // ---------------------------------------------------------------------------
@@ -221,6 +326,22 @@ function kuranomiya_metal_settings_page(): void {
     }
 
     if (
+        isset($_POST['kuranomiya_save_api_key']) &&
+        check_admin_referer('kuranomiya_metal_nonce', 'kuranomiya_metal_nonce_field')
+    ) {
+        $key = isset($_POST['kuranomiya_metals_api_key'])
+            ? sanitize_text_field(wp_unslash($_POST['kuranomiya_metals_api_key']))
+            : '';
+
+        if ($key !== '') {
+            update_option('kuranomiya_metals_api_key', $key);
+            echo '<div class="notice notice-success"><p>APIキーを保存しました。</p></div>';
+        } else {
+            echo '<div class="notice notice-warning"><p>APIキーは空欄のため変更されませんでした。</p></div>';
+        }
+    }
+
+    if (
         isset($_POST['kuranomiya_fetch_now']) &&
         check_admin_referer('kuranomiya_metal_nonce', 'kuranomiya_metal_nonce_field')
     ) {
@@ -249,6 +370,7 @@ function kuranomiya_metal_settings_page(): void {
 
     $rates      = kuranomiya_get_metal_rates();
     $last_error = kuranomiya_get_metal_rates_error();
+    $api_key_set = kuranomiya_get_metals_api_key() !== '';
     $labels     = ['gold' => '金 (Gold)', 'platinum' => 'プラチナ (Platinum)', 'silver' => '銀 (Silver)'];
     ?>
     <div class="wrap">
@@ -266,6 +388,36 @@ function kuranomiya_metal_settings_page(): void {
 
         <form method="post">
             <?php wp_nonce_field('kuranomiya_metal_nonce', 'kuranomiya_metal_nonce_field'); ?>
+            <h2 class="title">API設定</h2>
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row"><label for="kuranomiya_metals_api_key">metals.dev APIキー</label></th>
+                    <td>
+                        <input
+                            type="password"
+                            id="kuranomiya_metals_api_key"
+                            name="kuranomiya_metals_api_key"
+                            value=""
+                            autocomplete="new-password"
+                            class="regular-text"
+                        />
+                        <p class="description">
+                            <?php if ($api_key_set) : ?>
+                                APIキーは設定済みです。変更する場合のみ新しいキーを入力してください。
+                            <?php else : ?>
+                                <a href="https://metals.dev" target="_blank" rel="noopener noreferrer">metals.dev</a>
+                                のダッシュボードからAPIキーを取得してください。
+                            <?php endif; ?>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+            <?php submit_button('APIキーを保存', 'secondary', 'kuranomiya_save_api_key', false); ?>
+        </form>
+
+        <form method="post">
+            <?php wp_nonce_field('kuranomiya_metal_nonce', 'kuranomiya_metal_nonce_field'); ?>
+            <h2 class="title">手動価格</h2>
             <table class="form-table" role="presentation">
                 <?php foreach (['gold', 'platinum', 'silver'] as $metal) : ?>
                     <?php

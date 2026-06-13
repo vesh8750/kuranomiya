@@ -614,6 +614,18 @@ get_header();
 
 <!-- Achivements Section  -->
 
+<?php
+$fp_achievements_query = new WP_Query([
+    'post_type'      => 'purchase-record',
+    'posts_per_page' => 3,
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+]);
+
+$fp_achievements_page = get_page_by_path('purchase-records');
+$fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_page) : '';
+?>
+
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
     <div class="absolute right-0 top-0 w-[55%] md:w-[25%] max-w-[520px] pointer-events-none z-0">
        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ach-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
@@ -651,103 +663,72 @@ get_header();
             <div id="achievements-track"
                 class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0">
 
-                <!-- CARD 01: WATCH -->
-                <div
-                    class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col mr-0 lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/achievement-1.png" alt="ロレックス デイトジャスト 16233" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#303E5F] text-white px-5 py-2 text-[16px] tracking-wider noto-sans font-medium">
-                            時計
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[2.4em]">
-                            ロレックス デイトジャスト 16233
-                        </h3>
-                        <div class="flex items-baseline text-[#33312D] mb-5">
-                            <span class="text-[16px] font-medium noto-sans mr-2 font-sans text-[#615C56]">買取価格</span>
-                            <span
-                                class="text-[clamp(1.5rem,3vw,2.3rem)] font-['EB_Garamond'] font- font-medium tracking-wide">550,000</span>
-                            <span class="text-[15px] font-bold ml-0.5">円</span>
-                        </div>
-                        <div class="w-full h-[1px] bg-[#EAE2D5] mb-5"></div>
-                        <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6">
-                            長くお使いになった一本。傷の中にも丁寧に時を刻まれた品の良さがありました。<br class="hidden md:block">機械の調子と相場を踏まえ、お客様にご納得いただける査定額をお伝えしました。
-                        </p>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.04</span>
-                    </div>
-                </div>
-
-                <!-- CARD 02: JEWELRY -->
-                <div
-                    class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/achievement-2.png" alt="金属アクセサリー 一式" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#303E5F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
-                            宝飾品
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[2.4em]">
-                            金属アクセサリー 一式
-                        </h3>
-                        <div class="flex items-baseline text-[#33312D] mb-5">
-                            <span class="text-[16px] font-medium noto-sans mr-2 font-sans text-[#615C56]">買取価格</span>
-                            <span
-                                class="text-[clamp(1.5rem,3vw,2.3rem)] font-['EB_Garamond'] font- font-medium tracking-wide">1,294,872</span>
-                            <span class="text-[15px] font-bold ml-0.5">円</span>
-                        </div>
-                        <div class="w-full h-[1px] bg-[#EAE2D5] mb-5"></div>
-                        <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6">
-                            ご結婚当時にお揃えになった品々とお伺いしました。<br class="hidden md:block">一点一点純度と重量を計測しながら、お話を伺いつつ、丁寧にさてさせていただきました。
-                        </p>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.04</span>
-                    </div>
-                </div>
-
-                <!-- CARD 03: PRECIOUS METALS -->
-                <div
-                    class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/achievement-3.png" alt="金歯・銀歯" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#303E5F] text-white px-5 py-2 text-[14px] tracking-wider font-medium">
-                            金・銀
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                        <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[2.4em]">
-                            金歯・銀歯
-                        </h3>
-                        <div class="flex items-baseline text-[#33312D] mb-5">
-                            <span class="text-[16px] font-medium noto-sans mr-2 font-sans text-[#615C56]">買取価格</span>
-                            <span
-                                class="text-[clamp(1.5rem,3vw,2.3rem)] font-['EB_Garamond'] font- font-medium tracking-wide">114,567</span>
-                            <span class="text-[15px] font-bold ml-0.5">円</span>
-                        </div>
-                        <div class="w-full h-[1px] bg-[#EAE2D5] mb-5"></div>
-                        <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6">
-                            歯科医院よりお受け取りになった金歯・銀歯。地金として精錬する形での組成の純度を確認し、当日の相場に基づき算定したうえでお伝えしました。
-                        </p>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.04</span>
-                    </div>
-                </div>
+                <?php if ($fp_achievements_query->have_posts()) : ?>
+                    <?php
+                    $fp_achievement_index = 0;
+                    while ($fp_achievements_query->have_posts()) :
+                        $fp_achievements_query->the_post();
+                        $fp_achievement_index++;
+                        $fp_achievement_price = esc_html(number_format((float) get_field('purchase_price')));
+                        $fp_achievement_desc  = get_field('card_description');
+                        $fp_achievement_terms = get_the_terms(get_the_ID(), 'purchase-record-category');
+                        $fp_achievement_cat   = ($fp_achievement_terms && !is_wp_error($fp_achievement_terms)) ? $fp_achievement_terms[0]->name : '';
+                        $fp_achievement_thumb = get_the_post_thumbnail_url(get_the_ID(), 'kuranomiya-card')
+                            ?: get_template_directory_uri() . '/assets/img/placeholder-img.png';
+                        $fp_achievement_margin = $fp_achievement_index < $fp_achievements_query->post_count ? ' mr-4 lg:mr-0' : '';
+                        ?>
+                        <a href="<?php echo esc_url(get_permalink()); ?>" class="block">
+                            <div
+                                class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col<?php echo esc_attr($fp_achievement_margin); ?>">
+                                <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
+                                    <img src="<?php echo esc_url($fp_achievement_thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="w-full h-full object-cover" />
+                                    <?php if ($fp_achievement_cat) : ?>
+                                        <div
+                                            class="absolute bottom-0 left-0 bg-[#303E5F] text-white px-5 py-2 text-[16px] tracking-wider noto-sans font-medium">
+                                            <?php echo esc_html($fp_achievement_cat); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="p-6 sm:p-8 flex flex-col flex-grow">
+                                    <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[2.4em]">
+                                        <?php the_title(); ?>
+                                    </h3>
+                                    <div class="flex items-baseline text-[#33312D] mb-5">
+                                        <span class="text-[16px] font-medium noto-sans mr-2 font-sans text-[#615C56]">買取価格</span>
+                                        <span
+                                            class="text-[clamp(1.5rem,3vw,2.3rem)] font-['EB_Garamond'] font- font-medium tracking-wide"><?php echo $fp_achievement_price; ?></span>
+                                        <span class="text-[15px] font-bold ml-0.5">円</span>
+                                    </div>
+                                    <div class="w-full h-[1px] bg-[#EAE2D5] mb-5"></div>
+                                    <?php if ($fp_achievement_desc) : ?>
+                                        <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6">
+                                            <?php echo esc_html($fp_achievement_desc); ?>
+                                        </p>
+                                    <?php endif; ?>
+                                    <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block"><?php echo esc_html(get_the_date('Y.m')); ?></span>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                <?php else : ?>
+                    <p class="text-center text-[#615C56] noto-sans px-5 w-full">該当する買取実績がありません。</p>
+                <?php endif; ?>
 
             </div>
 
-
+            <?php if ($fp_achievements_query->post_count > 0) : ?>
             <div id="achievements-dots" class="flex items-center justify-center gap-3 mt-6 lg:hidden">
-                <span class="w-2.5 h-2.5 bg-[#B57A3F] rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-[#B57A3F]/30 rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-[#B57A3F]/30 rounded-full transition-all duration-300"></span>
+                <?php for ($i = 0; $i < $fp_achievements_query->post_count; $i++) : ?>
+                    <span class="w-2.5 h-2.5 <?php echo $i === 0 ? 'bg-[#B57A3F]' : 'bg-[#B57A3F]/30'; ?> rounded-full transition-all duration-300"></span>
+                <?php endfor; ?>
             </div>
+            <?php endif; ?>
 
         </div>
 
         <div class="text-center mt-12 md:mt-16 px-5">
-            <a href="#"
+            <a href="<?php echo esc_url($fp_achievements_url ?: '#'); ?>"
                 class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 sm:py-4.5 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[300px]">
                 <span class="text-[18px] noto-sans font-semibold tracking-wider">実績一覧をみる</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -760,6 +741,25 @@ get_header();
 </section>
 
 <!-- Market Rate Section  -->
+
+<?php
+$fp_metal_rates     = kuranomiya_get_metal_rates();
+$fp_has_metal_rates = is_array($fp_metal_rates) && ! empty($fp_metal_rates['gold']);
+$fp_gold_price      = kuranomiya_get_metal_spot_price('gold');
+$fp_platinum_price  = kuranomiya_get_metal_spot_price('platinum');
+$fp_silver_price    = kuranomiya_get_metal_spot_price('silver');
+$fp_gold_change     = kuranomiya_format_metal_day_change('gold');
+$fp_platinum_change = kuranomiya_format_metal_day_change('platinum');
+$fp_silver_change   = kuranomiya_format_metal_day_change('silver');
+$fp_updated_display = '—';
+
+if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
+    $fp_updated_ts = strtotime($fp_metal_rates['updated_at']);
+    if ($fp_updated_ts) {
+        $fp_updated_display = esc_html(wp_date('Y年n月j日', $fp_updated_ts)) . ' ' . esc_html(wp_date('g:i A', $fp_updated_ts));
+    }
+}
+?>
 
 <section class="bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
     <div class="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
@@ -786,7 +786,7 @@ get_header();
             <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
                 <div>
                     <span class="text-[#B57A3F] font-semibold mr-2">最終更新</span>
-                    <span class="text-[#615C56]">2026年5月5日 9:00 AM</span>
+                    <span class="text-[#615C56]"><?php echo $fp_updated_display; ?></span>
                 </div>
                 <span class="hidden sm:inline text-gray-300">|</span>
                 <div>
@@ -795,6 +795,11 @@ get_header();
                 </div>
             </div>
         </div>
+        <?php if (! $fp_has_metal_rates) : ?>
+        <p class="text-center noto-sans text-[#615C56] font-sans text-[14px] md:text-[16px] tracking-wide mb-10 sm:mb-12">
+            相場データは現在準備中です。しばらくお待ちください。
+        </p>
+        <?php else : ?>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1100px] mx-auto mb-10 sm:mb-12">
 
             <!-- CARD 01: GOLD -->
@@ -808,9 +813,11 @@ get_header();
                     </div>
                     <div>
                         <div class="flex items-baseline text-[#33312D] mb-2 whitespace-nowrap">
-                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none">13,486</span>
+                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none"><?php echo esc_html(number_format($fp_gold_price)); ?></span>
                             <span class="text-[14px] font-bold ml-0.5 mr-2">円</span>
-                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide">(前日比 +84円)</span>
+                            <?php if ($fp_gold_change !== '') : ?>
+                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide"><?php echo esc_html($fp_gold_change); ?></span>
+                            <?php endif; ?>
                         </div>
                         <span class="bg-[#F1ECE0] text-[#615C56] font-sans text-[14px] block]">1gあたり買取価格</span>
                     </div>
@@ -831,9 +838,11 @@ get_header();
                     </div>
                     <div>
                         <div class="flex items-baseline text-[#33312D] mb-2 whitespace-nowrap">
-                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none">5,920</span>
+                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none"><?php echo esc_html(number_format($fp_platinum_price)); ?></span>
                             <span class="text-[14px] font-bold ml-0.5 mr-2">円</span>
-                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide">(前日比 +32円)</span>
+                            <?php if ($fp_platinum_change !== '') : ?>
+                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide"><?php echo esc_html($fp_platinum_change); ?></span>
+                            <?php endif; ?>
                         </div>
                         <span class="bg-[#F1ECE0] text-[#615C56] font-sans text-[14px] block]">1gあたり買取価格</span>
                     </div>
@@ -854,10 +863,11 @@ get_header();
                     </div>
                     <div>
                         <div class="flex items-baseline text-[#33312D] mb-2 whitespace-nowrap">
-                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none">168</span>
+                            <span class="text-[2rem] font-medium  font-['EB_Garamond'] tracking-tight leading-none"><?php echo esc_html(number_format($fp_silver_price)); ?></span>
                             <span class="text-[14px] font-bold ml-0.5 mr-2">円</span>
-
-                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide">(前日比 -1円)</span>
+                            <?php if ($fp_silver_change !== '') : ?>
+                            <span class="text-[#B57A3F] font-sans text-[15px] font-semibold tracking-wide"><?php echo esc_html($fp_silver_change); ?></span>
+                            <?php endif; ?>
                         </div>
                         <span class="bg-[#F1ECE0] text-[#615C56] font-sans text-[14px] block]">1gあたり買取価格</span>
                     </div>
@@ -868,6 +878,7 @@ get_header();
             </div>
 
         </div>
+        <?php endif; ?>
 
         <p
             class="text-center text-[#615C56] text-[14px] noto-sans sm:text-[13px] leading-relaxed tracking-wider mb-12 px-4 max-w-[900px] mx-auto">
@@ -888,6 +899,18 @@ get_header();
 </section>
 
 <!-- Column Section  -->
+
+<?php
+$fp_column_query = new WP_Query([
+    'post_type'      => 'column',
+    'posts_per_page' => 3,
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+]);
+
+$fp_column_page = get_page_by_path('column');
+$fp_column_url  = $fp_column_page ? get_permalink($fp_column_page) : '';
+?>
 
 <section class="relative bg-[#303E5F] text-white py-16 md:py-28 font-serif-jp overflow-hidden">
     <div class="absolute left-0 top-0 w-[55%] md:w-[25%] max-w-[370px] pointer-events-none z-0">
@@ -931,73 +954,57 @@ get_header();
             <div id="column-track"
                 class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0">
 
-                <!-- COLUMN CARD 01 -->
-                <div
-                    class="column-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#1D2B4B] shadow-lg rounded-sm overflow-hidden flex flex-col mr-4 lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-[#24314F]">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-1.png" alt="「観る」という言葉に込めた、私たちの姿勢について" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[13px] font-['EB_Garamond'] tracking-[0.1em] uppercase font-medium">
-                            Store
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between min-h-[140px] lg:min-h-[180px]">
-                        <h3
-                            class="text-white text-[clamp(1.05rem,2.2vw,1.25rem)] font-bold tracking-wide leading-[1.6] mb-1 lg:mb-6">
-                            「観る」という言葉に込めた、<br />私たちの姿勢について
-                        </h3>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.05.01</span>
-                    </div>
-                </div>
-
-                <!-- COLUMN CARD 02 -->
-                <div
-                    class="column-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#1D2B4B] shadow-lg rounded-sm overflow-hidden flex flex-col mr-4 lg:mr-0">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-[#24314F]">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-2.png" alt="査定員の日常から見る価値あるお品物の共通点" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[13px] font-['EB_Garamond'] tracking-[0.1em] uppercase font-medium">
-                            Gold
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between min-h-[140px] lg:min-h-[180px]">
-                        <h3
-                            class="text-white text-[clamp(1.05rem,2.2vw,1.25rem)] font-bold tracking-wide leading-[1.6] mb-1 lg:mb-6">
-                            査定員の日常から見る<br />価値あるお品物の共通点
-                        </h3>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.04.18</span>
-                    </div>
-                </div>
-
-                <!-- COLUMN CARD 03 -->
-                <div
-                    class="column-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#1D2B4B] shadow-lg rounded-sm overflow-hidden flex flex-col">
-                    <div class="relative w-full aspect-[5/3] overflow-hidden bg-[#24314F]">
-                       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/column-img-3.png" alt="大切な遺品を整理するタイミングとその方法について" class="w-full h-full object-cover" />
-                        <div
-                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[13px] font-['EB_Garamond'] tracking-[0.1em] uppercase font-medium">
-                            Story
-                        </div>
-                    </div>
-                    <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between min-h-[140px] lg:min-h-[180px]">
-                        <h3
-                            class="text-white text-[clamp(1.05rem,2.2vw,1.25rem)] font-bold tracking-wide leading-[1.6] mb-1 lg:mb-6">
-                            大切な遺品を整理する<br />タイミングとその方法について
-                        </h3>
-                        <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block">2026.04.05</span>
-                    </div>
-                </div>
+                <?php if ($fp_column_query->have_posts()) : ?>
+                    <?php
+                    $fp_column_index = 0;
+                    while ($fp_column_query->have_posts()) :
+                        $fp_column_query->the_post();
+                        $fp_column_index++;
+                        $fp_column_thumb = get_the_post_thumbnail_url(get_the_ID(), 'kuranomiya-card')
+                            ?: get_template_directory_uri() . '/assets/img/placeholder-img.png';
+                        $fp_column_terms = get_the_terms(get_the_ID(), 'column-category');
+                        $fp_column_cat   = ($fp_column_terms && !is_wp_error($fp_column_terms)) ? $fp_column_terms[0]->name : '';
+                        $fp_column_margin = $fp_column_index < $fp_column_query->post_count ? ' mr-4 lg:mr-0' : '';
+                        ?>
+                        <a href="<?php echo esc_url(get_permalink()); ?>" class="block">
+                            <div
+                                class="column-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#1D2B4B] shadow-lg rounded-sm overflow-hidden flex flex-col<?php echo esc_attr($fp_column_margin); ?>">
+                                <div class="relative w-full aspect-[5/3] overflow-hidden bg-[#24314F]">
+                                    <img src="<?php echo esc_url($fp_column_thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="w-full h-full object-cover" />
+                                    <?php if ($fp_column_cat) : ?>
+                                        <div
+                                            class="absolute bottom-0 left-0 bg-[#B57A3F] text-white px-5 py-2 text-[13px] font-['EB_Garamond'] tracking-[0.1em] uppercase font-medium">
+                                            <?php echo esc_html($fp_column_cat); ?>
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="p-6 sm:p-8 flex flex-col flex-grow justify-between min-h-[140px] lg:min-h-[180px]">
+                                    <h3
+                                        class="text-white text-[clamp(1.05rem,2.2vw,1.25rem)] font-bold tracking-wide leading-[1.6] mb-1 lg:mb-6">
+                                        <?php the_title(); ?>
+                                    </h3>
+                                    <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block"><?php echo esc_html(get_the_date('Y.m.d')); ?></span>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endwhile; ?>
+                    <?php wp_reset_postdata(); ?>
+                <?php else : ?>
+                    <p class="text-center text-white/80 noto-sans px-5 w-full">該当するコラムがありません。</p>
+                <?php endif; ?>
 
             </div>
+            <?php if ($fp_column_query->post_count > 0) : ?>
             <div id="column-dots" class="flex items-center justify-center gap-3 mt-6 lg:hidden">
-                <span class="w-2.5 h-2.5 bg-white rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-white/40 rounded-full transition-all duration-300"></span>
-                <span class="w-2.5 h-2.5 bg-white/40 rounded-full transition-all duration-300"></span>
+                <?php for ($i = 0; $i < $fp_column_query->post_count; $i++) : ?>
+                    <span class="w-2.5 h-2.5 <?php echo $i === 0 ? 'bg-white' : 'bg-white/40'; ?> rounded-full transition-all duration-300"></span>
+                <?php endfor; ?>
             </div>
+            <?php endif; ?>
 
         </div>
         <div class="text-center mt-12 md:mt-16 px-5">
-            <a href="#"
+            <a href="<?php echo esc_url($fp_column_url ?: '#'); ?>"
                 class="bg-[#B57A3F] hidden lg:inline-flex text-white inline-flex items-center justify-center space-x-3 px-10 py-4 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[300px]">
                 <span class="text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">コラム一覧をみる</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">

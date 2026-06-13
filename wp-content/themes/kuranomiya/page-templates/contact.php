@@ -260,7 +260,7 @@ get_header();
                         <option value="brand">ブランド品</option>
                         <option value="other">その他</option>
                     </select>
-                    <div class="absolute right-4 top-[70%] -translate-y-1/2 pointer-events-none text-[#B57A3F]">
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[#B57A3F]">
                         <svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2.5" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
@@ -297,7 +297,7 @@ get_header();
                     <label
                         class="inline-flex items-center cursor-pointer select-none font-serif-jp text-[13px] sm:text-[14px] text-[#33312D]">
                         <input type="checkbox" name="policy_agreement" required
-                            class="w-4 h-4 text-[#B57A3F] bg-[#F1ECE0] border-none focus:ring-0 rounded-sm cursor-pointer mr-3" />
+                            class="contact-checkbox w-5 h-5 border-none focus:ring-0 rounded-sm cursor-pointer mr-3" />
                         <span>プライバシーポリシーに同意する</span>
                     </label>
                 </div>

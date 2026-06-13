@@ -6,6 +6,39 @@
  */
 
 get_header();
+
+$metal_rates     = kuranomiya_get_metal_rates();
+$has_rates       = is_array($metal_rates) && ! empty($metal_rates['gold']);
+$gold_prices     = kuranomiya_calculate_prices('gold');
+$platinum_prices = kuranomiya_calculate_prices('platinum');
+$silver_prices   = kuranomiya_calculate_prices('silver');
+
+$gold = [];
+foreach ($gold_prices as $item) {
+    $gold[$item['label']] = $item['price'];
+}
+
+$platinum = [];
+foreach ($platinum_prices as $item) {
+    $platinum[$item['label']] = $item['price'];
+}
+
+$silver_api = [];
+foreach ($silver_prices as $item) {
+    $silver_api[$item['label']] = $item['price'];
+}
+$silver = [
+    'SV1000' => $silver_api['Ag999'] ?? 0,
+    'SV925'  => $silver_api['Ag925'] ?? 0,
+];
+
+$updated_display = '';
+if ($has_rates && ! empty($metal_rates['updated_at'])) {
+    $updated_ts = strtotime($metal_rates['updated_at']);
+    if ($updated_ts) {
+        $updated_display = esc_html(wp_date('Y年n月j日', $updated_ts)) . '&nbsp;&nbsp; ' . esc_html(wp_date('g:i A', $updated_ts));
+    }
+}
 ?>
 
 
@@ -75,8 +108,7 @@ get_header();
             class="bg-[#FFFCF5] max-w-[500px] mx-auto p-2.5 mt-10 text-center text-[12px] px-5 tracking-wide font-sans text-[#33312D] shadow-xs border border-[#E3DCCE]/40">
             <div class="flex items-center justify-center space-x-2">
                 <div><span class="text-[#B57A3F] noto-sans text-[16px] font-medium mr-1.5">最終更新</span><span
-                        class="text-[#615C56] noto-sans font-medium text-[16px]">2026年6月12日&nbsp;&nbsp; 9:00
-                        AM</span></div>
+                        class="text-[#615C56] noto-sans font-medium text-[16px]"><?php echo $has_rates ? $updated_display : '—'; ?></span></div>
                 <span class="text-gray">|</span>
                 <div><span class="text-[#B57A3F] noto-sans text-[16px] font-medium mr-1.5">情報元</span><span
                         class="text-[#615C56] noto-sans text-[16px]">業界標準価格</span></div>
@@ -85,6 +117,12 @@ get_header();
     </div>
 
     <div class="relative max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-16 md:space-y-24">
+
+        <?php if (! $has_rates) : ?>
+        <p class="text-center noto-sans text-[#615C56] font-sans text-[14px] md:text-[16px] tracking-wide">
+            相場データは現在準備中です。しばらくお待ちください。
+        </p>
+        <?php else : ?>
 
         <div class="w-full">
             <div class="text-center mb-6">
@@ -102,134 +140,132 @@ get_header();
                 <div class="divide-y divide-[#E3DCCE]">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K24
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">25,070
-                            <span class="text-[13px]"><span class="text-[13px]">円</span></span>
-                        </div>
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K24'])); ?><span
+                                class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K23
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">24,109
-                            <span class="text-[13px]"><span class="text-[13px]">円</span></span>
-                        </div>
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K23'])); ?><span
+                                class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K22
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">23,048<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K22'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K21.6
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">22,492<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K21.6'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K20
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">20,571<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K20'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K18
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">18,929<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K18'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K17
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">16,680<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K17'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K14
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">14,658<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K14'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
                 <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K12
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">11,372<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K12'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K10
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">10,159<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K10'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K9
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">9,123<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K9'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K8
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">6,773<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K8'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K7
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">6,318<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K7'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K5
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">3,285<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K5'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K18WG
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">18,904<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K18WG'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#B57A3F] text-white py-3 text-center font-bold tracking-wider">
                             K14WG
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">14,327<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($gold['K14WG'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
@@ -252,36 +288,36 @@ get_header();
                 <div class="divide-y divide-[#E3DCCE]">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
                             Pt1000
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">10,575<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($platinum['Pt1000'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
                             Pt950
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">10,037<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($platinum['Pt950'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
                 <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
                             Pt900
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">9,800<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($platinum['Pt900'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#303E5F] text-[#FFFCF5] py-3 text-center font-bold tracking-wider">
                             Pt850
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">9,207<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($platinum['Pt850'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
@@ -304,25 +340,27 @@ get_header();
                 <div class="divide-y divide-[#E3DCCE]">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">
                             SV1000
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">410<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($silver['SV1000'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
                 <div class="divide-y divide-[#E3DCCE] border-t border-[#E3DCCE] md:border-t-0">
                     <div class="flex items-stretch bg-white">
                         <div
-                            class="w-1/2 md:w-1/3 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">
+                            class="w-1/2 bg-[#615C56] text-white py-3 text-center font-bold tracking-wider">
                             SV925
                         </div>
-                        <div class="w-1/2 md:w-2/3 py-3 px-6 text-center font-medium text-[#33312D]">379<span
+                        <div class="w-1/2 py-3 px-6 text-center font-medium text-[#33312D]"><?php echo esc_html(number_format($silver['SV925'])); ?><span
                                 class="text-[13px]">円</span></div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <?php endif; ?>
 
     </div>
 </section>

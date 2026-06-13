@@ -287,6 +287,14 @@ get_header();
 
 <!-- Shop Gallery Section  -->
 
+<?php
+$img1 = get_field('gallery_image_1', 'option');
+$img2 = get_field('gallery_image_2', 'option');
+$img3 = get_field('gallery_image_3', 'option');
+$gallery_desc = get_field('gallery_description', 'option');
+$placeholder  = get_template_directory_uri() . '/assets/img/camera.svg';
+?>
+
 <section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
 
     <div class="absolute left-0 top-0 w-[45%] md:w-[45%] max-w-[500px] pointer-events-none z-0">
@@ -312,7 +320,7 @@ get_header();
 
         <div
             class="text-center text-[#615C56] text-[14px] sm:text-[15px] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-12 md:mb-16">
-            <p>買取 蔵の宮は、湘南スターモール商店街の一角にある、24㎡の小さな店舗です。</p>
+            <p><?php echo esc_html($gallery_desc); ?></p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-[1100px] mx-auto">
@@ -320,9 +328,10 @@ get_header();
             <div
                 class="md:col-span-2 bg-[#DED7C7] border border-[#DED7C7] flex items-center justify-center shadow-xs relative overflow-hidden group">
                 <div class="w-full h-full aspect-[4/3] md:aspect-[16/10] flex items-center justify-center p-4">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/camera.svg" alt="店内イメージ"
+                    <img src="<?php echo esc_url($img1 ? $img1['url'] : $placeholder); ?>"
+                        alt="<?php echo esc_attr($img1 ? $img1['alt'] : '店内イメージ'); ?>"
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
-                        style="object-fit: contain; max-width: 50px;" />
+                        <?php if (!$img1) : ?>style="object-fit: contain; max-width: 50px;"<?php endif; ?> />
                 </div>
             </div>
 
@@ -331,18 +340,20 @@ get_header();
                 <div
                     class="bg-[#DED7C7] border border-[#DED7C7] flex items-center justify-center shadow-xs relative overflow-hidden group flex-grow">
                     <div class="w-full h-full aspect-[16/9] flex items-center justify-center p-4">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/camera.svg" alt="カウンター席"
+                        <img src="<?php echo esc_url($img2 ? $img2['url'] : $placeholder); ?>"
+                            alt="<?php echo esc_attr($img2 ? $img2['alt'] : 'カウンター席'); ?>"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
-                            style="object-fit: contain; max-width: 50px;" />
+                            <?php if (!$img2) : ?>style="object-fit: contain; max-width: 50px;"<?php endif; ?> />
                     </div>
                 </div>
 
                 <div
                     class="bg-[#DED7C7] border border-[#DED7C7] flex items-center justify-center shadow-xs relative overflow-hidden group flex-grow">
                     <div class="w-full h-full aspect-[16/9] flex items-center justify-center p-4">
-                        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/camera.svg" alt="ディスプレイ"
+                        <img src="<?php echo esc_url($img3 ? $img3['url'] : $placeholder); ?>"
+                            alt="<?php echo esc_attr($img3 ? $img3['alt'] : 'ディスプレイ'); ?>"
                             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
-                            style="object-fit: contain; max-width: 50px;" />
+                            <?php if (!$img3) : ?>style="object-fit: contain; max-width: 50px;"<?php endif; ?> />
                     </div>
                 </div>
 
