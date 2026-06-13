@@ -34,7 +34,7 @@ get_header();
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
         <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-5 w-full min-w-0" data-animate="fade-up">
 
-            <div class="lg:col-span-4 text-center lg:text-center flex flex-col items-center lg:items-center shrink-0">
+            <div class="lg:col-span-4 text-center lg:text-center flex flex-col items-start md:items-center lg:items-center shrink-0">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt=""
                         class="w-full h-auto object-contain mx-auto md:mx-0" />
@@ -56,7 +56,7 @@ get_header();
 
 <!-- Contact Cards  -->
 
-<section class="relative bg-[#F1ECE0] py-16 md:py-24 font-serif-jp overflow-hidden">
+<section class="relative bg-[#F1ECE0] py-4 md:py-24 font-serif-jp overflow-hidden">
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
@@ -181,20 +181,20 @@ get_header();
 
 <!-- Inquiry Form Section  -->
 
-<section class="relative bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
+<section class="relative bg-[#FFFCF5] py-10 md:py-28 font-serif-jp overflow-hidden">
 
     <div class="absolute right-0 top-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-        <img src="/assets/form-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/form-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
     </div>
     <div class="absolute left-0 bottom-[7%] w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
-        <img src="/assets/form-pattern-below.png" alt="" class="w-full h-auto object-contain" />
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/form-pattern-below.png" alt="" class="w-full h-auto object-contain" />
     </div>
 
     <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
         <div class="text-center mb-10 md:mb-12" data-animate="fade-up">
-            <div class="w-30 h-auto mx-auto mb-4">
-                <img src="/assets/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
+            <div class="w-20 md:w-30 h-auto mx-auto mb-4">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
             <span
                 class="font-['EB_Garamond'] text-[#B57A3F] text-[18px] uppercase block mb-2 tracking-[0.15em]">Form</span>

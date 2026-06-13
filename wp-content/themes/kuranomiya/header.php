@@ -60,7 +60,8 @@
         </div>
     </header>
     <div id="mobile-menu"
-        class="fixed inset-0 z-[100] bg-[#303E5F] transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+        style="transform: translate3d(100%, 0, 0);"
+        class="fixed inset-0 z-[100] bg-[#303E5F] lg:hidden overflow-y-auto">
 
         <div class="flex justify-end p-5">
             <button id="close-menu-btn" type="button" class="text-white hover:opacity-80 focus:outline-none"
@@ -119,3 +120,12 @@
 
         </nav>
     </div>
+    <script>
+        (function () {
+            var menu = document.getElementById("mobile-menu");
+            if (!menu) return;
+            menu.classList.remove("is-open");
+            menu.style.transform = "translate3d(100%, 0, 0)";
+            document.body.classList.remove("overflow-hidden");
+        })();
+    </script>

@@ -14,13 +14,13 @@
     <!-- MAIN CENTRALIZED CONTENT WRAPPER CONTAINER -->
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-20 w-full">
       <div class="max-w-[700px] mx-auto text-center flex flex-col items-center">
-        <h2 class="text-white text-[clamp(1.5rem,4.5vw,2.25rem)] noto-serif font-semibold tracking-wide mb-4">
+        <h2 class="text-white text-[clamp(1.3rem,4.5vw,2.25rem)] noto-serif font-semibold tracking-wide mb-4">
           まずはお気軽にご相談ください
         </h2>
 
         <div class="w-16 h-[1px] bg-[#B57A3F] mb-8"></div>
         <div
-          class="text-white/90 text-[clamp(0.85rem,2.5vw,1.05rem)] leading-[2] tracking-wider noto-sans !font-normal mb-10 max-w-[540px]">
+          class="text-white/90 text-[clamp(1rem,2.5vw,1.05rem)] leading-[2] text-left md:text-center tracking-wider noto-sans !font-normal mb-10 max-w-[540px]">
           <p>「査定だけ」「ちょっと聞いてみたいだけ」も大歓迎です</p>
           <p>11年の経験をもつ店主が、心を込めてお応えいたします</p>
         </div>
