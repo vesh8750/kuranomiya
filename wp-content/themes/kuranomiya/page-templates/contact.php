@@ -223,35 +223,38 @@ get_header();
         <form action="#" method="POST" class="space-y-8 font-sans text-[14px] text-[#33312D]" data-animate="fade-up">
 
             <div class="space-y-2">
-                <label for="form-name" class="block font-bold tracking-wide">
+                <label for="custom-name" class="block font-bold tracking-wide">
                     お名前 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                 </label>
-                <input type="text" id="form-name" name="name" required
+                <input type="text" id="custom-name" name="name"
                     class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-name" role="alert"></p>
             </div>
 
             <div class="space-y-2">
-                <label for="form-email" class="block font-bold tracking-wide">
+                <label for="custom-email" class="block font-bold tracking-wide">
                     メールアドレス <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                 </label>
-                <input type="email" id="form-email" name="email" required
+                <input type="email" id="custom-email" name="email"
                     class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-email" role="alert"></p>
             </div>
 
             <div class="space-y-2">
-                <label for="form-tel" class="block font-bold tracking-wide">
-                    お電話番号 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
+                <label for="custom-tel" class="block font-bold tracking-wide">
+                    お電話番号 <span class="text-[#B57A3F] noto-sans text-[12px] font-normal ml-1">（任意）</span>
                 </label>
-                <input type="tel" id="form-tel" name="tel" required
+                <input type="tel" id="custom-tel" name="tel"
                     class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none rounded-none" />
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-tel" role="alert"></p>
             </div>
 
             <div class="space-y-2">
-                <label for="form-category" class="block font-bold tracking-wide">
+                <label for="custom-category" class="block font-bold tracking-wide">
                     ご相談の品目 <span class="text-[#B57A3F] noto-sans text-[12px] font-normal ml-1">（任意 / 複数選択不可）</span>
                 </label>
                 <div class="relative w-full bg-[#F1ECE0]">
-                    <select id="form-category" name="category"
+                    <select id="custom-category" name="category"
                         class="w-full bg-transparent border-none px-4 py-3.5 pr-10 appearance-none outline-none focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors rounded-none font-medium text-[#615C56]">
                         <option value="" disabled selected>必要に応じて、品目を選択してください</option>
                         <option value="gold">金・プラチナ・銀</option>
@@ -266,14 +269,16 @@ get_header();
                         </svg>
                     </div>
                 </div>
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-category" role="alert"></p>
             </div>
 
             <div class="space-y-2">
-                <label for="form-message" class="block font-bold tracking-wide">
+                <label for="custom-message" class="block font-bold tracking-wide">
                     お問い合わせ内容 <span class="text-[#EC2B2B] noto-sans text-[12px] font-medium ml-1">（必須）</span>
                 </label>
-                <textarea id="form-message" name="message" required rows="6"
+                <textarea id="custom-message" name="message" rows="6"
                     class="w-full bg-[#F1ECE0] border-none px-4 py-3.5 focus:bg-white focus:ring-1 focus:ring-[#B57A3F] transition-colors outline-none resize-y rounded-none"></textarea>
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-message" role="alert"></p>
             </div>
 
             <div class="space-y-4 pt-4">
@@ -296,15 +301,20 @@ get_header();
                 <div class="flex items-center justify-start pt-2">
                     <label
                         class="inline-flex items-center cursor-pointer select-none font-serif-jp text-[13px] sm:text-[14px] text-[#33312D]">
-                        <input type="checkbox" name="policy_agreement" required
+                        <input type="checkbox" id="custom-policy" name="policy_agreement"
                             class="contact-checkbox w-5 h-5 border-none focus:ring-0 rounded-sm cursor-pointer mr-3" />
                         <span>プライバシーポリシーに同意する</span>
                     </label>
                 </div>
+                <p class="field-error hidden noto-sans text-[12px] text-[#EC2B2B]" data-field="custom-policy" role="alert"></p>
             </div>
 
+            <div id="form-error-block"
+                class="hidden bg-[#F1ECE0] border border-[#DED7C7] px-4 py-3 noto-sans text-[14px] text-[#615C56]"
+                role="alert"></div>
+
             <div class="text-center pt-6">
-                <button type="submit"
+                <button type="submit" id="custom-submit"
                     class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-2 px-12 py-4 font-serif-jp font-semibold shadow-md hover:bg-[#a06830] transition-colors w-[200px] rounded-none cursor-pointer">
                     <span class="tracking-widest">送信する</span>
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
@@ -314,6 +324,278 @@ get_header();
             </div>
 
         </form>
+
+        <div id="cf7-hidden-form" class="hidden">
+            <?php echo do_shortcode('[contact-form-7 id="de80c18" title="Kuranomiya Contact Form"]'); ?>
+        </div>
+
+        <script>
+        (function () {
+            const submitBtn = document.getElementById('custom-submit');
+            if (!submitBtn) return;
+
+            const customForm = submitBtn.closest('form');
+            const cf7Container = document.getElementById('cf7-hidden-form');
+            const cf7Form = cf7Container ? cf7Container.querySelector('form') : null;
+            const formErrorBlock = document.getElementById('form-error-block');
+            const fieldIds = ['custom-name', 'custom-email', 'custom-tel', 'custom-category', 'custom-message', 'custom-policy'];
+
+            const cf7FieldMap = {
+                'custom-name': ['your-name'],
+                'custom-email': ['your-email'],
+                'custom-tel': ['tel', 'your-tel'],
+                'custom-category': ['category', 'your-category'],
+                'custom-message': ['your-message'],
+                'custom-policy': ['acceptance', 'acceptance-policy', 'policy'],
+            };
+
+            const cf7ToCustom = {};
+            Object.entries(cf7FieldMap).forEach(function (entry) {
+                entry[1].forEach(function (name) {
+                    cf7ToCustom[name] = entry[0];
+                });
+            });
+
+            function getCf7Field(names) {
+                if (!cf7Form) return null;
+
+                for (let i = 0; i < names.length; i++) {
+                    const field = cf7Form.querySelector('[name="' + names[i] + '"]');
+                    if (field) return field;
+                }
+
+                return null;
+            }
+
+            function setCf7Value(names, value) {
+                const field = getCf7Field(names);
+                if (!field) return;
+
+                if (field.type === 'checkbox') {
+                    field.checked = Boolean(value);
+                } else {
+                    field.value = value;
+                }
+            }
+
+            function clearFieldErrors() {
+                document.querySelectorAll('.field-error').forEach(function (el) {
+                    el.textContent = '';
+                    el.classList.add('hidden');
+                });
+
+                fieldIds.forEach(function (id) {
+                    const field = document.getElementById(id);
+                    if (field) {
+                        field.classList.remove('ring-1', 'ring-[#EC2B2B]');
+                    }
+                });
+
+                if (formErrorBlock) {
+                    formErrorBlock.textContent = '';
+                    formErrorBlock.classList.add('hidden');
+                }
+            }
+
+            function showFieldError(fieldId, message) {
+                const errorEl = document.querySelector('[data-field="' + fieldId + '"]');
+                const field = document.getElementById(fieldId);
+
+                if (errorEl) {
+                    errorEl.textContent = message;
+                    errorEl.classList.remove('hidden');
+                }
+
+                if (field) {
+                    field.classList.add('ring-1', 'ring-[#EC2B2B]');
+                }
+            }
+
+            function showFormError(message) {
+                if (!formErrorBlock) return;
+                formErrorBlock.textContent = message;
+                formErrorBlock.classList.remove('hidden');
+            }
+
+            function validateClient() {
+                clearFieldErrors();
+                let valid = true;
+
+                const name = document.getElementById('custom-name');
+                if (!name || !name.value.trim()) {
+                    showFieldError('custom-name', 'お名前をご入力ください。');
+                    valid = false;
+                }
+
+                const email = document.getElementById('custom-email');
+                const emailVal = email ? email.value.trim() : '';
+                if (!emailVal) {
+                    showFieldError('custom-email', 'メールアドレスをご入力ください。');
+                    valid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+                    showFieldError('custom-email', '正しいメールアドレスの形式でご入力ください。');
+                    valid = false;
+                }
+
+                const tel = document.getElementById('custom-tel');
+                const telVal = tel ? tel.value.trim() : '';
+                if (telVal && !/^[0-9\-+()\s]+$/.test(telVal)) {
+                    showFieldError('custom-tel', 'お電話番号の形式をご確認ください。');
+                    valid = false;
+                }
+
+                const message = document.getElementById('custom-message');
+                if (!message || !message.value.trim()) {
+                    showFieldError('custom-message', 'お問い合わせ内容をご入力ください。');
+                    valid = false;
+                }
+
+                const policy = document.getElementById('custom-policy');
+                if (!policy || !policy.checked) {
+                    showFieldError('custom-policy', 'プライバシーポリシーへのご同意をお願いいたします。');
+                    valid = false;
+                }
+
+                return valid;
+            }
+
+            function setLoading(isLoading) {
+                const label = submitBtn.querySelector('span');
+                const icon = submitBtn.querySelector('svg:not(.contact-form-spinner)');
+
+                if (isLoading) {
+                    submitBtn.disabled = true;
+                    submitBtn.classList.add('opacity-70', 'pointer-events-none');
+                    if (label) label.textContent = '送信中...';
+                    if (icon) icon.classList.add('hidden');
+                    if (!submitBtn.querySelector('.contact-form-spinner')) {
+                        const spinner = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                        spinner.setAttribute('class', 'contact-form-spinner w-4 h-4 animate-spin');
+                        spinner.setAttribute('fill', 'none');
+                        spinner.setAttribute('viewBox', '0 0 24 24');
+                        spinner.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>';
+                        submitBtn.appendChild(spinner);
+                    }
+                } else {
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('opacity-70', 'pointer-events-none');
+                    if (label) label.textContent = '送信する';
+                    const spinner = submitBtn.querySelector('.contact-form-spinner');
+                    if (spinner) spinner.remove();
+                    if (icon) icon.classList.remove('hidden');
+                }
+            }
+
+            function copyToCf7() {
+                const name = document.getElementById('custom-name');
+                const email = document.getElementById('custom-email');
+                const tel = document.getElementById('custom-tel');
+                const category = document.getElementById('custom-category');
+                const message = document.getElementById('custom-message');
+                const policy = document.getElementById('custom-policy');
+
+                setCf7Value(cf7FieldMap['custom-name'], name ? name.value.trim() : '');
+                setCf7Value(cf7FieldMap['custom-email'], email ? email.value.trim() : '');
+                setCf7Value(cf7FieldMap['custom-tel'], tel ? tel.value.trim() : '');
+
+                let categoryValue = '';
+                if (category && category.value) {
+                    const selectedOption = category.options[category.selectedIndex];
+                    categoryValue = selectedOption ? selectedOption.text : category.value;
+                }
+                setCf7Value(cf7FieldMap['custom-category'], categoryValue);
+
+                setCf7Value(cf7FieldMap['custom-message'], message ? message.value.trim() : '');
+                setCf7Value(cf7FieldMap['custom-policy'], policy ? policy.checked : false);
+            }
+
+            function showSuccess() {
+                customForm.outerHTML = `
+                    <div class="text-center py-12 md:py-16 space-y-6 font-serif-jp" data-animate="fade-up">
+                        <div class="w-16 h-16 mx-auto rounded-full bg-[#F1ECE0] flex items-center justify-center">
+                            <svg class="w-8 h-8 text-[#B57A3F]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-[#33312D] text-[clamp(1.5rem,3vw,1.75rem)] font-bold tracking-wide">送信が完了しました</h3>
+                        <p class="text-[#615C56] noto-sans text-[14px] leading-[1.8] tracking-wide max-w-md mx-auto">
+                            お問い合わせいただき、誠にありがとうございます。<br class="hidden sm:block">
+                            内容を確認のうえ、2〜3営業日以内にご返信いたします。<br class="hidden sm:block">
+                            今しばらくお待ちくださいませ。
+                        </p>
+                        <a href="<?php echo esc_url(home_url('/')); ?>"
+                            class="inline-flex items-center justify-center text-[#B57A3F] noto-sans text-[14px] font-semibold tracking-wide hover:opacity-80 transition-opacity pt-2">
+                            トップページへ戻る
+                        </a>
+                    </div>
+                `;
+            }
+
+            function isOurCf7Event(event) {
+                return cf7Container && cf7Container.contains(event.target);
+            }
+
+            customForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                if (!validateClient()) return;
+
+                if (!cf7Form) {
+                    showFormError('フォームの読み込みに問題が発生しました。しばらく経ってから再度お試しください。');
+                    return;
+                }
+
+                copyToCf7();
+                setLoading(true);
+
+                const cf7Submit = cf7Form.querySelector('input[type="submit"], button[type="submit"]');
+                if (cf7Submit) {
+                    cf7Submit.click();
+                } else {
+                    setLoading(false);
+                    showFormError('送信処理を開始できませんでした。お手数ですが、しばらく経ってから再度お試しください。');
+                }
+            });
+
+            document.addEventListener('wpcf7mailsent', function (event) {
+                if (!isOurCf7Event(event)) return;
+                setLoading(false);
+                showSuccess();
+            });
+
+            document.addEventListener('wpcf7invalid', function (event) {
+                if (!isOurCf7Event(event)) return;
+                setLoading(false);
+                clearFieldErrors();
+
+                const invalidFields = event.detail && event.detail.apiResponse
+                    ? event.detail.apiResponse.invalid_fields
+                    : [];
+
+                if (invalidFields && invalidFields.length) {
+                    invalidFields.forEach(function (item) {
+                        const customId = cf7ToCustom[item.field];
+                        if (customId) {
+                            showFieldError(customId, item.message);
+                        }
+                    });
+                }
+            });
+
+            document.addEventListener('wpcf7mailfailed', function (event) {
+                if (!isOurCf7Event(event)) return;
+                setLoading(false);
+                showFormError('送信中にエラーが発生しました。お手数ですが、しばらく経ってから再度お試しいただくか、お電話にてお問い合わせください。');
+            });
+
+            document.addEventListener('wpcf7spam', function (event) {
+                if (!isOurCf7Event(event)) return;
+                setLoading(false);
+                showFormError('送信できませんでした。内容をご確認のうえ、再度お試しください。');
+            });
+        })();
+        </script>
 
     </div>
 </section>
