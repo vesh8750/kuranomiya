@@ -7,9 +7,12 @@
 /license.txt
 /readme.html
 
+
 # Uploads & generated
 /wp-content/uploads/
 /wp-content/upgrade/
+/wp-content/backup/
+/wp-content/ai1wm-backups/
 /wp-content/cache/
 /wp-content/backup-db/
 /wp-content/advanced-cache.php
