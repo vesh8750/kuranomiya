@@ -117,7 +117,7 @@ if ($item_purchase_related_ids) {
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center mb-12 md:mb-16">
+        <div class="text-center mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -128,7 +128,7 @@ if ($item_purchase_related_ids) {
             </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1140px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-[1140px] mx-auto" data-animate="stagger-soft">
 
             <div
                 class="bg-[#FFFCF5] p-6 sm:p-7 shadow-xs border-t-[4px] border-[#B57A3F] flex flex-col justify-between min-h-[260px]">
@@ -239,7 +239,7 @@ if ($item_purchase_related_ids) {
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center mb-16 md:mb-20">
+        <div class="text-center mb-16 md:mb-20" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -250,7 +250,7 @@ if ($item_purchase_related_ids) {
             </h2>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 max-w-[1140px] mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8 max-w-[1140px] mx-auto" data-animate="stagger-soft">
 
             <div class="bg-[#FFFCF5] p-6 pt-0 shadow-md rounded-none overflow-hidden flex flex-col justify-between">
                 <div>
@@ -375,7 +375,7 @@ if ($item_purchase_related_ids) {
 
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -384,7 +384,7 @@ if ($item_purchase_related_ids) {
             </h2>
         </div>
 
-        <div class="relative px-5 sm:px-0 mb-12">
+        <div class="relative px-5 sm:px-0 mb-12" data-animate="fade-up">
 
             <button id="related-prev" type="button"
                 class="absolute left-2 top-[30%] -translate-y-1/2 z-20 lg:hidden bg-[#B57A3F]/80 text-white w-9 h-9 flex items-center justify-center shadow-md focus:outline-none"

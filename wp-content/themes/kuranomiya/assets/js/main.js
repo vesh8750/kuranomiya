@@ -79,6 +79,28 @@ export function fadeInStaggerList(selector) {
   });
 }
 
+export function fadeInStaggerSoft(selector) {
+  if (prefersReducedMotion) return;
+
+  const container = gsap.utils.toArray(selector)[0];
+  if (!container) return;
+
+  const targets = getStaggerTargets(container);
+  if (!targets.length) return;
+
+  gsap.from(targets, {
+    y: 36,
+    opacity: 0,
+    duration: 1.05,
+    ease: "power2.out",
+    stagger: 0.18,
+    scrollTrigger: {
+      trigger: container,
+      start: SCROLL_START,
+    },
+  });
+}
+
 export function revealFromLeft(selector) {
   if (prefersReducedMotion) return;
 
@@ -231,6 +253,9 @@ function initAnimations() {
   document
     .querySelectorAll('[data-animate="stagger-list"]')
     .forEach((el) => fadeInStaggerList(el));
+  document
+    .querySelectorAll('[data-animate="stagger-soft"]')
+    .forEach((el) => fadeInStaggerSoft(el));
   document
     .querySelectorAll('[data-animate="reveal-left"]')
     .forEach((el) => revealFromLeft(el));
