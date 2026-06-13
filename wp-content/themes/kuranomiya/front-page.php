@@ -294,7 +294,7 @@ get_header();
 <section class="relative bg-[#303E5F] text-white py-16 md:py-28 font-serif-jp overflow-hidden">
 
     <div class="absolute right-0 top-0 w-[55%] md:w-[25%] max-w-[520px] pointer-events-none z-0">
-       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/story-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/story-pattern-top.png" alt="" class="w-full h-auto object-contain transform" />
     </div>
 
     <div class="absolute left-0 bottom-[-91px] w-[25%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
@@ -453,7 +453,7 @@ get_header();
                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
             <span class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2">Items</span>
-            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.45rem)] font-bold tracking-wide">
                 買取品目
             </h2>
         </div>
@@ -582,26 +582,26 @@ get_header();
 
             <div
                 class="flex flex-wrap justify-center gap-2.5 sm:gap-3 max-w-[800px] mx-auto text-[13px] sm:text-[14px] font-sans text-[#33312D]">
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">カメラ</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">古銭</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ホビー</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">お酒</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ライター</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">メッキアクセサリー</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">切手</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">テレカ</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">金券</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">骨董品</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">スマートフォン</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">香水・コスメ</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">楽器</span>
-                <span class="bg-white px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ブランド食器</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">カメラ</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">古銭</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ホビー</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">お酒</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ライター</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">メッキアクセサリー</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">切手</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">テレカ</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">金券</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">骨董品</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">スマートフォン</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">香水・コスメ</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">楽器</span>
+                <span class="bg-[#FFFCF5] px-5 py-2.5 border border-[#E3DCCE] shadow-xs rounded-xs">ブランド食器</span>
             </div>
         </div>
 
         <div class="text-center mt-12 md:mt-16 px-5">
             <a href="#"
-                class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 sm:py-4.5 font-medium shadow-md hover:bg-[#a06830] transition-color w-[320px] sm:w-[320px]">
+                class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 sm:py-4.5 font-medium shadow-md hover:bg-[#a06830] transition-color w-[260px] sm:w-[320px]">
                 <span class="text-[15px] font-semibold tracking-wider">すべての品目をみる</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -641,7 +641,7 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
             </div>
             <span
                 class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2 tracking-[0.1em]">Achievements</span>
-            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-[#33312D] text-[clamp(2rem,4vw,2.45rem)] font-bold tracking-wide">
                 買取実績
             </h2>
         </div>
@@ -729,7 +729,7 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
 
         <div class="text-center mt-12 md:mt-16 px-5">
             <a href="<?php echo esc_url($fp_achievements_url ?: '#'); ?>"
-                class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 sm:py-4.5 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[300px]">
+                class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 sm:py-4.5 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[260px] sm:w-[300px]">
                 <span class="text-[18px] noto-sans font-semibold tracking-wider">実績一覧をみる</span>
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -776,7 +776,7 @@ if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
         </div>
 
         <div
-            class="text-left md:text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-8 space-y-2">
+            class="text-left hidden md:block md:text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-8 space-y-2">
             <p>業界標準価格に基づき、毎日自動で更新しています。<br class="block md:hidden"></p>
             <p>金・プラチナ・銀の3種類について、買取参考価格を併記しています。</p>
         </div>
@@ -928,7 +928,7 @@ $fp_column_url  = $fp_column_page ? get_permalink($fp_column_page) : '';
             </div>
             <span
                 class="font-['EB_Garamond'] text-[#B57A3F] text-[20px] uppercase block mb-2 tracking-[0.1em]">Column</span>
-            <h2 class="text-white text-[clamp(2rem,4vw,2.25rem)] font-bold tracking-wide">
+            <h2 class="text-white text-[clamp(2rem,4vw,2.45rem)] font-bold tracking-wide">
                 コラム
             </h2>
         </div>

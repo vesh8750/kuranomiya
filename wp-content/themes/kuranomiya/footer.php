@@ -38,7 +38,7 @@
           </a>
 
           <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
-            class="bg-[#B57A3F] text-white flex items-center justify-center space-x-2 px-8 py-4 shadow-md hover:bg-[#a06830] transition-colors w-full sm:w-[280px] rounded-[2px] font-medium whitespace-nowrap">
+            class="bg-[#B57A3F] text-white flex items-center justify-center space-x-2 px-8 py-4 shadow-md hover:bg-[#a06830] transition-colors w-[260px] sm:w-[280px] rounded-[2px] font-medium whitespace-nowrap">
             <span class="text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">LINEで査定相談する</span>
             <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round"
