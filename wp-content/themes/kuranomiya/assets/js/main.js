@@ -14,13 +14,19 @@ if (!prefersReducedMotion) {
 
 const SCROLL_START = "top 85%";
 
+function getStaggerTargets(container) {
+  return [...container.children].filter(
+    (el) => !el.classList.contains("pointer-events-none"),
+  );
+}
+
 export function fadeInUp(selector) {
   if (prefersReducedMotion) return;
 
   gsap.from(selector, {
-    y: 40,
+    y: 24,
     opacity: 0,
-    duration: 0.7,
+    duration: 0.8,
     ease: "power2.out",
     scrollTrigger: {
       trigger: selector,
@@ -35,15 +41,15 @@ export function fadeInStagger(selector) {
   const container = gsap.utils.toArray(selector)[0];
   if (!container) return;
 
-  gsap.from(container.children, {
-    y: 40,
+  const targets = getStaggerTargets(container);
+  if (!targets.length) return;
+
+  gsap.from(targets, {
+    x: 28,
     opacity: 0,
-    duration: 0.7,
+    duration: 0.75,
     ease: "power2.out",
-    stagger: {
-      each: 0.15,
-      axis: "x",
-    },
+    stagger: 0.12,
     scrollTrigger: {
       trigger: container,
       start: SCROLL_START,
@@ -57,15 +63,15 @@ export function fadeInStaggerList(selector) {
   const container = gsap.utils.toArray(selector)[0];
   if (!container) return;
 
-  gsap.from(container.children, {
-    y: 40,
+  const targets = getStaggerTargets(container);
+  if (!targets.length) return;
+
+  gsap.from(targets, {
+    y: 24,
     opacity: 0,
-    duration: 0.7,
+    duration: 0.75,
     ease: "power2.out",
-    stagger: {
-      each: 0.15,
-      axis: "y",
-    },
+    stagger: 0.15,
     scrollTrigger: {
       trigger: container,
       start: SCROLL_START,
@@ -78,8 +84,8 @@ export function revealFromLeft(selector) {
 
   gsap.from(selector, {
     clipPath: "inset(0 100% 0 0)",
-    duration: 1,
-    ease: "power3.out",
+    duration: 1.1,
+    ease: "power2.out",
     scrollTrigger: {
       trigger: selector,
       start: SCROLL_START,

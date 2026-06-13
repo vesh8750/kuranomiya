@@ -84,7 +84,7 @@ get_header();
 
     <div class="relative max-w-[1100px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center mb-16 md:mb-18">
+        <div class="text-center mb-16 md:mb-18" data-animate="fade-up">
             <h2
                 class="font-['EB_Garamond'] text-[clamp(2.5rem,7vw,5.5rem)] font-medium text-[#EAE2D5] uppercase tracking-[0.15em] leading-none mb-5 lg:mb-4">
                 Philosophy
@@ -100,7 +100,7 @@ get_header();
             </p>
         </div>
 
-        <div class="flex flex-col gap-25 md:gap-10">
+        <div class="flex flex-col gap-25 md:gap-10" data-animate="stagger-list">
 
             <div
                 class="kura-card relative w-[81%] md:w-[62%] bg-[#303E5F] bg-contain bg-no-repeat text-white p-8 md:p-12 shadow-xl"
@@ -156,7 +156,7 @@ get_header();
 <section class="bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden" id="reasons">
     <div class="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
 
-        <div class="text-center mb-16 md:mb-15">
+        <div class="text-center mb-16 md:mb-15" data-animate="fade-up">
             <h2
                 class="font-['EB_Garamond'] text-[clamp(2.9rem,7vw,5.5rem)] font-medium text-[#FFFCF5] uppercase tracking-[0.15em] mb-5 md:mb-0 leading-none">
                 Reasons
@@ -176,7 +176,7 @@ get_header();
 
         <div class="space-y-6 md:space-y-8">
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8" data-animate="stagger">
 
                 <div class="relative bg-[#FFFCF5] p-6 pt-0 sm:p-10 sm:pt-0 shadow-sm rounded-sm overflow-hidden">
                     <div class="flex items-end gap-4 mb-6 -mx-6 sm:-mx-10">
@@ -221,7 +221,7 @@ get_header();
 
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8" data-animate="stagger">
 
                 <div class="relative bg-[#FFFCF5] p-6 pt-0 sm:p-8 sm:pt-0 shadow-sm rounded-sm overflow-hidden">
                     <div class="flex items-end gap-4 mb-5 -mx-6 sm:-mx-8">
@@ -304,7 +304,7 @@ get_header();
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
 
         <!-- Section Header -->
-        <div class="text-left md:text-left px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-left md:text-left px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <h2
                 class="font-['EB_Garamond'] text-[clamp(50px,8vw,128px)] font-medium text-[#B57A3F] uppercase tracking-[0.05em] leading-[1.2] md:leading-relaxed mb-4 md:mb-0">
                 Story<br class="block md:hidden" /><span
@@ -336,7 +336,8 @@ get_header();
                 </svg>
             </button>
             <div id="story-track"
-                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-10 pb-3 lg:pb-0">
+                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-10 pb-3 lg:pb-0"
+                data-animate="stagger">
 
                 <!-- CARD 01 -->
                 <div
@@ -448,7 +449,7 @@ get_header();
 <section class="bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
     <div class="max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8">
 
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -477,7 +478,8 @@ get_header();
             </button>
 
             <div id="items-track"
-                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-4 gap-6 xl:gap-8 pb-6 lg:pb-0">
+                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-4 gap-6 xl:gap-8 pb-6 lg:pb-0"
+                data-animate="stagger">
 
                 <div
                     class="item-card w-[85vw] sm:w-[45vw] lg:w-auto flex-shrink-0 snap-center bg-transparent flex flex-col mr-4 lg:mr-0">
@@ -574,7 +576,7 @@ get_header();
 
         </div>
 
-        <div class="bg-[#F1ECE0] rounded-sm p-6 sm:p-10 md:p-14 m-4 lg:mx-auto mx-5 sm:mx-auto">
+        <div class="bg-[#F1ECE0] rounded-sm p-6 sm:p-10 md:p-14 m-4 lg:mx-auto mx-5 sm:mx-auto" data-animate="fade-up">
             <h3 class="text-[#33312D] text-center text-[clamp(1.1rem,3vw,1.35rem)] font-bold mb-4">
                 その他、幅広い品目に対応しております
             </h3>
@@ -627,15 +629,15 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
 ?>
 
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden">
-    <div class="absolute right-0 top-0 w-[55%] md:w-[25%] max-w-[520px] pointer-events-none z-0">
-       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ach-pattern-top.png" alt="" class="w-full h-auto object-contain transform rotate-180" />
+    <div class="absolute right-0 top-0 w-[55%] md:w-[30%] max-w-[520px] pointer-events-none z-0">
+       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ach-pattern-top.png" alt="" class="w-full h-auto object-contain transform" />
     </div>
     <div class="absolute left-0 bottom-0 w-[45%] md:w-[25%] max-w-[320px] pointer-events-none z-0">
        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/ach-pattern-bottom.png" alt="" class="w-full h-auto object-contain" />
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -661,7 +663,8 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
                 </svg>
             </button>
             <div id="achievements-track"
-                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0">
+                class="flex items-stretch overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0"
+                data-animate="stagger">
 
                 <?php if ($fp_achievements_query->have_posts()) : ?>
                     <?php
@@ -677,9 +680,9 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
                             ?: get_template_directory_uri() . '/assets/img/placeholder-img.png';
                         $fp_achievement_margin = $fp_achievement_index < $fp_achievements_query->post_count ? ' mr-4 lg:mr-0' : '';
                         ?>
-                        <a href="<?php echo esc_url(get_permalink()); ?>" class="block">
+                        <a href="<?php echo esc_url(get_permalink()); ?>" class="block h-full">
                             <div
-                                class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col<?php echo esc_attr($fp_achievement_margin); ?>">
+                                class="achievement-card w-[90vw] sm:w-[55vw] lg:w-auto flex-shrink-0 snap-center bg-[#FFFCF5] shadow-sm flex flex-col h-full<?php echo esc_attr($fp_achievement_margin); ?>">
                                 <div class="relative w-full aspect-[5/3] overflow-hidden bg-gray-100">
                                     <img src="<?php echo esc_url($fp_achievement_thumb); ?>" alt="<?php echo esc_attr(get_the_title()); ?>" class="w-full h-full object-cover" />
                                     <?php if ($fp_achievement_cat) : ?>
@@ -690,7 +693,7 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
                                     <?php endif; ?>
                                 </div>
                                 <div class="p-6 sm:p-8 flex flex-col flex-grow">
-                                    <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[2.4em]">
+                                    <h3 class="text-[#33312D] text-[1.2rem] font-bold tracking-wide leading-snug min-h-[1.4em]">
                                         <?php the_title(); ?>
                                     </h3>
                                     <div class="flex items-baseline text-[#33312D] mb-5">
@@ -700,12 +703,10 @@ $fp_achievements_url  = $fp_achievements_page ? get_permalink($fp_achievements_p
                                         <span class="text-[15px] font-bold ml-0.5">円</span>
                                     </div>
                                     <div class="w-full h-[1px] bg-[#EAE2D5] mb-5"></div>
-                                    <?php if ($fp_achievement_desc) : ?>
-                                        <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6">
-                                            <?php echo esc_html($fp_achievement_desc); ?>
-                                        </p>
-                                    <?php endif; ?>
-                                    <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block"><?php echo esc_html(get_the_date('Y.m')); ?></span>
+                                    <p class="text-[#615C56] text-[14px] leading-[1.75] noto-sans !font-normal tracking-wide flex-grow mb-6 min-h-[3.5em]">
+                                        <?php echo esc_html($fp_achievement_desc ?: ''); ?>
+                                    </p>
+                                    <span class="text-[#B57A3F] noto-sans text-[16px] font-medium tracking-wider block mt-auto"><?php echo esc_html(get_the_date('Y.m')); ?></span>
                                 </div>
                             </div>
                         </a>
@@ -764,7 +765,7 @@ if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
 <section class="bg-[#FFFCF5] py-16 md:py-28 font-serif-jp overflow-hidden">
     <div class="max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8">
 
-        <div class="text-center mb-8 md:mb-10">
+        <div class="text-center mb-8 md:mb-10" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -776,13 +777,15 @@ if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
         </div>
 
         <div
-            class="text-left hidden md:block md:text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-8 space-y-2">
+            class="text-left hidden md:block md:text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-8 space-y-2"
+            data-animate="reveal-left">
             <p>業界標準価格に基づき、毎日自動で更新しています。<br class="block md:hidden"></p>
             <p>金・プラチナ・銀の3種類について、買取参考価格を併記しています。</p>
         </div>
 
         <div
-            class="bg-[#F1ECE0] max-w-[560px] mx-auto p-3.5 sm:p-4 text-center text-[13px] sm:text-[14px] tracking-wide mb-12 sm:mb-16 font-sans text-[#33312D]">
+            class="bg-[#F1ECE0] max-w-[560px] mx-auto p-3.5 sm:p-4 text-center text-[13px] sm:text-[14px] tracking-wide mb-12 sm:mb-16 font-sans text-[#33312D]"
+            data-animate="fade-up">
             <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4">
                 <div>
                     <span class="text-[#B57A3F] font-semibold mr-2">最終更新</span>
@@ -800,7 +803,7 @@ if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
             相場データは現在準備中です。しばらくお待ちください。
         </p>
         <?php else : ?>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1100px] mx-auto mb-10 sm:mb-12">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-[1100px] mx-auto mb-10 sm:mb-12" data-animate="stagger">
 
             <!-- CARD 01: GOLD -->
             <div
@@ -885,7 +888,7 @@ if ($fp_has_metal_rates && ! empty($fp_metal_rates['updated_at'])) {
             ※ 表示価格は店頭買取の参考価格です。純度・状態により実際の査定額は変動します。
         </p>
         <div class="text-center px-5">
-            <a href="#"
+            <a href="<?php echo esc_url(kuranomiya_get_page_url('market-rates')); ?>"
                 class="bg-[#B57A3F] text-white inline-flex items-center justify-center space-x-3 px-10 py-4 font-medium shadow-md hover:bg-[#a06830] transition-colors w-[250px] md:w-[300px]">
                 <span class=" text-[16px] md:text-[18px] noto-sans font-semibold tracking-wider">相場詳細をみる</span>
                 <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -922,7 +925,7 @@ $fp_column_url  = $fp_column_page ? get_permalink($fp_column_page) : '';
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -952,7 +955,8 @@ $fp_column_url  = $fp_column_page ? get_permalink($fp_column_page) : '';
             </button>
 
             <div id="column-track"
-                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0">
+                class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar lg:grid lg:grid-cols-3 gap-6 xl:gap-8 pb-6 lg:pb-0"
+                data-animate="stagger">
 
                 <?php if ($fp_column_query->have_posts()) : ?>
                     <?php

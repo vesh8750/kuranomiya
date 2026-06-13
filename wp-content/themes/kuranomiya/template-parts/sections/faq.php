@@ -6,7 +6,7 @@
 
     <div class="relative max-w-[1200px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center mb-12 md:mb-10">
+        <div class="text-center mb-12 md:mb-10" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -17,12 +17,13 @@
         </div>
 
         <div
-            class="text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-12 sm:mb-16 space-y-2">
+            class="text-center text-[#33312D] text-[clamp(0.85rem,2.5vw,1rem)] leading-[1.8] tracking-wider noto-sans !font-medium max-w-[800px] mx-auto mb-12 sm:mb-16 space-y-2"
+            data-animate="fade-up">
             <p>ご来店前のご不安を、少しでも解消できればと思います。</p>
             <p>掲載内容以外のご質問に関しましては、お電話またはLINEでお気軽にお問い合わせください。</p>
         </div>
 
-        <div class="relative space-y-5 mx-auto">
+        <div class="relative space-y-5 mx-auto" data-animate="stagger-list">
             <div class="absolute right-[-8%] top-[-46%] w-[25%] aspect-square pointer-events-none z-0 hidden sm:block">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/faq-pattern-top.png" alt="" class="w-full h-auto object-contain transform" />
             </div>
