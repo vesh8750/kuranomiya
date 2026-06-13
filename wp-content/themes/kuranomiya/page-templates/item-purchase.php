@@ -61,7 +61,7 @@ if ($item_purchase_related_ids) {
     </div>
 
     <div class="hidden md:block relative w-full max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 pt-4 sm:pt-6 z-10 font-sans text-[12px] tracking-wider text-[#615C56]">
-        <nav class="flex items-center space-x-2 flex-wrap noto-sans">
+        <nav class="flex items-center space-x-2 flex-wrap noto-sans text-sm">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
             <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
             <a href="#" class="hover:text-[#B57A3F] transition-colors">買取品目</a>

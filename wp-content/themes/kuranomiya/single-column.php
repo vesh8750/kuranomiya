@@ -42,7 +42,7 @@ while (have_posts()) :
 
 <div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
     <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
-        <nav class="flex items-center space-x-2 flex-wrap">
+        <nav class="flex items-center space-x-2 flex-wrap text-sm">
             <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
             <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
             <?php if ($column_url) : ?>
