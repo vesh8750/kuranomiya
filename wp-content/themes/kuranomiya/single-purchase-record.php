@@ -7,6 +7,9 @@
 
 get_header();
 
+$purchase_records_page = get_page_by_path('purchase-records');
+$purchase_records_url  = $purchase_records_page ? get_permalink($purchase_records_page) : '';
+
 while (have_posts()) :
     the_post();
 
@@ -37,6 +40,22 @@ while (have_posts()) :
     ]);
 ?>
 
+<div class="w-full bg-[#FFFCF5] pt-4 sm:pt-6 font-sans text-[12px] tracking-wider text-[#615C56]">
+    <div class="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8">
+        <nav class="flex items-center space-x-2 flex-wrap text-sm">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="hover:text-[#B57A3F] transition-colors">ホーム</a>
+            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+            <?php if ($purchase_records_url) : ?>
+                <a href="<?php echo esc_url($purchase_records_url); ?>" class="hover:text-[#B57A3F] transition-colors">買取実績</a>
+            <?php else : ?>
+                <span class="text-[#33312D] font-medium">買取実績</span>
+            <?php endif; ?>
+            <span class="text-[#B57A3F] font-medium select-none">&gt;</span>
+            <span class="text-[#33312D] font-medium"><?php the_title(); ?></span>
+        </nav>
+    </div>
+</div>
+
 <!-- Hero Section  -->
 
 <section
@@ -53,7 +72,7 @@ while (have_posts()) :
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12" data-animate="fade-up">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
@@ -88,7 +107,7 @@ while (have_posts()) :
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-start max-w-[1000px] mx-auto pb-12">
 
             <div class="lg:col-span-6 space-y-4">
-                <div class="w-full aspect-[5/3] min-h-[329px] bg-gray-100 overflow-hidden shadow-xs">
+                <div class="w-full aspect-[5/3] min-h-[329px] bg-gray-100 overflow-hidden shadow-xs" data-animate="image-reveal">
                     <?php if ($main_image_url) : ?>
                         <img id="product-gallery-main" src="<?php echo esc_url($main_image_url); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
                             class="w-full h-full object-cover" />
@@ -117,7 +136,7 @@ while (have_posts()) :
                 <?php endif; ?>
             </div>
 
-            <div class="lg:col-span-6 pt-2 space-y-5">
+            <div class="lg:col-span-6 pt-2 space-y-5" data-animate="fade-up">
 
                 <?php if ($category_term || get_field('brand_name')) : ?>
                     <div
@@ -185,7 +204,8 @@ while (have_posts()) :
 
         <?php if ($customer_voice) : ?>
             <div
-                class="bg-[#303E5F] text-white p-6 sm:p-10 relative overflow-hidden max-w-[1000px] mx-auto border-t-[3px] border-[#B57A3F] !py-[21px] !pl-[60px]">
+                class="bg-[#303E5F] text-white p-6 sm:p-10 relative overflow-hidden max-w-[1000px] mx-auto border-t-[3px] border-[#B57A3F] !py-[21px] !pl-[60px]"
+                data-animate="fade-up">
 
                 <span
                     class="absolute left-6 top-6 text-[#B57A3F] font-serif text-[4rem] leading-none select-none pointer-events-none">“</span>
@@ -208,7 +228,8 @@ while (have_posts()) :
 
         <?php if ($owner_comment) : ?>
             <div
-                class="bg-[#FFFCF5] p-6 sm:p-5 shadow-xs border-t-2 border-[#303E5F] max-w-[1000px] mx-auto space-y-6 !py-[21px]">
+                class="bg-[#FFFCF5] p-6 sm:p-5 shadow-xs border-t-2 border-[#303E5F] max-w-[1000px] mx-auto space-y-6 !py-[21px]"
+                data-animate="fade-up">
 
                 <div class="flex items-center space-x-4 pl-0 sm:pl-4">
                     <div
@@ -240,7 +261,7 @@ while (have_posts()) :
 
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -249,7 +270,7 @@ while (have_posts()) :
             </h2>
         </div>
 
-        <div class="relative px-5 sm:px-0 mb-12">
+        <div class="relative px-5 sm:px-0 mb-12" data-animate="fade-up">
 
             <button id="related-prev" type="button"
                 class="absolute left-2 top-[30%] -translate-y-1/2 z-20 lg:hidden bg-[#B57A3F]/80 text-white w-9 h-9 flex items-center justify-center shadow-md focus:outline-none"

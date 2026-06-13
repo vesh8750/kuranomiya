@@ -20,18 +20,68 @@ function getStaggerTargets(container) {
   );
 }
 
+const scrollRevealTriggers = [];
+
+function parseScrollStartRatio(start) {
+  const match = start.match(/top\s+(\d+(?:\.\d+)?)%/);
+
+  if (!match) {
+    return 0.85;
+  }
+
+  return parseFloat(match[1]) / 100;
+}
+
+function isRevealPastStart(trigger, start = SCROLL_START) {
+  const rect = trigger.getBoundingClientRect();
+  const threshold = parseScrollStartRatio(start) * window.innerHeight;
+
+  return rect.top <= threshold;
+}
+
+function bindScrollReveal(trigger, animation) {
+  const instance = ScrollTrigger.create({
+    trigger,
+    start: SCROLL_START,
+    once: true,
+    animation,
+    toggleActions: "play none none none",
+    invalidateOnRefresh: true,
+  });
+
+  scrollRevealTriggers.push({ instance, trigger, animation });
+  return instance;
+}
+
+function finalizeScrollAnimations() {
+  ScrollTrigger.refresh();
+
+  scrollRevealTriggers.forEach(({ instance, trigger, animation }) => {
+    if (!animation || !animation.paused()) {
+      return;
+    }
+
+    if (instance.isActive || instance.progress > 0 || isRevealPastStart(trigger)) {
+      animation.play(0);
+    }
+  });
+}
+
 export function fadeInUp(selector) {
   if (prefersReducedMotion) return;
 
-  gsap.from(selector, {
-    y: 24,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: selector,
-      start: SCROLL_START,
-    },
+  gsap.utils.toArray(selector).forEach((element) => {
+    gsap.set(element, { y: 24, opacity: 0 });
+
+    const timeline = gsap.timeline({ paused: true });
+    timeline.to(element, {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      ease: "power2.out",
+    });
+
+    bindScrollReveal(element, timeline);
   });
 }
 
@@ -44,17 +94,18 @@ export function fadeInStagger(selector) {
   const targets = getStaggerTargets(container);
   if (!targets.length) return;
 
-  gsap.from(targets, {
-    x: 28,
-    opacity: 0,
+  gsap.set(targets, { x: 28, opacity: 0 });
+
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(targets, {
+    x: 0,
+    opacity: 1,
     duration: 0.75,
     ease: "power2.out",
     stagger: 0.12,
-    scrollTrigger: {
-      trigger: container,
-      start: SCROLL_START,
-    },
   });
+
+  bindScrollReveal(container, timeline);
 }
 
 export function fadeInStaggerList(selector) {
@@ -66,17 +117,18 @@ export function fadeInStaggerList(selector) {
   const targets = getStaggerTargets(container);
   if (!targets.length) return;
 
-  gsap.from(targets, {
-    y: 24,
-    opacity: 0,
+  gsap.set(targets, { y: 24, opacity: 0 });
+
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(targets, {
+    y: 0,
+    opacity: 1,
     duration: 0.75,
     ease: "power2.out",
     stagger: 0.15,
-    scrollTrigger: {
-      trigger: container,
-      start: SCROLL_START,
-    },
   });
+
+  bindScrollReveal(container, timeline);
 }
 
 export function fadeInStaggerSoft(selector) {
@@ -88,30 +140,69 @@ export function fadeInStaggerSoft(selector) {
   const targets = getStaggerTargets(container);
   if (!targets.length) return;
 
-  gsap.from(targets, {
-    y: 36,
-    opacity: 0,
+  gsap.set(targets, { y: 36, opacity: 0 });
+
+  const timeline = gsap.timeline({ paused: true });
+  timeline.to(targets, {
+    y: 0,
+    opacity: 1,
     duration: 1.05,
     ease: "power2.out",
     stagger: 0.18,
-    scrollTrigger: {
-      trigger: container,
-      start: SCROLL_START,
-    },
   });
+
+  bindScrollReveal(container, timeline);
 }
 
 export function revealFromLeft(selector) {
   if (prefersReducedMotion) return;
 
-  gsap.from(selector, {
-    clipPath: "inset(0 100% 0 0)",
-    duration: 1.1,
-    ease: "power2.out",
-    scrollTrigger: {
-      trigger: selector,
-      start: SCROLL_START,
-    },
+  gsap.utils.toArray(selector).forEach((element) => {
+    gsap.set(element, { clipPath: "inset(0 100% 0 0)" });
+
+    const timeline = gsap.timeline({ paused: true });
+    timeline.to(element, {
+      clipPath: "inset(0 0% 0 0)",
+      duration: 1.1,
+      ease: "power2.out",
+    });
+
+    bindScrollReveal(element, timeline);
+  });
+}
+
+export function imageReveal(selector) {
+  if (prefersReducedMotion) return;
+
+  gsap.utils.toArray(selector).forEach((element) => {
+    const image =
+      element.tagName === "IMG" ? element : element.querySelector("img");
+
+    gsap.set(element, { clipPath: "inset(100% 0 0 0)" });
+    if (image) {
+      gsap.set(image, { scale: 1.04, transformOrigin: "center center" });
+    }
+
+    const timeline = gsap.timeline({ paused: true });
+    timeline.to(element, {
+      clipPath: "inset(0% 0 0 0)",
+      duration: 1.15,
+      ease: "power2.out",
+    });
+
+    if (image) {
+      timeline.to(
+        image,
+        {
+          scale: 1,
+          duration: 1.25,
+          ease: "power2.out",
+        },
+        0,
+      );
+    }
+
+    bindScrollReveal(element, timeline);
   });
 }
 
@@ -259,6 +350,12 @@ function initAnimations() {
   document
     .querySelectorAll('[data-animate="reveal-left"]')
     .forEach((el) => revealFromLeft(el));
+  document
+    .querySelectorAll('[data-animate="image-reveal"]')
+    .forEach((el) => imageReveal(el));
+
+  finalizeScrollAnimations();
+  window.addEventListener("load", finalizeScrollAnimations, { once: true });
 }
 
 function initMobileMenu() {
@@ -588,4 +685,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollTop();
   initRelatedCarousel();
   initProductGallery();
+
+  if (!prefersReducedMotion) {
+    finalizeScrollAnimations();
+  }
 });

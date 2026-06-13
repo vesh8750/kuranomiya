@@ -72,7 +72,7 @@ while (have_posts()) :
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-12" data-animate="fade-up">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
@@ -108,12 +108,13 @@ while (have_posts()) :
 
     <div class="relative max-w-[1000px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-8">
 
-        <h1 class="text-[#33312D] text-[clamp(1.35rem,3.5vw,2rem)] font-bold tracking-wide leading-[1.6] text-left">
+        <h1 class="text-[#33312D] text-[clamp(1.35rem,3.5vw,2rem)] font-bold tracking-wide leading-[1.6] text-left" data-animate="fade-up">
             <?php the_title(); ?>
         </h1>
 
         <div
-            class="bg-[#303E5F] text-white px-4 py-3 sm:px-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t-[4px] border-[#B57A3F] shadow-xs">
+            class="bg-[#303E5F] text-white px-4 py-3 sm:px-6 sm:py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t-[4px] border-[#B57A3F] shadow-xs"
+            data-animate="fade-up">
 
             <div class="flex items-center space-x-3.5">
                 <div
@@ -148,7 +149,8 @@ while (have_posts()) :
         </div>
 
         <div
-            class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group">
+            class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group"
+            data-animate="image-reveal">
             <?php if ($featured) : ?>
                 <img src="<?php echo esc_url($featured); ?>" alt="<?php echo esc_attr(get_the_title()); ?>"
                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
@@ -170,20 +172,23 @@ while (have_posts()) :
     <div class="relative max-w-[850px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full space-y-10 sm:space-y-12">
 
         <div
-            class="text-[#33312D] text-[clamp(15px,2vw,17px)] leading-[1.85] tracking-wider font-sans !font-normal">
+            class="text-[#33312D] text-[clamp(15px,2vw,17px)] leading-[1.85] tracking-wider font-sans !font-normal"
+            data-animate="fade-up">
             <?php if ($lead) : ?>
                 <?php echo wpautop(esc_html($lead)); ?>
             <?php endif; ?>
         </div>
 
         <div
-            class="text-[#615C56] font-medium noto-sans !font-normal text-[14px] sm:text-[15px] leading-[1.95] tracking-wider space-y-4 pt-4">
+            class="text-[#615C56] font-medium noto-sans !font-normal text-[14px] sm:text-[15px] leading-[1.95] tracking-wider space-y-4 pt-4"
+            data-animate="fade-up">
             <?php the_content(); ?>
         </div>
 
         <?php if ($mid_image) : ?>
         <div
-            class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group">
+            class="w-full aspect-[16/10] bg-[#E3DCCE]/40 border border-[#E3DCCE]/30 flex items-center justify-center p-0 shadow-xs overflow-hidden group"
+            data-animate="image-reveal">
             <img src="<?php echo esc_url($mid_image['url']); ?>"
                 alt="<?php echo esc_attr($mid_image['alt']); ?>"
                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-102"
@@ -191,7 +196,7 @@ while (have_posts()) :
         </div>
         <?php endif; ?>
 
-        <div class="bg-[#F1ECE0] p-6 sm:p-8 shadow-xs border-t border-[#303E5F]/20 space-y-5 mt-12">
+        <div class="bg-[#F1ECE0] p-6 sm:p-8 shadow-xs border-t border-[#303E5F]/20 space-y-5 mt-12" data-animate="fade-up">
             <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                 <div class="flex items-center space-x-3.5">
                     <div
@@ -237,7 +242,7 @@ while (have_posts()) :
 
     <div class="relative max-w-[1240px] mx-auto px-0 sm:px-6 lg:px-8 z-10">
 
-        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16">
+        <div class="text-center px-5 sm:px-0 mb-12 md:mb-16" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -246,7 +251,7 @@ while (have_posts()) :
             </h2>
         </div>
 
-        <div class="relative px-5 sm:px-0 mb-12">
+        <div class="relative px-5 sm:px-0 mb-12" data-animate="fade-up">
 
             <button id="related-prev" type="button"
                 class="absolute left-2 top-[30%] -translate-y-1/2 z-20 lg:hidden bg-[#B57A3F]/80 text-white w-9 h-9 flex items-center justify-center shadow-md focus:outline-none"

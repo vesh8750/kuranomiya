@@ -128,7 +128,7 @@ $filter_inactive_class     = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] te
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-8" data-animate="fade-up">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
@@ -164,7 +164,7 @@ $filter_inactive_class     = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] te
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="pb-6 mb-10 font-sans space-y-6">
+        <div class="pb-6 mb-10 font-sans space-y-6" data-animate="fade-up">
 
             <div class="space-y-3 border-b border-[#33312D]/10 pb-7 flex items-center gap-8 md:gap-10">
                 <span class="text-[#33312D] text-[13px] sm:text-[14px] font-bold tracking-wider block mb-0">新着 /
@@ -199,7 +199,7 @@ $filter_inactive_class     = 'px-5 py-2 bg-[#FFFCF5] noto-sans rounded-[24px] te
 
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto mb-14">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto mb-14" data-animate="stagger-soft">
 
             <?php if ($query->have_posts()) : ?>
                 <?php

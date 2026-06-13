@@ -66,7 +66,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-8" data-animate="fade-up">
 
             <div class="lg:col-span-3 text-center lg:text-center flex flex-col items-center lg:items-center">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
@@ -99,7 +99,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/diamond-bottom-pattern.png" alt="" class="w-full h-auto object-contain" />
     </div>
 
-    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full mb-12 md:mb-16">
+    <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full mb-12 md:mb-16" data-animate="fade-up">
         <p class="text-center noto-sans text-[#615C56] font-sans text-[12px] md:text-[16px] tracking-wide mb-6">
             ※ 表示価格は店頭買取の参考価格です。純度・状態により実際の査定額は変動します。
         </p>
@@ -124,7 +124,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
         </p>
         <?php else : ?>
 
-        <div class="w-full">
+        <div class="w-full" data-animate="fade-up">
             <div class="text-center mb-6">
                 <div class="w-30 h-auto mx-auto mb-4">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
@@ -272,7 +272,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
             </div>
         </div>
 
-        <div class="w-full">
+        <div class="w-full" data-animate="fade-up">
             <div class="text-center mb-6">
                 <div class="w-20 h-auto mx-auto mb-2">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
@@ -324,7 +324,7 @@ if ($has_rates && ! empty($metal_rates['updated_at'])) {
             </div>
         </div>
 
-        <div class="w-full">
+        <div class="w-full" data-animate="fade-up">
             <div class="text-center mb-6">
                 <div class="w-20 h-auto mx-auto mb-2">
                     <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />

@@ -11,11 +11,11 @@ get_header();
 <!-- Hero Section  -->
 
 <section
-    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-hidden min-h-[360px] flex flex-col">
+    class="relative bg-[#FFFCF5] pb-20 sm:pb-28 lg:pb-24 font-serif-jp overflow-x-clip min-h-[360px] flex flex-col">
 
     <div
-        class="absolute hidden md:block right-[-10%] sm:right-[-5%] lg:right-10 top-1/2 -translate-y-1/2 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0">
-        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/product-page-right-bg.png" alt="" class="w-full h-auto object-contain" />
+        class="absolute hidden md:flex right-[-10%] sm:right-[-5%] lg:right-10 inset-y-0 w-[60%] sm:w-[45%] lg:w-[32%] max-w-[450px] pointer-events-none z-0 items-end">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/product-page-right-bg.png" alt="" class="w-full h-auto max-h-full object-contain" />
     </div>
 
     <div
@@ -32,7 +32,7 @@ get_header();
     </div>
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full flex-1 flex items-center pt-10 lg:pt-0">
-        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-5 w-full min-w-0">
+        <div class="grid grid-cols-1 lg:grid-cols-12 items-end gap-8 lg:gap-5 w-full min-w-0" data-animate="fade-up">
 
             <div class="lg:col-span-4 text-center lg:text-center flex flex-col items-center lg:items-center shrink-0">
                 <div class="w-24 h-auto mb-3 sm:mb-4">
@@ -60,7 +60,7 @@ get_header();
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
-        <div class="text-center mb-12 md:mb-8">
+        <div class="text-center mb-12 md:mb-8" data-animate="fade-up">
             <h2 class="text-[#33312D] text-[clamp(1.75rem,4vw,2.25rem)] font-semibold tracking-wide">
                 <span
                     class="text-[#B57A3F] font-['EB_Garamond'] text-[clamp(48px,8vw,90px)] font-medium mr-0 select-none">3</span><span
@@ -68,7 +68,7 @@ get_header();
             </h2>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-[1140px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8 max-w-[1140px] mx-auto" data-animate="stagger-soft">
 
             <div class="bg-[#FFFCF5] p-6 pt-0 shadow-xs flex flex-col justify-between">
                 <div>
@@ -192,7 +192,7 @@ get_header();
 
     <div class="relative max-w-[900px] mx-auto px-5 sm:px-6 lg:px-8 z-10 w-full">
 
-        <div class="text-center mb-10 md:mb-12">
+        <div class="text-center mb-10 md:mb-12" data-animate="fade-up">
             <div class="w-30 h-auto mx-auto mb-4">
                 <img src="/assets/roof-ornament.svg" alt="" class="w-full h-auto object-contain" />
             </div>
@@ -220,7 +220,7 @@ get_header();
             </div>
         </div>
 
-        <form action="#" method="POST" class="space-y-8 font-sans text-[14px] text-[#33312D]">
+        <form action="#" method="POST" class="space-y-8 font-sans text-[14px] text-[#33312D]" data-animate="fade-up">
 
             <div class="space-y-2">
                 <label for="form-name" class="block font-bold tracking-wide">

@@ -157,7 +157,7 @@ $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] 
 
     <div class="relative max-w-[1240px] mx-auto px-5 sm:px-6 lg:px-8 z-10">
 
-        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-6 mb-10 font-sans">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-6 mb-10 font-sans" data-animate="fade-up">
 
             <div class="space-y-3">
                 <span class="text-[#33312D] text-[13px] sm:text-[14px] font-bold tracking-wider block">カテゴリ選択</span>
@@ -194,7 +194,7 @@ $filter_inactive_class  = 'px-5 py-2 bg-[#FFFCF5] rounded-[24px] text-[#B57A3F] 
 
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto mb-14">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mx-auto mb-14" data-animate="stagger-soft">
 
             <?php if ($query->have_posts()) : ?>
                 <?php
