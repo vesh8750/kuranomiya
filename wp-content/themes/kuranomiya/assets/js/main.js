@@ -126,13 +126,18 @@ function initSmoothAnchor() {
 }
 
 function closeFAQItem(item) {
-  const answer = item.querySelector(".faq-answer");
-  if (!answer) return;
+  const panel = item.querySelector(".faq-panel");
+  if (!panel) return;
 
   item.classList.remove("is-open");
 
-  gsap.set(answer, { height: answer.offsetHeight });
-  gsap.to(answer, {
+  if (prefersReducedMotion) {
+    gsap.set(panel, { height: 0, overflow: "hidden", opacity: 0 });
+    return;
+  }
+
+  gsap.set(panel, { height: panel.offsetHeight });
+  gsap.to(panel, {
     height: 0,
     opacity: 0,
     duration: 0.25,
@@ -141,12 +146,17 @@ function closeFAQItem(item) {
 }
 
 function openFAQItem(item) {
-  const answer = item.querySelector(".faq-answer");
-  if (!answer) return;
+  const panel = item.querySelector(".faq-panel");
+  if (!panel) return;
 
   item.classList.add("is-open");
 
-  gsap.to(answer, {
+  if (prefersReducedMotion) {
+    gsap.set(panel, { height: "auto", overflow: "hidden", opacity: 1 });
+    return;
+  }
+
+  gsap.to(panel, {
     height: "auto",
     opacity: 1,
     duration: 0.3,
@@ -155,21 +165,36 @@ function openFAQItem(item) {
 }
 
 function initFAQ() {
-  document.querySelectorAll(".faq-list").forEach((list) => {
-    list.querySelectorAll(".faq-item").forEach((item) => {
-      const answer = item.querySelector(".faq-answer");
-      const question = item.querySelector(".faq-question");
-      if (!answer || !question) return;
+  const lists = new Map();
 
-      gsap.set(answer, { height: 0, overflow: "hidden", opacity: 0 });
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    const parent = item.parentElement;
+    if (!parent) return;
 
-      question.addEventListener("click", () => {
+    if (!lists.has(parent)) {
+      lists.set(parent, []);
+    }
+
+    lists.get(parent).push(item);
+  });
+
+  lists.forEach((items) => {
+    items.forEach((item) => {
+      const panel = item.querySelector(".faq-panel");
+      const trigger = item.querySelector(".faq-trigger");
+      if (!panel || !trigger) return;
+
+      gsap.set(panel, { height: 0, overflow: "hidden", opacity: 0 });
+
+      trigger.addEventListener("click", () => {
         if (item.classList.contains("is-open")) {
           closeFAQItem(item);
           return;
         }
 
-        const openItem = list.querySelector(".faq-item.is-open");
+        const openItem = items.find((faqItem) =>
+          faqItem.classList.contains("is-open"),
+        );
         if (openItem) {
           closeFAQItem(openItem);
         }
@@ -181,10 +206,11 @@ function initFAQ() {
 }
 
 function initAnimations() {
+  initFAQ();
+
   if (prefersReducedMotion) return;
 
   initSmoothAnchor();
-  initFAQ();
 
   if (document.querySelector(".hero-image")) {
     heroEntrance();

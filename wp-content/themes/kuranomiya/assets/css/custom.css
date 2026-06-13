@@ -50,6 +50,15 @@ body {
 }
 
 
+/* FAQ accordion icon */
+.faq-icon {
+  display: inline-block;
+}
+
+.faq-item.is-open .faq-icon {
+  transform: rotate(90deg);
+}
+
 /* header,
 .site-header {
   position: fixed;

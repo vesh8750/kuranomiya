@@ -30,7 +30,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -39,10 +39,10 @@
                         </h3>
                     </div>
                     <span
-                        class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none transform transition-transform duration-300 select-none">—</span>
+                        class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
 
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
@@ -56,7 +56,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -64,9 +64,9 @@
                             事前に予約は必要ですか？（仮）
                         </h3>
                     </div>
-                    <span class="faq-icon text-[#303E5F] font-light text-[22px] select-none">—</span>
+                    <span class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
@@ -80,7 +80,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -88,9 +88,9 @@
                             どんなものが買取可能ですか？（仮）
                         </h3>
                     </div>
-                    <span class="faq-icon text-[#303E5F] font-light text-[22px] select-none">—</span>
+                    <span class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
@@ -104,7 +104,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -112,9 +112,9 @@
                             買取の際に必要なものはありますか？（仮）
                         </h3>
                     </div>
-                    <span class="faq-icon text-[#303E5F] font-light text-[22px] select-none">—</span>
+                    <span class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
@@ -128,7 +128,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -136,9 +136,9 @@
                             査定にはどのくらい時間がかかりますか？（仮）
                         </h3>
                     </div>
-                    <span class="faq-icon text-[#303E5F] font-light text-[22px] select-none">—</span>
+                    <span class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
@@ -152,7 +152,7 @@
             <div
                 class="faq-item bg-[#F1ECE0] border border-[#E3DCCE]/40 rounded-none overflow-hidden relative z-10 shadow-xs">
                 <button type="button"
-                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group">
+                    class="faq-trigger w-full flex items-center justify-between p-5 sm:p-6 text-left focus:outline-none group cursor-pointer">
                     <div class="flex items-center space-x-4 pr-6">
                         <span
                             class="bg-[#303E5F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">Q</span>
@@ -160,9 +160,9 @@
                             キャンセルはできますか？（仮）
                         </h3>
                     </div>
-                    <span class="faq-icon text-[#303E5F] font-light text-[22px] select-none">—</span>
+                    <span class="faq-icon text-[#303E5F] font-light text-[22px] tracking-none inline-block transform transition-transform duration-300 select-none">—</span>
                 </button>
-                <div class="faq-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out">
+                <div class="faq-panel overflow-hidden">
                     <div class="p-5 sm:p-6 pt-4  border-t border-[#E3DCCE]/60 flex items-start space-x-4">
                         <span
                             class="bg-[#B57A3F] text-white font-['EB_Garamond'] text-[18px] sm:text-[20px] w-10 h-10 flex items-center justify-center flex-shrink-0 font-medium">A</span>
