@@ -198,10 +198,11 @@ function kuranomiya_register_owner_options(): void {
         'title'  => '店舗・オーナー情報',
         'fields' => [
             [
-                'key'   => 'field_owner_name',
-                'label' => 'オーナー名',
-                'name'  => 'owner_name',
-                'type'  => 'text',
+                'key'           => 'field_owner_name',
+                'label'         => 'オーナー名',
+                'name'          => 'owner_name',
+                'type'          => 'text',
+                'default_value' => '●●',
             ],
             [
                 'key'           => 'field_owner_photo',
@@ -212,18 +213,21 @@ function kuranomiya_register_owner_options(): void {
                 'preview_size'  => 'thumbnail',
             ],
             [
-                'key'          => 'field_owner_title',
-                'label'        => '肩書き',
-                'name'         => 'owner_title',
-                'type'         => 'text',
-                'instructions' => '例：業界歴11年以上の査定員',
+                'key'           => 'field_owner_title',
+                'label'         => '肩書き',
+                'name'          => 'owner_title',
+                'type'          => 'text',
+                'instructions'  => '例：業界歴11年以上の査定員',
+                'default_value' => '業界歴11年以上の査定員',
             ],
             [
-                'key'   => 'field_owner_bio',
-                'label' => 'オーナー紹介文',
-                'name'  => 'owner_bio',
-                'type'  => 'textarea',
-                'rows'  => 4,
+                'key'           => 'field_owner_bio',
+                'label'         => 'オーナー紹介文',
+                'name'          => 'owner_bio',
+                'type'          => 'textarea',
+                'rows'          => 8,
+                'instructions'  => '空行で段落が分かれます',
+                'default_value' => "こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。\n\nこちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。\n\nこちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。",
             ],
             [
                 'key'           => 'field_gallery_image_1',
@@ -307,3 +311,92 @@ function kuranomiya_register_owner_options(): void {
     ]);
 }
 add_action('acf/init', 'kuranomiya_register_owner_options');
+
+function kuranomiya_register_page_background_options(): void {
+    if (function_exists('acf_add_options_page')) {
+        acf_add_options_page([
+            'page_title' => 'ページ背景設定',
+            'menu_title' => 'ページ背景',
+            'menu_slug'  => 'page-backgrounds',
+            'capability' => 'edit_posts',
+            'redirect'   => false,
+            'icon_url'   => 'dashicons-format-image',
+            'position'   => 61,
+        ]);
+    }
+
+    if (!function_exists('acf_add_local_field_group')) {
+        return;
+    }
+
+    acf_add_local_field_group([
+        'key'    => 'group_page_backgrounds',
+        'title'  => 'ページ背景画像',
+        'fields' => [
+            [
+                'key'       => 'field_page_bg_tab_front',
+                'label'     => 'トップページ',
+                'name'      => '',
+                'type'      => 'tab',
+                'placement' => 'top',
+            ],
+            [
+                'key'           => 'field_front_hero_bg_mobile',
+                'label'         => '背景画像（スマートフォン）',
+                'name'          => 'front_hero_bg_mobile',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'mime_types'    => 'jpg,jpeg,png,webp',
+                'instructions'  => 'トップページのヒーロー背景（スマートフォン表示）。推奨：縦長 430×800px 以上',
+            ],
+            [
+                'key'           => 'field_front_hero_bg_desktop',
+                'label'         => '背景画像（パソコン）',
+                'name'          => 'front_hero_bg_desktop',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'mime_types'    => 'jpg,jpeg,png,webp',
+                'instructions'  => 'トップページのヒーロー背景（パソコン表示）。推奨：1440×800px 以上',
+            ],
+            [
+                'key'       => 'field_page_bg_tab_about',
+                'label'     => '店主・店舗紹介',
+                'name'      => '',
+                'type'      => 'tab',
+                'placement' => 'top',
+            ],
+            [
+                'key'           => 'field_about_hero_bg_mobile',
+                'label'         => '背景画像（スマートフォン）',
+                'name'          => 'about_hero_bg_mobile',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'mime_types'    => 'jpg,jpeg,png,webp',
+                'instructions'  => '店主・店舗紹介ページのヒーロー背景（スマートフォン表示）。推奨：縦長 430×800px 以上',
+            ],
+            [
+                'key'           => 'field_about_hero_bg_desktop',
+                'label'         => '背景画像（パソコン）',
+                'name'          => 'about_hero_bg_desktop',
+                'type'          => 'image',
+                'return_format' => 'array',
+                'preview_size'  => 'medium',
+                'mime_types'    => 'jpg,jpeg,png,webp',
+                'instructions'  => '店主・店舗紹介ページのヒーロー背景（パソコン表示）。推奨：1440×800px 以上',
+            ],
+        ],
+        'location' => [
+            [
+                [
+                    'param'    => 'options_page',
+                    'operator' => '==',
+                    'value'    => 'page-backgrounds',
+                ],
+            ],
+        ],
+    ]);
+}
+add_action('acf/init', 'kuranomiya_register_page_background_options');

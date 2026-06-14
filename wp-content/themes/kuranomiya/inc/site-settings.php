@@ -49,3 +49,36 @@ function kuranomiya_get_page_url(string $slug, string $fragment = ''): string {
 
     return $url;
 }
+
+/**
+ * Resolve responsive background image URLs from ACF options with theme asset fallbacks.
+ *
+ * @return array{mobile: string, desktop: string}
+ */
+function kuranomiya_get_responsive_bg_urls(
+    string $mobile_field,
+    string $desktop_field,
+    string $mobile_fallback,
+    string $desktop_fallback
+): array {
+    $theme_uri = get_template_directory_uri() . '/assets/img/';
+    $mobile    = $theme_uri . $mobile_fallback;
+    $desktop   = $theme_uri . $desktop_fallback;
+
+    if (!function_exists('get_field')) {
+        return ['mobile' => $mobile, 'desktop' => $desktop];
+    }
+
+    $mobile_image  = get_field($mobile_field, 'option');
+    $desktop_image = get_field($desktop_field, 'option');
+
+    if (is_array($mobile_image) && !empty($mobile_image['url'])) {
+        $mobile = $mobile_image['url'];
+    }
+
+    if (is_array($desktop_image) && !empty($desktop_image['url'])) {
+        $desktop = $desktop_image['url'];
+    }
+
+    return ['mobile' => $mobile, 'desktop' => $desktop];
+}

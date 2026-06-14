@@ -6,6 +6,13 @@
  */
 
 get_header();
+
+$about_hero_bg = kuranomiya_get_responsive_bg_urls(
+    'about_hero_bg_mobile',
+    'about_hero_bg_desktop',
+    'greeting-hero-mobile.png',
+    'greeting-hero-bg.png'
+);
 ?>
 
 
@@ -13,7 +20,7 @@ get_header();
 
 <section
     class="greeting-hero relative min-h-[100vh] md:min-h-[75vh] lg:min-h-[80vh] flex flex-col items-stretch md:items-center bg-cover bg-no-repeat bg-[position:center_bottom] md:bg-right-center overflow-hidden bg-[#FFFCF5]"
-    style="--bg-mobile: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/greeting-hero-mobile.png'); --bg-desktop: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/greeting-hero-bg.png');">
+    style="--bg-mobile: url('<?php echo esc_url($about_hero_bg['mobile']); ?>'); --bg-desktop: url('<?php echo esc_url($about_hero_bg['desktop']); ?>');">
 
     <div
         class="absolute inset-0 bg-gradient-to-b from-[#FFFCF5] via-[#FFFCF5]/90 to-transparent md:hidden pointer-events-none">
@@ -67,6 +74,20 @@ get_header();
 
 <!-- Greeting Section  -->
 
+<?php
+$owner_name  = get_field('owner_name', 'option') ?: '●●';
+$owner_photo = get_field('owner_photo', 'option');
+$owner_title = get_field('owner_title', 'option') ?: '業界歴11年以上の査定員';
+$owner_bio   = get_field('owner_bio', 'option') ?: "こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。\n\nこちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。\n\nこちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。";
+
+$owner_photo_url = ($owner_photo && !empty($owner_photo['url']))
+    ? $owner_photo['url']
+    : get_template_directory_uri() . '/assets/img/client.png';
+$owner_photo_alt = ($owner_photo && !empty($owner_photo['alt']))
+    ? $owner_photo['alt']
+    : '店主';
+?>
+
 <section class="relative bg-[#F1ECE0] py-16 md:py-28 font-serif-jp overflow-hidden" id="greeting">
 
     <div class="absolute right-0 top-0 w-[45%] md:w-[35%] max-w-[500px] pointer-events-none z-0">
@@ -93,7 +114,7 @@ get_header();
 
             <div class="lg:col-span-5 w-full shadow-xs bg-white p-0">
                 <div class="relative w-full aspect-[4/5] max-h-[480px] overflow-hidden" data-composition="image">
-                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/client.png" alt="店主" class="w-full h-full object-cover" />
+                    <img src="<?php echo esc_url($owner_photo_url); ?>" alt="<?php echo esc_attr($owner_photo_alt); ?>" class="w-full h-full object-cover" />
                 </div>
             </div>
 
@@ -102,27 +123,23 @@ get_header();
                 <div class="space-y-3 my-6 md:my-10">
                     <h3
                         class="text-[#33312D] text-[clamp(1.35rem,3vw,1.75rem)] font-bold tracking-wide flex items-baseline">
-                        店主 ●●
+                        店主 <?php echo esc_html($owner_name); ?>
                     </h3>
                     <div class="w-12 h-[1px] bg-[#B57A3F]"></div>
                 </div>
 
+                <?php if ($owner_title) : ?>
                 <p class="text-[#B57A3F] noto-sans text-[14px] sm:text-[15px] font-bold tracking-wider">
-                    業界歴11年以上の査定員
+                    <?php echo esc_html($owner_title); ?>
                 </p>
+                <?php endif; ?>
 
+                <?php if ($owner_bio) : ?>
                 <div
                     class="text-[#615C56] my-6 md:my-10 font-medium noto-sans !font-medium text-[14px] sm:text-[15px] leading-[1.9] tracking-wider space-y-3">
-                    <p>
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
-                    <p>
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
-                    <p>
-                        こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。こちらにコメントが入ります。
-                    </p>
+                    <?php echo wpautop(esc_html($owner_bio)); ?>
                 </div>
+                <?php endif; ?>
 
             </div>
 

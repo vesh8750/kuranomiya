@@ -6,11 +6,18 @@
  */
 
 get_header();
+
+$front_hero_bg = kuranomiya_get_responsive_bg_urls(
+    'front_hero_bg_mobile',
+    'front_hero_bg_desktop',
+    'hero-banner-mobile.png',
+    'hero-banner.png'
+);
 ?>
 
 <section
     class="hero-banner relative min-h-[90vh] md:min-h-[80vh] flex items-stretch md:items-center bg-cover bg-no-repeat bg-[position:center_bottom] md:bg-right-center overflow-hidden"
-    style="--bg-mobile: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero-banner-mobile.png'); --bg-desktop: url('<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/hero-banner.png');">
+    style="--bg-mobile: url('<?php echo esc_url($front_hero_bg['mobile']); ?>'); --bg-desktop: url('<?php echo esc_url($front_hero_bg['desktop']); ?>');">
 
     <div
         class="absolute inset-0 bg-gradient-to-b from-[#FFFCF5] via-[#FFFCF5]/90 to-transparent md:hidden pointer-events-none">

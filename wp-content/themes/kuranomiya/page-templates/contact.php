@@ -289,12 +289,69 @@ get_header();
                 <div
                     class="w-full h-[180px] bg-[#F1ECE0] border border-[#E3DCCE] p-5 overflow-y-auto text-[13px] text-[#615C56] leading-[1.8] tracking-wide font-serif-jp space-y-4">
                     <p>
-                        買取
-                        蔵の宮（以下、「当店」といいます）は、本ウェブサイト上で提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます）を定めます。
+                        買取 蔵の宮（以下、「当店」といいます。）は、本ウェブサイト上で提供するサービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
                     </p>
+
                     <h4 class="font-bold text-[#33312D] pt-2">第1条（個人情報）</h4>
                     <p>
-                        当店は、個人情報保護に関する法令およびその他の規範を遵守します。「個人情報」とは、個人の氏名・電話番号・住所など特定の個人を識別できる情報（他の情報と容易に照合することができ、それにより特定の個人を識別できることも含みます）をいいます。
+                        当店は、個人情報保護に関する法令およびその他の規範を遵守します。「個人情報」とは、個人の氏名・電話番号・住所など特定の個人を識別できる情報（他の情報と容易に照合することで、それにより特定の個人を識別できることも含みます。）をいいます。
+                    </p>
+
+                    <h4 class="font-bold text-[#33312D] pt-2">第2条（個人情報の収集方法）</h4>
+                    <p>
+                        当店は、ユーザーがサービスを利用する際に、氏名・メールアドレス・電話番号などの個人情報をお尋ねすることがあります。また、ユーザーと提携先などとの間でなされたユーザーの個人情報を含む取引記録や決済に関する情報を、当店の提携先（情報提供元、広告主、広告配信先などを含みます。以下、「提携先」といいます。）などから収集することがあります。
+                    </p>
+
+                    <h4 class="font-bold text-[#33312D] pt-2">第3条（個人情報を収集・利用する目的）</h4>
+                    <p>当店が個人情報を収集・利用する目的は、以下のとおりです。</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>古物営業法に基づき、古物の販売及び買取の際の本人確認を行うため</li>
+                        <li>当店サービスの提供・運営のため</li>
+                        <li>ユーザーからのお問い合わせに回答するため（本人確認を行うことを含む）</li>
+                        <li>ユーザーが利用中のサービスの新機能・更新情報・キャンペーン等及び当店が提供する他のサービスの案内のメールを送付するため</li>
+                        <li>メンテナンスや重要なお知らせなど、必要に応じたご連絡のため</li>
+                        <li>利用規約に違反したユーザーや、不正・不当な目的でサービスを利用しようとするユーザーの特定をし、ご利用をお断りするため</li>
+                        <li>ユーザーにご自身の登録情報の閲覧や変更・削除・ご利用状況の閲覧を行っていただくため</li>
+                        <li>上記の利用目的に付随する目的</li>
+                    </ul>
+
+                    <h4 class="font-bold text-[#33312D] pt-2">第4条（個人情報の第三者提供）</h4>
+                    <p>
+                        1. 当店は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難である場合</li>
+                        <li>開示先、開示情報内容を特定したうえで、お客様の合意がある場合</li>
+                        <li>警察・その他国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合</li>
+                    </ul>
+
+                    <p>
+                        2. 前項の定めにかかわらず、次に掲げる場合には、当該情報の提供先は第三者に該当しないものとします。
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>商品のご購入決済や配送の依頼など、当店が利用目的の達成に必要な範囲内において個人情報の取扱いの全部または一部を委託する場合</li>
+                        <li>合併その他の事由による事業の承継に伴って個人情報が提供される場合</li>
+                    </ul>
+
+                    <h4 class="font-bold text-[#33312D] pt-2">第5条（個人情報の訂正および削除）</h4>
+                    <p>
+                        ユーザーは、当店の保有する自己の個人情報が誤った情報である場合には、当店が定める手続きにより、当店に対して個人情報の訂正、追加または削除（以下、「訂正等」といいます。）を請求することができます。
+                    </p>
+                    <p>
+                        当店は、ユーザーから前項の請求を受けてその請求に応じる必要があると判断した場合には、遅滞なく、当該個人情報の訂正等を行うものとします。
+                    </p>
+                    <p>
+                        当店は、前項の規定に基づき訂正等を行った場合、または訂正等を行わない旨の決定をしたときは遅滞なく、これをユーザーに通知します。
+                    </p>
+
+                    <h4 class="font-bold text-[#33312D] pt-2">第6条（お問い合わせ窓口）</h4>
+                    <p>
+                        本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
+                    </p>
+                    <p>
+                        買取 蔵の宮<br>
+                        〒254-0043 神奈川県平塚市紅谤12-24 リーフ8 1階<br>
+                        TEL: 0463-00-0000（仮）
                     </p>
                 </div>
 
@@ -330,187 +387,187 @@ get_header();
         </div>
 
         <script>
-        (function () {
-            const submitBtn = document.getElementById('custom-submit');
-            if (!submitBtn) return;
+            (function() {
+                const submitBtn = document.getElementById('custom-submit');
+                if (!submitBtn) return;
 
-            const customForm = submitBtn.closest('form');
-            const cf7Container = document.getElementById('cf7-hidden-form');
-            const cf7Form = cf7Container ? cf7Container.querySelector('form') : null;
-            const formErrorBlock = document.getElementById('form-error-block');
-            const fieldIds = ['custom-name', 'custom-email', 'custom-tel', 'custom-category', 'custom-message', 'custom-policy'];
+                const customForm = submitBtn.closest('form');
+                const cf7Container = document.getElementById('cf7-hidden-form');
+                const cf7Form = cf7Container ? cf7Container.querySelector('form') : null;
+                const formErrorBlock = document.getElementById('form-error-block');
+                const fieldIds = ['custom-name', 'custom-email', 'custom-tel', 'custom-category', 'custom-message', 'custom-policy'];
 
-            const cf7FieldMap = {
-                'custom-name': ['your-name'],
-                'custom-email': ['your-email'],
-                'custom-tel': ['tel', 'your-tel'],
-                'custom-category': ['category', 'your-category'],
-                'custom-message': ['your-message'],
-                'custom-policy': ['acceptance', 'acceptance-policy', 'policy'],
-            };
+                const cf7FieldMap = {
+                    'custom-name': ['your-name'],
+                    'custom-email': ['your-email'],
+                    'custom-tel': ['tel', 'your-tel'],
+                    'custom-category': ['category', 'your-category'],
+                    'custom-message': ['your-message'],
+                    'custom-policy': ['acceptance', 'acceptance-policy', 'policy'],
+                };
 
-            const cf7ToCustom = {};
-            Object.entries(cf7FieldMap).forEach(function (entry) {
-                entry[1].forEach(function (name) {
-                    cf7ToCustom[name] = entry[0];
-                });
-            });
-
-            function getCf7Field(names) {
-                if (!cf7Form) return null;
-
-                for (let i = 0; i < names.length; i++) {
-                    const field = cf7Form.querySelector('[name="' + names[i] + '"]');
-                    if (field) return field;
-                }
-
-                return null;
-            }
-
-            function setCf7Value(names, value) {
-                const field = getCf7Field(names);
-                if (!field) return;
-
-                if (field.type === 'checkbox') {
-                    field.checked = Boolean(value);
-                } else {
-                    field.value = value;
-                }
-            }
-
-            function clearFieldErrors() {
-                document.querySelectorAll('.field-error').forEach(function (el) {
-                    el.textContent = '';
-                    el.classList.add('hidden');
+                const cf7ToCustom = {};
+                Object.entries(cf7FieldMap).forEach(function(entry) {
+                    entry[1].forEach(function(name) {
+                        cf7ToCustom[name] = entry[0];
+                    });
                 });
 
-                fieldIds.forEach(function (id) {
-                    const field = document.getElementById(id);
+                function getCf7Field(names) {
+                    if (!cf7Form) return null;
+
+                    for (let i = 0; i < names.length; i++) {
+                        const field = cf7Form.querySelector('[name="' + names[i] + '"]');
+                        if (field) return field;
+                    }
+
+                    return null;
+                }
+
+                function setCf7Value(names, value) {
+                    const field = getCf7Field(names);
+                    if (!field) return;
+
+                    if (field.type === 'checkbox') {
+                        field.checked = Boolean(value);
+                    } else {
+                        field.value = value;
+                    }
+                }
+
+                function clearFieldErrors() {
+                    document.querySelectorAll('.field-error').forEach(function(el) {
+                        el.textContent = '';
+                        el.classList.add('hidden');
+                    });
+
+                    fieldIds.forEach(function(id) {
+                        const field = document.getElementById(id);
+                        if (field) {
+                            field.classList.remove('ring-1', 'ring-[#EC2B2B]');
+                        }
+                    });
+
+                    if (formErrorBlock) {
+                        formErrorBlock.textContent = '';
+                        formErrorBlock.classList.add('hidden');
+                    }
+                }
+
+                function showFieldError(fieldId, message) {
+                    const errorEl = document.querySelector('[data-field="' + fieldId + '"]');
+                    const field = document.getElementById(fieldId);
+
+                    if (errorEl) {
+                        errorEl.textContent = message;
+                        errorEl.classList.remove('hidden');
+                    }
+
                     if (field) {
-                        field.classList.remove('ring-1', 'ring-[#EC2B2B]');
+                        field.classList.add('ring-1', 'ring-[#EC2B2B]');
                     }
-                });
-
-                if (formErrorBlock) {
-                    formErrorBlock.textContent = '';
-                    formErrorBlock.classList.add('hidden');
-                }
-            }
-
-            function showFieldError(fieldId, message) {
-                const errorEl = document.querySelector('[data-field="' + fieldId + '"]');
-                const field = document.getElementById(fieldId);
-
-                if (errorEl) {
-                    errorEl.textContent = message;
-                    errorEl.classList.remove('hidden');
                 }
 
-                if (field) {
-                    field.classList.add('ring-1', 'ring-[#EC2B2B]');
-                }
-            }
-
-            function showFormError(message) {
-                if (!formErrorBlock) return;
-                formErrorBlock.textContent = message;
-                formErrorBlock.classList.remove('hidden');
-            }
-
-            function validateClient() {
-                clearFieldErrors();
-                let valid = true;
-
-                const name = document.getElementById('custom-name');
-                if (!name || !name.value.trim()) {
-                    showFieldError('custom-name', 'お名前をご入力ください。');
-                    valid = false;
+                function showFormError(message) {
+                    if (!formErrorBlock) return;
+                    formErrorBlock.textContent = message;
+                    formErrorBlock.classList.remove('hidden');
                 }
 
-                const email = document.getElementById('custom-email');
-                const emailVal = email ? email.value.trim() : '';
-                if (!emailVal) {
-                    showFieldError('custom-email', 'メールアドレスをご入力ください。');
-                    valid = false;
-                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
-                    showFieldError('custom-email', '正しいメールアドレスの形式でご入力ください。');
-                    valid = false;
-                }
+                function validateClient() {
+                    clearFieldErrors();
+                    let valid = true;
 
-                const tel = document.getElementById('custom-tel');
-                const telVal = tel ? tel.value.trim() : '';
-                if (telVal && !/^[0-9\-+()\s]+$/.test(telVal)) {
-                    showFieldError('custom-tel', 'お電話番号の形式をご確認ください。');
-                    valid = false;
-                }
-
-                const message = document.getElementById('custom-message');
-                if (!message || !message.value.trim()) {
-                    showFieldError('custom-message', 'お問い合わせ内容をご入力ください。');
-                    valid = false;
-                }
-
-                const policy = document.getElementById('custom-policy');
-                if (!policy || !policy.checked) {
-                    showFieldError('custom-policy', 'プライバシーポリシーへのご同意をお願いいたします。');
-                    valid = false;
-                }
-
-                return valid;
-            }
-
-            function setLoading(isLoading) {
-                const label = submitBtn.querySelector('span');
-                const icon = submitBtn.querySelector('svg:not(.contact-form-spinner)');
-
-                if (isLoading) {
-                    submitBtn.disabled = true;
-                    submitBtn.classList.add('opacity-70', 'pointer-events-none');
-                    if (label) label.textContent = '送信中...';
-                    if (icon) icon.classList.add('hidden');
-                    if (!submitBtn.querySelector('.contact-form-spinner')) {
-                        const spinner = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-                        spinner.setAttribute('class', 'contact-form-spinner w-4 h-4 animate-spin');
-                        spinner.setAttribute('fill', 'none');
-                        spinner.setAttribute('viewBox', '0 0 24 24');
-                        spinner.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>';
-                        submitBtn.appendChild(spinner);
+                    const name = document.getElementById('custom-name');
+                    if (!name || !name.value.trim()) {
+                        showFieldError('custom-name', 'お名前をご入力ください。');
+                        valid = false;
                     }
-                } else {
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-70', 'pointer-events-none');
-                    if (label) label.textContent = '送信する';
-                    const spinner = submitBtn.querySelector('.contact-form-spinner');
-                    if (spinner) spinner.remove();
-                    if (icon) icon.classList.remove('hidden');
+
+                    const email = document.getElementById('custom-email');
+                    const emailVal = email ? email.value.trim() : '';
+                    if (!emailVal) {
+                        showFieldError('custom-email', 'メールアドレスをご入力ください。');
+                        valid = false;
+                    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+                        showFieldError('custom-email', '正しいメールアドレスの形式でご入力ください。');
+                        valid = false;
+                    }
+
+                    const tel = document.getElementById('custom-tel');
+                    const telVal = tel ? tel.value.trim() : '';
+                    if (telVal && !/^[0-9\-+()\s]+$/.test(telVal)) {
+                        showFieldError('custom-tel', 'お電話番号の形式をご確認ください。');
+                        valid = false;
+                    }
+
+                    const message = document.getElementById('custom-message');
+                    if (!message || !message.value.trim()) {
+                        showFieldError('custom-message', 'お問い合わせ内容をご入力ください。');
+                        valid = false;
+                    }
+
+                    const policy = document.getElementById('custom-policy');
+                    if (!policy || !policy.checked) {
+                        showFieldError('custom-policy', 'プライバシーポリシーへのご同意をお願いいたします。');
+                        valid = false;
+                    }
+
+                    return valid;
                 }
-            }
 
-            function copyToCf7() {
-                const name = document.getElementById('custom-name');
-                const email = document.getElementById('custom-email');
-                const tel = document.getElementById('custom-tel');
-                const category = document.getElementById('custom-category');
-                const message = document.getElementById('custom-message');
-                const policy = document.getElementById('custom-policy');
+                function setLoading(isLoading) {
+                    const label = submitBtn.querySelector('span');
+                    const icon = submitBtn.querySelector('svg:not(.contact-form-spinner)');
 
-                setCf7Value(cf7FieldMap['custom-name'], name ? name.value.trim() : '');
-                setCf7Value(cf7FieldMap['custom-email'], email ? email.value.trim() : '');
-                setCf7Value(cf7FieldMap['custom-tel'], tel ? tel.value.trim() : '');
-
-                let categoryValue = '';
-                if (category && category.value) {
-                    const selectedOption = category.options[category.selectedIndex];
-                    categoryValue = selectedOption ? selectedOption.text : category.value;
+                    if (isLoading) {
+                        submitBtn.disabled = true;
+                        submitBtn.classList.add('opacity-70', 'pointer-events-none');
+                        if (label) label.textContent = '送信中...';
+                        if (icon) icon.classList.add('hidden');
+                        if (!submitBtn.querySelector('.contact-form-spinner')) {
+                            const spinner = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                            spinner.setAttribute('class', 'contact-form-spinner w-4 h-4 animate-spin');
+                            spinner.setAttribute('fill', 'none');
+                            spinner.setAttribute('viewBox', '0 0 24 24');
+                            spinner.innerHTML = '<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>';
+                            submitBtn.appendChild(spinner);
+                        }
+                    } else {
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('opacity-70', 'pointer-events-none');
+                        if (label) label.textContent = '送信する';
+                        const spinner = submitBtn.querySelector('.contact-form-spinner');
+                        if (spinner) spinner.remove();
+                        if (icon) icon.classList.remove('hidden');
+                    }
                 }
-                setCf7Value(cf7FieldMap['custom-category'], categoryValue);
 
-                setCf7Value(cf7FieldMap['custom-message'], message ? message.value.trim() : '');
-                setCf7Value(cf7FieldMap['custom-policy'], policy ? policy.checked : false);
-            }
+                function copyToCf7() {
+                    const name = document.getElementById('custom-name');
+                    const email = document.getElementById('custom-email');
+                    const tel = document.getElementById('custom-tel');
+                    const category = document.getElementById('custom-category');
+                    const message = document.getElementById('custom-message');
+                    const policy = document.getElementById('custom-policy');
 
-            function showSuccess() {
-                customForm.outerHTML = `
+                    setCf7Value(cf7FieldMap['custom-name'], name ? name.value.trim() : '');
+                    setCf7Value(cf7FieldMap['custom-email'], email ? email.value.trim() : '');
+                    setCf7Value(cf7FieldMap['custom-tel'], tel ? tel.value.trim() : '');
+
+                    let categoryValue = '';
+                    if (category && category.value) {
+                        const selectedOption = category.options[category.selectedIndex];
+                        categoryValue = selectedOption ? selectedOption.text : category.value;
+                    }
+                    setCf7Value(cf7FieldMap['custom-category'], categoryValue);
+
+                    setCf7Value(cf7FieldMap['custom-message'], message ? message.value.trim() : '');
+                    setCf7Value(cf7FieldMap['custom-policy'], policy ? policy.checked : false);
+                }
+
+                function showSuccess() {
+                    customForm.outerHTML = `
                     <div class="text-center py-12 md:py-16 space-y-6 font-serif-jp" data-animate="fade-up">
                         <div class="w-16 h-16 mx-auto rounded-full bg-[#F1ECE0] flex items-center justify-center">
                             <svg class="w-8 h-8 text-[#B57A3F]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
@@ -530,71 +587,71 @@ get_header();
                         </a>
                     </div>
                 `;
-            }
-
-            function isOurCf7Event(event) {
-                return cf7Container && cf7Container.contains(event.target);
-            }
-
-            customForm.addEventListener('submit', function (event) {
-                event.preventDefault();
-
-                if (!validateClient()) return;
-
-                if (!cf7Form) {
-                    showFormError('フォームの読み込みに問題が発生しました。しばらく経ってから再度お試しください。');
-                    return;
                 }
 
-                copyToCf7();
-                setLoading(true);
+                function isOurCf7Event(event) {
+                    return cf7Container && cf7Container.contains(event.target);
+                }
 
-                const cf7Submit = cf7Form.querySelector('input[type="submit"], button[type="submit"]');
-                if (cf7Submit) {
-                    cf7Submit.click();
-                } else {
+                customForm.addEventListener('submit', function(event) {
+                    event.preventDefault();
+
+                    if (!validateClient()) return;
+
+                    if (!cf7Form) {
+                        showFormError('フォームの読み込みに問題が発生しました。しばらく経ってから再度お試しください。');
+                        return;
+                    }
+
+                    copyToCf7();
+                    setLoading(true);
+
+                    const cf7Submit = cf7Form.querySelector('input[type="submit"], button[type="submit"]');
+                    if (cf7Submit) {
+                        cf7Submit.click();
+                    } else {
+                        setLoading(false);
+                        showFormError('送信処理を開始できませんでした。お手数ですが、しばらく経ってから再度お試しください。');
+                    }
+                });
+
+                document.addEventListener('wpcf7mailsent', function(event) {
+                    if (!isOurCf7Event(event)) return;
                     setLoading(false);
-                    showFormError('送信処理を開始できませんでした。お手数ですが、しばらく経ってから再度お試しください。');
-                }
-            });
+                    showSuccess();
+                });
 
-            document.addEventListener('wpcf7mailsent', function (event) {
-                if (!isOurCf7Event(event)) return;
-                setLoading(false);
-                showSuccess();
-            });
+                document.addEventListener('wpcf7invalid', function(event) {
+                    if (!isOurCf7Event(event)) return;
+                    setLoading(false);
+                    clearFieldErrors();
 
-            document.addEventListener('wpcf7invalid', function (event) {
-                if (!isOurCf7Event(event)) return;
-                setLoading(false);
-                clearFieldErrors();
+                    const invalidFields = event.detail && event.detail.apiResponse ?
+                        event.detail.apiResponse.invalid_fields :
+                        [];
 
-                const invalidFields = event.detail && event.detail.apiResponse
-                    ? event.detail.apiResponse.invalid_fields
-                    : [];
+                    if (invalidFields && invalidFields.length) {
+                        invalidFields.forEach(function(item) {
+                            const customId = cf7ToCustom[item.field];
+                            if (customId) {
+                                showFieldError(customId, item.message);
+                            }
+                        });
+                    }
+                });
 
-                if (invalidFields && invalidFields.length) {
-                    invalidFields.forEach(function (item) {
-                        const customId = cf7ToCustom[item.field];
-                        if (customId) {
-                            showFieldError(customId, item.message);
-                        }
-                    });
-                }
-            });
+                document.addEventListener('wpcf7mailfailed', function(event) {
+                    if (!isOurCf7Event(event)) return;
+                    setLoading(false);
+                    showFormError('送信中にエラーが発生しました。お手数ですが、しばらく経ってから再度お試しいただくか、お電話にてお問い合わせください。');
+                });
 
-            document.addEventListener('wpcf7mailfailed', function (event) {
-                if (!isOurCf7Event(event)) return;
-                setLoading(false);
-                showFormError('送信中にエラーが発生しました。お手数ですが、しばらく経ってから再度お試しいただくか、お電話にてお問い合わせください。');
-            });
-
-            document.addEventListener('wpcf7spam', function (event) {
-                if (!isOurCf7Event(event)) return;
-                setLoading(false);
-                showFormError('送信できませんでした。内容をご確認のうえ、再度お試しください。');
-            });
-        })();
+                document.addEventListener('wpcf7spam', function(event) {
+                    if (!isOurCf7Event(event)) return;
+                    setLoading(false);
+                    showFormError('送信できませんでした。内容をご確認のうえ、再度お試しください。');
+                });
+            })();
         </script>
 
     </div>
