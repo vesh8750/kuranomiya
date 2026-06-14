@@ -28,13 +28,13 @@
         <div
           class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8 mb-12 sm:mb-0 w-full sm:w-auto">
 
-          <a href="tel:0463000000"
+          <a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>"
             class="flex items-center justify-center font-bold text-[clamp(1.35rem,3.5vw,1.75rem)] hover:opacity-80 transition-opacity tracking-wider whitespace-nowrap">
             <svg class="w-6 h-6 mr-2 text-[#B57A3F] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
               <path
                 d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
             </svg>
-            0463-00-0000
+            <?php echo esc_html(kuranomiya_get_phone_number()); ?>
           </a>
 
           <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
@@ -94,13 +94,13 @@
         <!-- Contact Metrics Details -->
         <div class="space-y-4 font-sans text-[13px] sm:text-[14px] text-white/80 tracking-wide !font-normal">
           <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-            <a href="tel:0463000000"
+            <a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>"
               class="text-white font-['EB_Garamond'] text-[20px] sm:text-[22px] font-bold tracking-wider hover:text-[#B57A3F] transition-colors flex items-center">
               <svg class="w-4 h-4 mr-1.5 text-[#B57A3F] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path
                   d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
               </svg>
-              0463-00-0000
+              <?php echo esc_html(kuranomiya_get_phone_number()); ?>
             </a>
             <p>営業時間 <span class="text-white">10:00-19:00</span> <span class="mx-1 text-white/30">|</span> 定休日 <span
                 class="text-white">水曜日</span></p>
@@ -110,7 +110,7 @@
             〒254-0043 神奈川県平塚市紅谷12-24 リーフ8 1階（湘南スターモール商店街内）
           </p>
           <p class="text-[16px]">
-            <span class="text-[#B7C2DA]">古物商許可番号 </span>xxxxxxxxxxxx
+            <span class="text-[#B7C2DA]">古物商許可番号 </span><?php echo esc_html(kuranomiya_get_dealer_license_number()); ?>
           </p>
         </div>
       </div>
@@ -148,7 +148,7 @@
             Contact</h4>
           <ul class="noto-sans space-y-3 text-[13px] font-medium sm:text-[16px] text-white/80">
             <li><a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer" class="hover:text-[#B57A3F] transition-colors block">LINEで相談する</a></li>
-            <li><a href="tel:0463716678" class="hover:text-[#B57A3F] transition-colors block">お電話で相談する</a></li>
+            <li><a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>" class="hover:text-[#B57A3F] transition-colors block">お電話で相談する</a></li>
             <li><a href="<?php echo esc_url(kuranomiya_get_page_url('contact')); ?>" class="hover:text-[#B57A3F] transition-colors block">お問い合わせフォーム</a></li>
           </ul>
         </div>

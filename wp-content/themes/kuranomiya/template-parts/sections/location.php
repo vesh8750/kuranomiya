@@ -18,30 +18,31 @@
                 <!-- ITEM 01 -->
                 <div class="flex flex-col sm:flex-row py-5 border-b border-[white] gap-2 sm:gap-6">
                     <dt class="font-serif-jp font-bold sm:w-[100px] flex-shrink-0">店舗名</dt>
-                    <dd class="noto-sans !font-normal text-[#615C56]">買取 蔵の宮（くらのみや）</dd>
+                    <dd class="noto-sans !font-medium text-[#615C56]">買取 蔵の宮（くらのみや）</dd>
                 </div>
 
                 <!-- ITEM 02 -->
                 <div class="flex flex-col sm:flex-row py-5 border-b border-[white] gap-2 sm:gap-6">
                     <dt class="font-serif-jp font-bold sm:w-[100px] flex-shrink-0">営業時間</dt>
-                    <dd class="noto-sans !font-normal text-[#615C56]">10:00-18:00 / 水曜定休</dd>
+                    <dd class="noto-sans !font-medium text-[#615C56]">10:00-18:00 / 水曜定休</dd>
                 </div>
 
                 <!-- ITEM 03 -->
                 <div class="flex flex-col sm:flex-row py-5 border-b border-[white] gap-2 sm:gap-6">
                     <dt class="font-serif-jp font-bold sm:w-[100px] flex-shrink-0">所在地</dt>
-                    <dd class="noto-sans !font-normal text-[#615C56] space-y-1">
+                    <dd class="noto-sans !font-medium text-[#615C56] space-y-1">
                         <p>〒254-0043 神奈川県平塚市紅谷12-24</p>
-                        <p>リーフ8 1階（湘南スターモール商店街内）</p>
+                        <p>リーフ8 1階</p>
                     </dd>
                 </div>
 
                 <!-- ITEM 04 -->
                 <div class="flex flex-col sm:flex-row py-5 border-b border-[white] gap-2 sm:gap-6">
                     <dt class="font-serif-jp font-bold sm:w-[100px] flex-shrink-0">アクセス</dt>
-                    <dd class="noto-sans !font-normal text-[#615C56] space-y-2">
-                        <p>「平塚駅」から徒歩5分 / 湘南スターモール商店街内<br class="hidden lg:block">
-                            ※ 商店街のメイン通り沿いにございます</p>
+                    <dd class="noto-sans !font-medium text-[#615C56] space-y-2">
+                        <p>JR「平塚駅」北口より徒歩5分<br >
+                        湘南スターモール商店街内<br >
+                        ※ 商店街のメイン通り沿いにございます</p>
                     </dd>
                 </div>
 

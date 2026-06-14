@@ -115,14 +115,14 @@ get_header();
                         お電話でのお問い合わせ
                     </h3>
 
-                    <a href="tel:0463716678"
+                    <a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>"
                         class="flex items-center font-bold text-[clamp(1.35rem,3.5vw,1.65rem)] text-[#33312D] tracking-wide hover:opacity-80 transition-opacity mb-4">
                         <svg class="w-5 h-5 mr-1.5 text-[#B57A3F] flex-shrink-0" fill="currentColor"
                             viewBox="0 0 24 24">
                             <path
                                 d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
                         </svg>
-                        0463-71-6678
+                        <?php echo esc_html(kuranomiya_get_phone_number()); ?>
                     </a>
                 </div>
 
@@ -351,7 +351,7 @@ get_header();
                     <p>
                         買取 蔵の宮<br>
                         〒254-0043 神奈川県平塚市紅谤12-24 リーフ8 1階<br>
-                        TEL: 0463-00-0000（仮）
+                        TEL: <?php echo esc_html(kuranomiya_get_phone_number()); ?>
                     </p>
                 </div>
 

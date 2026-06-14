@@ -272,8 +272,7 @@ if ($item_purchase_related_ids) {
                         お問い合わせ
                     </h3>
                     <p class="text-[#615C56] text-[14px] leading-[1.8] noto-sans !font-medium tracking-wide">
-                        まずは、LINEもしくはお電話（0463-71-6678）にてお気軽にご相談ください。<span
-                            class="text-[#B57A3F] font-semibold ml-0.5">仮</span>
+                        まずは、LINEもしくはお電話（<?php echo esc_html(kuranomiya_get_phone_number()); ?>）にてお気軽にご相談ください。
                     </p>
                 </div>
             </div>

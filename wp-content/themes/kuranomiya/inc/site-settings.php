@@ -11,6 +11,36 @@ function kuranomiya_get_line_url(): string {
     return (is_string($url) && $url !== '') ? $url : '#';
 }
 
+function kuranomiya_get_phone_number(): string {
+    $fallback = '0463-71-6678';
+
+    if (!function_exists('get_field')) {
+        return $fallback;
+    }
+
+    $phone = get_field('phone_number', 'option');
+
+    return (is_string($phone) && $phone !== '') ? $phone : $fallback;
+}
+
+function kuranomiya_get_phone_tel_url(): string {
+    $digits = preg_replace('/\D/', '', kuranomiya_get_phone_number());
+
+    return $digits !== '' ? 'tel:' . $digits : 'tel:0463716678';
+}
+
+function kuranomiya_get_dealer_license_number(): string {
+    $fallback = '452680013674';
+
+    if (!function_exists('get_field')) {
+        return $fallback;
+    }
+
+    $license = get_field('dealer_license_number', 'option');
+
+    return (is_string($license) && $license !== '') ? $license : $fallback;
+}
+
 function kuranomiya_get_google_maps_url(): string {
     $fallback = 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode('神奈川県平塚市紅谷12-24 リーフ8');
 

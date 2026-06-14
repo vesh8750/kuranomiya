@@ -269,6 +269,22 @@ function kuranomiya_register_owner_options(): void {
                 'instructions' => 'LINE公式アカウントの友だち追加URL（例：https://lin.ee/xxxx）',
             ],
             [
+                'key'           => 'field_phone_number',
+                'label'         => '電話番号',
+                'name'          => 'phone_number',
+                'type'          => 'text',
+                'instructions'  => '表示用の電話番号（例：0463-71-6678）。サイト全体で共通利用されます。',
+                'default_value' => '0463-71-6678',
+            ],
+            [
+                'key'           => 'field_dealer_license_number',
+                'label'         => '古物商許可番号',
+                'name'          => 'dealer_license_number',
+                'type'          => 'text',
+                'instructions'  => 'フッターなどに表示される古物商許可番号',
+                'default_value' => '452680013674',
+            ],
+            [
                 'key'           => 'field_google_maps_url',
                 'label'         => 'Google Map URL',
                 'name'          => 'google_maps_url',

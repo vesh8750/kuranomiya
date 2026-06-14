@@ -78,6 +78,8 @@ $owner_bio = "こちらにコメントが入ります。こちらにコメント
 update_field('owner_name', '●●', 'option');
 update_field('owner_title', '業界歴11年以上の査定員', 'option');
 update_field('owner_bio', $owner_bio, 'option');
+update_field('phone_number', '0463-71-6678', 'option');
+update_field('dealer_license_number', '452680013674', 'option');
 
 $owner_photo_id = kuranomiya_seed_owner_import_image('client.png');
 if ($owner_photo_id) {

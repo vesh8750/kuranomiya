@@ -68,13 +68,13 @@
                     <a href="<?php echo esc_url(kuranomiya_get_page_url('about', 'access')); ?>" class="hover:text-[#B57A3F] transition-colors duration-200 whitespace-nowrap">アクセス</a>
                 </nav>
 
-                <a href="tel:0463000000"
+                <a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>"
                     class="flex items-center font-bold text-[clamp(15px,1.2vw,18px)] hover:opacity-80 transition-opacity duration-200 whitespace-nowrap">
                     <svg class="w-5 h-5 mr-1.5 text-[#B57A3F] flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
                         <path
                             d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.44 2.33.68 3.58.68a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.68 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
                     </svg>
-                    0463-00-0000
+                    <?php echo esc_html(kuranomiya_get_phone_number()); ?>
                 </a>
 
                 <a href="<?php echo esc_url(kuranomiya_get_line_url()); ?>" target="_blank" rel="noopener noreferrer"
@@ -166,7 +166,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
                         </a>
-                        <a href="tel:0463716678" class="mobile-nav__link hover:text-[#B57A3F] transition-colors">お電話で相談する</a>
+                        <a href="<?php echo esc_url(kuranomiya_get_phone_tel_url()); ?>" class="mobile-nav__link hover:text-[#B57A3F] transition-colors">お電話で相談する</a>
                         <a href="<?php echo esc_url(kuranomiya_get_page_url('contact')); ?>" class="mobile-nav__link hover:text-[#B57A3F] transition-colors">お問い合わせフォーム</a>
                     </div>
                 </div>
