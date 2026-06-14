@@ -32,3 +32,4 @@ wp-config.php
 Thumbs.db
 *.log
 node_modules/
+*.wpress

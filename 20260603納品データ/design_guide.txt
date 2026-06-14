@@ -1,0 +1,479 @@
+# Font Specifications
+
+## Fonts Used (Refer to Variables)
+
+### Noto Serif JP (For Titles – Serif Font)
+
+* SemiBold
+
+### Noto Sans JP (For Body Text – Sans Serif Font)
+
+* Bold / Medium / Regular
+
+> Default weight is Medium.
+> Regular is used in areas such as the 18px supplementary text beneath titles, but it is acceptable to standardize everything to Medium if preferred.
+>
+> Bold is used for Privacy Policy titles and emphasized text.
+
+### EB Garamond (For English Text and Numbers)
+
+* Medium / Regular
+
+> Default weight is Medium.
+> Regular is used for labels such as FLOW01, etc.
+
+All fonts are loaded via **Google Fonts**.
+
+### Default Font Sizes
+
+* Body text: 16px
+* Some supplementary text uses 14px
+
+---
+
+# Color Specifications
+
+## Colors (Refer to Variables)
+
+| Name                  | HEX       |
+| --------------------- | --------- |
+| Amber (Primary)       | `#B57A3F` |
+| Iron Navy (Secondary) | `#303E5F` |
+| Iron Navy (Dark)      | `#1D2B4B` |
+| Iron Navy (Light)     | `#B7C2DA` |
+| Natural Beige (Base)  | `#FFFCF5` |
+| Natural Beige (Deep)  | `#F1ECE0` |
+| Ink (Base)            | `#33312D` |
+| Ink (Light)           | `#615C56` |
+| Border                | `#DED7C7` |
+| Required Red          | `#EC2B2B` |
+
+> Some colors have been adjusted from the initial specifications.
+
+---
+
+# Grid & Spacing
+
+## Desktop
+
+* 12-column grid
+* Maximum width: 1200px
+* Gutter: 24px
+* Container side padding: 120px
+* Vertical spacing between sections: 160px
+
+### Card Padding
+
+#### Standard Cards
+
+* Horizontal: 24px
+* Vertical: 32px
+
+#### Market Rate Cards
+
+* Horizontal: 32px
+* Vertical: 40px
+
+> These are the default card padding values.
+> However, certain sections such as Story were individually adjusted based on client revisions, so please verify each section.
+>
+> Lower pages reuse components from the homepage. The first occurrence of each component on the homepage has been componentized, so please match those versions.
+
+---
+
+## Mobile
+
+* Container side padding: 24px
+* Vertical section spacing:
+
+  * Top: 100px
+  * Bottom: 120px
+
+### Card Padding
+
+Same as desktop.
+
+---
+
+# Button Specifications
+
+## Extra Large
+
+* Height: 64px
+* Horizontal padding: 80px
+
+Used for:
+
+* “Consult About Similar Item Appraisals” button on the Purchase Records page
+
+---
+
+## Large
+
+* Height: 56px
+* Horizontal padding: 32px
+
+Used for:
+
+* Desktop content-area buttons
+
+---
+
+## Small
+
+* Height: 48px
+
+### Desktop Header Buttons
+
+* Horizontal padding: 24px
+
+### Mobile Buttons
+
+* Horizontal padding: 32px
+
+---
+
+## Category Buttons
+
+* Height: 48px
+* Horizontal padding: 24px
+
+Available patterns:
+
+* Amber (Primary)
+* Iron Navy (Secondary)
+
+Active and normal states are inverted.
+
+---
+
+## Pagination Buttons
+
+* 48px × 48px square
+* Amber (Primary)
+* Active and normal states are inverted
+
+> Since the Low Pages were componentized afterward, only the 48px button variation exists there.
+>
+> Homepage buttons were componentized from the first button design that appeared on the homepage.
+
+---
+
+# Responsive Design Instructions
+
+## 01_Purchase Items <Detail Page> (Shared Template)
+
+### 02 / Hero
+
+Use the same layout as:
+
+* About (Owner & Store Introduction) Hero
+
+### 03 / Items
+
+Use the same layout as:
+
+* Today's Market Rates section on the homepage
+
+### 04 / Flow
+
+Use the same layout as:
+
+* “Observe” — Our Philosophy section on the About page
+
+### 05 / FAQ
+
+Use the same layout as:
+
+* Homepage FAQ section
+
+### 06 / Achievements
+
+Use the same layout as:
+
+* Homepage Purchase Records section
+
+---
+
+## 02-1_Purchase Records <Archive Page>
+
+### 02 / Hero
+
+Use the same layout as:
+
+* Contact Page Hero
+
+### 03 / Contents
+
+Use the same layout as:
+
+* Homepage Purchase Records section
+
+> Whether you implement it as a slider or display everything at once is up to you.
+
+Additional notes:
+
+* Category buttons should be displayed horizontally and wrap onto the next line when necessary.
+* The sort select box should appear independently and left-aligned.
+* Pagination should be displayed horizontally and right-aligned.
+* Left alignment is also acceptable if right alignment feels visually unbalanced.
+
+---
+
+## 02-2_Purchase Records <Single Page>
+
+### 02 / Hero
+
+Use the same layout as:
+
+* Contact Page Hero
+
+### 03 / Item
+
+Separate image and text sections.
+
+Structure:
+
+* Image
+* Text below image
+
+### 04 / Achievements
+
+Use the same layout as:
+
+* Homepage Purchase Records section
+
+---
+
+## 03-1_Column <Archive Page>
+
+Overall structure should match:
+
+* 02-1_Purchase Records Archive Page
+
+Additionally:
+
+* On title hover, change the text color to Amber (Primary), matching the Purchase Records archive page behavior.
+
+---
+
+## 03-2_Column <Single Page>
+
+### 02 / Hero
+
+Use the same layout as:
+
+* Contact Page Hero
+
+### 03 / Post_ttl
+
+For:
+
+* `ttl`
+* `write`
+
+Currently arranged as left and right aligned groups.
+
+On mobile:
+
+* Move them onto a new line.
+* Align everything to the left.
+
+### 04 / Post_txt
+
+For the Owner heading:
+
+If it does not fit on one line:
+
+Move:
+
+> Appraiser with 11+ Years of Industry Experience
+
+onto a second line.
+
+### 05 / Related_articles
+
+Use the same layout as:
+
+* Homepage Purchase Records section
+
+---
+
+# 05_Contact
+
+## Sample Privacy Policy Text
+
+### Privacy Policy
+
+Kuranomiya Purchase Store (hereinafter referred to as "the Store") establishes the following Privacy Policy (hereinafter referred to as "this Policy") regarding the handling of users' personal information in the services provided through this website.
+
+### Article 1 (Personal Information)
+
+The Store complies with laws and regulations concerning the protection of personal information and other applicable standards.
+
+"Personal Information" refers to information such as a person's name, telephone number, address, and any other information capable of identifying a specific individual, including information that can be easily matched with other data to identify a specific individual.
+
+### Article 2 (Method of Collecting Personal Information)
+
+The Store may request personal information such as name, email address, and telephone number when users utilize the services.
+
+Additionally, transaction records and payment-related information containing users' personal information may be collected from business partners (including information providers, advertisers, advertising distributors, etc.; collectively referred to as "Partners").
+
+### Article 3 (Purpose of Collection and Use)
+
+Personal information is collected and used for the following purposes:
+
+* Identity verification during the purchase and sale of secondhand goods in accordance with the Secondhand Articles Dealer Act
+* Providing and operating Store services
+* Responding to user inquiries (including identity verification)
+* Sending information regarding new features, updates, campaigns, and other services offered by the Store
+* Contacting users regarding maintenance or important notices
+* Identifying users who violate terms of service or attempt fraudulent or improper use
+* Allowing users to view, update, or delete registration information and review usage history
+* Purposes incidental to the above
+
+### Article 4 (Provision of Personal Information to Third Parties)
+
+#### 1.
+
+The Store will not provide personal information to third parties without prior consent except in the following circumstances:
+
+* When necessary to protect life, body, or property and obtaining consent is difficult
+* When disclosure recipients and disclosed information have been specified and customer consent has been obtained
+* When cooperation with law enforcement or government agencies is legally required and obtaining consent could impede those duties
+
+#### 2.
+
+The following recipients are not considered third parties:
+
+* Contractors entrusted with handling personal information necessary for payment processing, shipping arrangements, or fulfillment of service purposes
+* Successors receiving information through mergers or other business transfers
+
+### Article 5 (Correction and Deletion of Personal Information)
+
+Users may request correction, addition, or deletion of personal information held by the Store if it is inaccurate.
+
+If the Store determines such a request is justified, the requested correction shall be made without delay.
+
+Users will be notified without delay whether corrections are made or denied.
+
+### Article 6 (Contact Information)
+
+For inquiries regarding this Policy, please contact:
+
+Kuranomiya Purchase Store
+
+1F Leaf 8, 12-24 Beniya-cho, Hiratsuka City, Kanagawa 254-0043, Japan
+
+TEL: 0463-00-0000 (Temporary)
+
+---
+
+# Homepage Revisions
+
+After delivering the Figma data, the following revisions were made.
+
+If coding has already begun, please update accordingly.
+
+### 01 / Header
+
+* Adjusted the height of the LINE button
+* Reason: Original value was entered incorrectly
+
+### 06 / Items
+
+Inside the lower box:
+
+Change the title text color of:
+
+> We Also Handle a Wide Variety of Other Items
+
+to:
+
+* Ink (Base)
+
+Reason:
+
+* Needed stronger visibility when reused elsewhere
+
+### 08 / Market_rate
+
+* Silver image has been replaced
+* Reason: Previous image was only a temporary comp asset
+
+### 11 / Info
+
+* Change the label from "Location" to "Access"
+* Reason: Easier to understand and consistent with lower-level pages
+
+### 13 / Footer
+
+Footer Navigation:
+
+* Change:
+
+  * Purchase Item List
+* To:
+
+  * Purchase Items
+
+Also:
+
+* Add an external-link icon after:
+
+  * Consult via LINE
+
+---
+
+# Animation Guidelines
+
+Implementation details are largely left to your discretion, but please use the following websites as references:
+
+* https://kirarinheart.com/
+* https://doctor-h.net/hommachi/
+
+The desired feel is generally similar to those sites.
+
+### Titles & Individual Content Blocks
+
+* Fade in upward
+
+### Horizontal Card Layouts
+
+* Fade in sequentially from left to right
+
+### FAQ-Style Lists
+
+* Fade in sequentially from left to right starting from the top item
+
+### Long Paragraphs
+
+* Gradually reveal from the left during scrolling
+
+---
+
+# Additional Notes
+
+* Shared components are based on the first occurrence of each item on the Homepage.
+
+  * Header
+  * Contact Section
+  * Footer
+  * Various Cards
+  * Etc.
+
+* Buttons and elements that first appear on Low Pages have been collected and componentized in the Buttons section.
+
+* Link areas and sections requiring individual instructions have comments left directly inside Figma.
+
+* For main images, please apply a CSS mask effect that gradually fades the image out.
+
+  * The original image assets have already been exported.
+
+* Most icon assets have been exported.
+
+  * If anything is missing, please export it directly from the Figma file.
+
+* The diamond-shaped background does not have an SVG version.
+
+  * The original source file has therefore been included as a backup.
